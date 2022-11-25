@@ -220,10 +220,12 @@ div {
 
 .links{
   padding-top: 10vw;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .btn-link {
-  margin: 8vw 2vw 8vw 2vw;
+  margin: 8vw 2vw;
   padding: 1vw 2vw;
   outline: none;
   font-weight: 300;
@@ -234,8 +236,7 @@ div {
 
 @media (max-width: 767.98px) {
   .btn-link {
-    margin: 8vw 1vw 8vw 1vw;
-    padding: 1vw 1vw;
+    margin: 8vw 3vw;
     font-size: 16px;
   }
 }
