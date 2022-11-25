@@ -232,10 +232,15 @@ div {
   color: black;
 }
 
+@media (max-width: 575.98px) {
+  .btn-link {
+    font-size: 16px;
+  }
+}
+
 .btn-link:hover {
   text-decoration: none;
   color: black;
-
 }
 
 /* footer */
