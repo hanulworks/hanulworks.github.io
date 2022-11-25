@@ -147,7 +147,7 @@ div {
 /* Information */
 .information {
   text-align: center;
-  margin: 0 0 10em 0;
+  margin: 0 0 100px 0;
 }
 
 .profile-image {
@@ -224,7 +224,7 @@ div {
 }
 
 .btn-link {
-  margin: 8vw 2vw;
+  margin: 2vw;
   padding: 1vw 2vw;
   outline: none;
   font-weight: 300;
@@ -235,7 +235,7 @@ div {
 
 @media (max-width: 767.98px) {
   .links {
-    padding-top: 10vw;
+    padding-top: 10em;
     display: flex;
     justify-content: space-evenly;
   }
