@@ -174,7 +174,7 @@ div {
   background-color: transparent;
 }
 
-.collapsible {
+.btn-sm {
   border: none;
   margin: 8vw 2vw 8vw 2vw;
   padding: 1vw 2vw;
@@ -190,83 +190,15 @@ div {
   color: black;
 }
 
-.active, .collapsible:hover {
+.active, .btn-sm:hover {
   background-color: white;
   background-position: right center;
   text-decoration: none;
 }
 
-.collapsible:hover {
+.btn-sm:hover {
   text-shadow: white 0 0 5px, white 0 0 10px, white 0 0 0.2rem;
   box-shadow: 0 0 15px #ffffff;
-}
-
-.BlueButton1 {
-  background-image: linear-gradient(to right, #D6EBFF 0%, #C2EEFF 50%);
-  background-size: 200% auto;
-  box-shadow: 0 0 5px #eee;
-  cursor: pointer;
-}
-
-.BlueButton2 {
-  background-image: linear-gradient(to right, #C2EEFF 0%, #D6EBFF 50%);
-  background-size: 200% auto;
-  box-shadow: 0 0 5px #eee;
-  cursor: alias;
-}
-
-@keyframes tonext {
-  75% {
-    left: 0;
-  }
-
-  95% {
-    left: 100%;
-  }
-
-  98% {
-    left: 100%;
-  }
-
-  99% {
-    left: 0;
-  }
-}
-
-@keyframes tostart {
-  75% {
-    left: 0;
-  }
-
-  95% {
-    left: -300%;
-  }
-
-  98% {
-    left: -300%;
-  }
-
-  99% {
-    left: 0;
-  }
-}
-
-@keyframes snap {
-  96% {
-    scroll-snap-align: center;
-  }
-
-  97% {
-    scroll-snap-align: none;
-  }
-
-  99% {
-    scroll-snap-align: none;
-  }
-
-  100% {
-    scroll-snap-align: center;
-  }
 }
 
 .info {
