@@ -191,21 +191,6 @@ div {
   color: black;
 }
 
-.links{
-  padding-top: 10vw;
-}
-
-.btn-links {
-  border: none;
-  margin: 8vw 2vw 8vw 2vw;
-  padding: 1vw 2vw;
-  font-weight: 300;
-  font-size: 20px;
-  background: none;
-  color: black;
-
-}
-
 .active, .btn-sm:hover {
   background-color: white;
   background-position: right center;
@@ -233,8 +218,24 @@ div {
   }
 }
 
-.category {
-  padding: 5% 0 0 0;
+.links{
+  padding-top: 10vw;
+}
+
+.btn-link {
+  margin: 8vw 2vw 8vw 2vw;
+  padding: 1vw 2vw;
+  outline: none;
+  font-weight: 300;
+  font-size: 20px;
+  background: none;
+  color: black;
+}
+
+.btn-link:hover {
+  text-decoration: none;
+  color: black;
+
 }
 
 /* footer */
