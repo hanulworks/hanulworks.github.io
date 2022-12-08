@@ -95,7 +95,7 @@ div {
   --animate-duration: 2s;
 }
 
-/* Technologist, Programmer, Designer, Artist */
+/* ideate, prototype, iterate, and produce */
 .heading2 {
   font-weight: 300;
   font-size: 2vw;
@@ -147,7 +147,7 @@ div {
 /* Information */
 .information {
   text-align: center;
-  margin: 0 0 100px 0;
+  margin-bottom: 100px;
 }
 
 .profile-image {
