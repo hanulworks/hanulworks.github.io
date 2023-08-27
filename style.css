@@ -190,7 +190,7 @@ div {
 }
 
 @media (min-width: 1200px) {
-  .info-2 {    
+  .info-2 {
     margin: 6vw 0 0 0;
   }
 }
@@ -198,14 +198,16 @@ div {
 .profile-image {
   width: 100%;
   height: auto;
-  border-radius: 10vw;
+  border-radius: 5px;
 }
 
 @media (max-width: 767.98px) {
   .profile-image {
     margin: 6vw 0 0 0;
+    width: 50%;
   }
 }
+
 
 .credit {
   font-size: 12px;
