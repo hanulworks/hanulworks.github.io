@@ -151,7 +151,7 @@ div {
 }
 
 .info-part {
-  margin: 0 0 20vw 0;
+  margin: 0 0 10vw 0;
 }
 
 .profile-image {
@@ -226,8 +226,7 @@ div {
 
 .btn-sm {
   border: none;
-  margin: 8vw 2vw 8vw 2vw;
-  padding: 1vw 2vw;
+  margin: 8vw 0 4vw 0;
   border-radius: 20px;
   transition: 0.5s;
   align-items: center;
@@ -269,7 +268,6 @@ div {
 }
 
 .links {
-  padding-top: 10vw;
   display: center;
 }
 
