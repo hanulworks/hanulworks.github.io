@@ -211,12 +211,14 @@ div {
 @media (max-width: 767.98px) {
   .info-2 {
     font-size: 24px;
+    margin: 9vw 0 6vw 0;
   }
 }
 
 @media (max-width: 575.98px) {
   .info-2 {
     font-size: 20px;
+    margin: 9vw 0 6vw 0;
   }
 }
 
