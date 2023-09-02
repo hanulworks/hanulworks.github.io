@@ -76,7 +76,13 @@ div {
 
 /* Introduction */
 .introduction {
-  margin-bottom: 10em;
+  margin: 0;
+}
+
+@media (max-width: 575.98px) {
+  .introduction {
+    margin: 0 0 12em 0;
+  }
 }
 
 /* Creative Technology */
@@ -147,11 +153,18 @@ div {
 /* Information */
 .information {
   text-align: center;
-  margin-bottom: 100px;
 }
 
 .info-part {
-  margin: 0 0 6vw 0;
+  padding: 0;
+  border: 0;
+  margin: 0 0 15vw 0;
+}
+
+@media (max-width: 767.98px) {
+  .info-part {
+    margin: 0 0 30vw 0;
+  }
 }
 
 .profile-image {
@@ -163,7 +176,6 @@ div {
 
 @media (max-width: 767.98px) {
   .profile-image {
-    margin: 6vw 0 10px 0;
     width: 50%;
   }
 }
@@ -184,7 +196,14 @@ div {
   font-size: 18px;
   text-align: justify;
   line-height: 1.5;
-  margin-bottom: 3vw;
+  margin: 0 0 6vw 0;
+}
+
+@media (max-width: 767.98px) {
+  .info-1 {
+    font-size: 16px;
+    margin: 3vw 0 6vw 0;
+  }
 }
 
 @media (max-width: 575.98px) {
@@ -205,20 +224,18 @@ div {
   font-size: 28px;
   line-height: 1.5;
   text-align: center;
-  margin: 3vw 0 9vw 0;
+  margin: 0 0 6vw 0;
 }
 
 @media (max-width: 767.98px) {
   .info-2 {
-    font-size: 24px;
-    margin: 9vw 0 12vw 0;
+    font-size: 22px;
   }
 }
 
 @media (max-width: 575.98px) {
   .info-2 {
-    font-size: 20px;
-    margin: 9vw 0 12vw 0;
+    font-size: 18px;
   }
 }
 
@@ -253,7 +270,7 @@ div {
   box-shadow: 0 0 15px #ffffff;
 }
 
-.info-3 {
+.info-button {
   font-weight: 300;
   font-size: 18px;
   line-height: 1.6;
@@ -267,42 +284,9 @@ div {
 }
 
 @media (max-width: 575.98px) {
-  .info-3 {
+  .info-button {
     font-size: 14px;
   }
-}
-
-.links {
-  display: center;
-}
-
-.btn-link {
-  margin: 2vw;
-  padding: 1vw 2vw;
-  outline: none;
-  font-weight: 300;
-  font-size: 20px;
-  background: none;
-  color: black;
-}
-
-@media (max-width: 767.98px) {
-  .links {
-    padding-top: 10em;
-    display: flex;
-    justify-content: space-evenly;
-  }
-
-  .btn-link {
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-  }
-}
-
-.btn-link:hover {
-  text-decoration: none;
-  color: black;
 }
 
 /* footer */
@@ -310,13 +294,31 @@ div {
   position: relative;
   margin: 1vw;
   padding: 4px 16px 4px 24px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 @media (max-width: 575.98px) {
   #footer {
-    font-size: 10px;
+    font-size: 12px;
   }
+}
+
+.btn-link {
+  margin: 1vw;
+  font-size: 28px;
+  background: none;
+  color: black;
+}
+
+@media (max-width: 575.98px) {
+  .btn-link {
+    font-size: 20px;
+  }
+}
+
+.btn-link:hover {
+  text-decoration: none;
+  color: black;
 }
 
 .copyright {
