@@ -599,7 +599,7 @@ ol, li {
   font-weight: 800;
   font-size: 20px;
   color: black;
-  text-align: right;
+  /* text-align: right; */
   margin: 5vw 0 5vw 0;
   border: 0;
   padding: 0;
