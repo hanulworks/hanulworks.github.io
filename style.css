@@ -437,6 +437,7 @@ div {
     font-size: 16px;
   }
 }
+
 @media (max-width: 575.98px) {
   .synopsis {
     font-size: 14px;
@@ -660,6 +661,12 @@ ol, li {
   margin: 2vw 0 2vw 0;
   border: 0;
   padding: 0;
+}
+
+@media (max-width: 991.98px) {
+  .text {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 575.98px) {
