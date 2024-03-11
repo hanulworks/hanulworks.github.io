@@ -21,6 +21,7 @@ body {
   background-size: 80px 140px;
   background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
   transition: 0.5s;
+  color: #3C3C3C;
 }
 
 /* index.html */
@@ -113,7 +114,7 @@ div {
 .heading2 {
   font-weight: 300;
   font-size: 2vw;
-  line-height: 1.5em;
+  line-height: 1.3em;
   text-align: right;
   margin: 0 0 20em 0;
 }
@@ -602,7 +603,8 @@ ol, li {
 /* vr-therapy-101.html */
 /* dream-homeland.html */
 .detailBackground {
-  background-color: #edf7fc;
+  background-color: #ffffff;
+  background-image: none;
 }
 
 .detail {
