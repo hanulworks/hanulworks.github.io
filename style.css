@@ -201,7 +201,7 @@ div {
 }
 
 .info-1 {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 18px;
   text-align: justify;
   line-height: 1.5;
@@ -229,7 +229,7 @@ div {
 }
 
 .info-2 {
-  font-weight: 400;
+  font-weight: 350;
   font-size: 28px;
   line-height: 1.5;
   text-align: center;
@@ -433,7 +433,7 @@ div {
 
 /* Project Synopses */
 .synopsis {
-  font-weight: 300;
+  font-weight: 350;
   font-size: 18px;
   line-height: 1.3;
   margin: 0 0 20px 0;
