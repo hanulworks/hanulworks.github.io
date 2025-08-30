@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Meta --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><!-- Page metadata --><title>Hanul-Computer Interaction</title><meta name="description" content="A digital-physical interactive experience investigating movement-based interactivity, machine learning, and collaborative authorship between human and machine"><!-- Favicon (served from /public) --><link rel="icon" href="/favicons/h.png" type="image/png" sizes="16x16"><!-- Global CSS: libraries first, then site styles --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="/style.css"><!-- Per‑page head injections --><script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[])})(window,'partytown','forward');/* Partytown 0.11.2 - MIT QwikDev */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,l,d,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(d=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(l=setTimeout(v,(null==s?void 0:s.fallbackTimeout)||1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.11.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<d.length;n++)(o=r.createElement("script")).innerHTML=d[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(l)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script></head> <body class> <header id="header" class="site-header" role="banner"> <!-- Mobile topbar (hidden >=768px) --> <div class="topbar" aria-hidden="true"> <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu" data-menu-toggle> <svg class="menu-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true" focusable="false" role="img"> <defs> <!-- Top: light gray gradient --> <linearGradient id="menu-cube-top" x1="0" y1="4" x2="0" y2="24" gradientUnits="userSpaceOnUse"> <stop offset="0%" stop-color="#f5f5f5"></stop> <stop offset="100%" stop-color="#e0e0e0"></stop> </linearGradient> <!-- Left: medium gray gradient --> <linearGradient id="menu-cube-left" x1="7" y1="14" x2="24" y2="44" gradientUnits="userSpaceOnUse"> <stop offset="0%" stop-color="#bdbdbd"></stop> <stop offset="100%" stop-color="#9e9e9e"></stop> </linearGradient> <!-- Right: dark gray gradient --> <linearGradient id="menu-cube-right" x1="41" y1="14" x2="24" y2="44" gradientUnits="userSpaceOnUse"> <stop offset="0%" stop-color="#757575"></stop> <stop offset="100%" stop-color="#424242"></stop> </linearGradient> </defs> <polygon class="face-top" points="24 4, 41 14, 24 24, 7 14"></polygon> <polygon class="face-left" points="7 14, 24 24, 24 44, 7 34"></polygon> <polygon class="face-right" points="41 14, 24 24, 24 44, 41 34"></polygon> <title>Open navigation</title> </svg> </button> </div> <!-- Navigation: mobile overlay / desktop right rail --> <nav id="site-nav" class="site-nav" aria-label="Primary"> <div class="site-nav__inner"> <a class="brand-large" href="/">hanul</a> <ul class="nav-list" role="list"> <li><a href="/projects">projects</a></li> <li><a href="/sketches">sketches</a></li> </ul> <button class="menu-close" aria-label="Close menu" data-menu-close></button> </div> <button class="nav-overlay" aria-hidden="true" tabindex="-1" data-menu-close></button> </nav> </header> <script>
+  (() => {
+    const nav = document.getElementById("site-nav");
+    const toggle = document.querySelector("[data-menu-toggle]");
+    const closers = document.querySelectorAll("[data-menu-close]");
+    const body = document.body;
+
+    const openNav = () => {
+      nav.classList.add("open");
+      body.classList.add("nav-open");
+      toggle?.setAttribute("aria-expanded", "true");
+    };
+    const closeNav = () => {
+      nav.classList.remove("open");
+      body.classList.remove("nav-open");
+      toggle?.setAttribute("aria-expanded", "false");
+    };
+
+    toggle?.addEventListener("click", () => {
+      nav.classList.contains("open") ? closeNav() : openNav();
+    });
+    closers.forEach((el) => el.addEventListener("click", closeNav));
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeNav();
+    });
+  })();
+</script> <!-- Each page should include its own <main id="content"> -->  <main id="content" class="detail-surface"> <header aria-labelledby="detail-title" class="work-row detail-header"> <!-- Left column: reuse WorkRow meta stack --> <div class="work-meta"> <h3 id="detail-title" class="work-row__title">Hanul-Computer Interaction</h3> <p class="work-row__synopsis">A digital-physical interactive experience investigating movement-based interactivity, machine learning, and collaborative authorship between human and machine</p> <p class="work-row__year">2021-22</p> </div> <!-- Right column: domains + links/tools/language in one wrapper for divider --> <div class="detail-right"> <div class="work-row__domains"> <span class="chip">Human-Computer Interaction</span><span class="chip">Real-Time Pose Estimation</span><span class="chip">Interactive System Design</span><span class="chip">Machine Learning</span> </div> <div class="work-links-and-meta"> <ul class="work-row__links"> <li> <a class="work-link work-link--external" href="/projects/hanul-computer-interaction/web.html" target="_blank" rel="noopener noreferrer"> EXPLORE WEB VERSION </a> </li><li> <a class="work-link work-link--external" href="/projects/hanul-computer-interaction/mobile.html" target="_blank" rel="noopener noreferrer"> EXPLORE MOBILE VERSION </a> </li><li> <a class="work-link work-link--external" href="https://parsons.edu/dt-2022/hanul-computer-interaction-hci/" target="_blank" rel="noopener noreferrer"> PARSONS DESIGN &amp; TECHNOLOGY THESIS SHOW 2022 </a> </li> </ul> <p class="text work-tools">Tools | P5.js , Ml5.js</p> <p class="text work-language">Language | JavaScript, HTML, CSS</p> </div> </div> </header>  <section class="text"> <h6 class="section">I. CONCEPT</h6> <p class="subject">OVERVIEW</p> <p class="text">
+Hanul–Computer Interaction is an interactive system that transforms users’
+      body movements into real-time graphical reflections. Built on machine
+      learning-based pose estimation, the interface allows users to co-create
+      ephemeral visuals through embodied interaction with an AI model.
+<br><br><em>“Draw Yourself: A Digital Dance”</em> </p> <p class="subject">MOTIVATION</p> <p class="text">
+The project explores collaborative creativity between designers and
+      machines. Through a series of iterative experiments, the designer (Hanul)
+      and a machine learning model (nicknamed “Computer”) establish a
+      co‑dependent creative relationship. The resulting system reflects not only
+      user motion but also the dynamics of human–machine co‑authorship.
+<br><br>It further critiques the systemic reduction of human identity
+      into data. In an age of biometric surveillance and predictive profiling,
+      HCI challenges dominant narratives by rejecting data retention and
+      emphasizing anonymity and abstraction.
+</p> <p class="subject">APPROACH</p> <p class="text">
+The system uses PoseNet, a real‑time pose detection tool from the ml5.js
+      library, powered by TensorFlow.js. No identifiable data is collected;
+      instead, blurred and anonymized visuals are generated to safeguard user
+      privacy. This aesthetic choice counters the extractive nature of
+      surveillance‑based design and promotes critical discourse on data ethics.
+<br><br><em>“Pixels &amp; Privacy: Dance Your Data Away”</em> </p> </section> <section class="text"> <h6 class="section">II. PROCESS</h6> <p class="subject">IDEATION</p> <figure class="detailImage"> <img src="/projects/hanul-computer-interaction/brainstorm1.png" alt="Brainstorm 1" loading="lazy"> </figure> <figure class="detailImage"> <img src="/projects/hanul-computer-interaction/brainstorm2.png" alt="Brainstorm 2" loading="lazy"> </figure> <p class="subject">CREATIVE METHODOLOGY</p> <p class="text">
+The project prioritizes process over product. Each prototype is treated as
+      a sketch, a generative moment within an ongoing inquiry into human–machine
+      interaction. Hanul positions themself not only as a maker but as a curator
+      of experience and conversation.
+</p> <p class="subject">ETHNOGRAPHIC FRAMING</p> <p class="text">
+The research is grounded in a hybrid of autoethnography and digital
+      ethnography, informed by Actor‑Network Theory (ANT). ANT frames the
+      relationship between human and machine as an ontologically symmetrical
+      network of actants. The project becomes a site for exploring authorship,
+      agency, and material expression across human and non‑human actors.
+</p> </section> <section class="text"> <h6 class="section">III. STUDIES</h6> <p class="subject">1. "FAMILY PHOTO‑PAINTING ALBUM"</p> <p class="text">
+This experiment humanizes GANs by applying them to emotionally significant
+      images. It transforms neural style transfer into a sentimental act of
+      digital memory‑making.
+<br><br>
+Model: Generative Adversarial Networks (GAN)<br>
+Platform: RunwayML (Style Transfer)<br>
+Inputs: Selected original photos of myself &amp; my dog<br>
+Styles: Famous Paintings; Cubism, Gogh, Hokusai, Kandinsky, Monet, Picasso,
+      Wu Guanzhong
+</p> <p class="subject">2. "IN PIXELS"</p> <p class="text">
+This visual poetry project explores how classical literature can be
+      reinterpreted by neural networks, bridging ancient verse with generative
+      aesthetics.
+<br><br>
+Model: Vector Quantized Generative Adversarial Network and Contrastive Language–Image
+      Pre‑training (VQGAN+CLIP)<br>
+Platform: NightCafe (Text to Image)<br>
+Inputs: Sappho. "Poems of Sappho" Translated by Julia Dunbnoff. University
+      of Houston.
+</p> </section> <section class="text"> <h6 class="section">IV. PRODUCT</h6> <p class="subject">INTERACTION DESIGN</p> <p class="text">
+The interface is simple yet responsive. Participants activate the system
+      through movement, becoming both performer and co‑author. The screen
+      responds in real time, creating a closed feedback loop where body and
+      algorithm shape each other.
+</p> <p class="subject">TECHNICAL INFRASTRUCTURE</p> <p class="text">
+The browser‑native application relies on PoseNet via ml5.js to detect
+      motion and translate it into visual output. No data is stored. This
+      lightweight, accessible setup supports live rendering without backend
+      dependencies, reinforcing user control.
+</p> <figure class="detailImage"> <img src="/projects/hanul-computer-interaction/infra.png" alt="Infrastructure" loading="lazy"> </figure> </section> <section class="text"> <h6 class="section">V. EXPERIENCE</h6> <p class="subject">USER FLOW</p> <p class="text">
+1. Launch the application via web or mobile browser <br>
+2. Grant camera access <br>
+3. Move freely as body data is captured in real time <br>
+4. Visual feedback appears onscreen in response to motion <br>
+5. (Web only) Option to enter fullscreen mode and save screenshots
+</p> <p class="subject">TESTING ENVIRONMENT</p> <p class="text">
+Testing was conducted in‑person across various indoor and outdoor settings
+      with stable internet access. As the experience relies on real‑time visual
+      feedback, it is not fully accessible to users with visual impairments.
+      While participants with limited vision can engage with the movement
+      component, they may not be able to perceive the visual outcomes directly.
+</p> <p class="subject">VISUAL DISCLAIMER</p> <p class="text">
+This experience includes flashing imagery and rapidly changing colors.
+      Viewer discretion is advised for individuals with photosensitive epilepsy
+      or visual sensitivities.
+</p> </section> <section class="text"> <h6 class="section">VI. DEMONSTRATION</h6> <p class="subject">PROTOTYPE STYLE 1</p> <section class="carousel carousel-mobile" aria-label="Gallery"> <ol class="carousel__viewport"> <li id="carousel__slide1_style1" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/prototype1.1.jpg" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide3_style1" class="carousel__prev"></a> <a href="#carousel__slide2_style1" class="carousel__next"></a> </li> <li id="carousel__slide2_style1" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/prototype1.2.jpg" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide1_style1" class="carousel__prev"></a> <a href="#carousel__slide3_style1" class="carousel__next"></a> </li> <li id="carousel__slide3_style1" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/prototype1.3.jpg" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide2_style1" class="carousel__prev"></a> <a href="#carousel__slide1_style1" class="carousel__next"></a> </li> </ol> </section> <p class="subject">PROTOTYPE STYLE 2</p> <section class="carousel" aria-label="Gallery"> <ol class="carousel__viewport"> <li id="carousel__slide1_style2" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/prototype2.1.jpg" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide5_style2" class="carousel__prev"></a> <a href="#carousel__slide2_style2" class="carousel__next"></a> </li> <li id="carousel__slide2_style2" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/prototype2.2.jpg" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide1_style2" class="carousel__prev"></a> <a href="#carousel__slide3_style2" class="carousel__next"></a> </li> <li id="carousel__slide3_style2" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/prototype2.3.jpg" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide2_style2" class="carousel__prev"></a> <a href="#carousel__slide4_style2" class="carousel__next"></a> </li> <li id="carousel__slide4_style2" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/prototype2.4.png" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide3_style2" class="carousel__prev"></a> <a href="#carousel__slide5_style2" class="carousel__next"></a> </li> <li id="carousel__slide5_style2" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/prototype2.5.png" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide4_style2" class="carousel__prev"></a> <a href="#carousel__slide1_style2" class="carousel__next"></a> </li> </ol> </section> <p class="subject">WEB BROWSER</p> <section class="carousel" aria-label="Gallery"> <ol class="carousel__viewport"> <li id="carousel__slide1_web" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/demo_web_1.gif" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide6_web" class="carousel__prev"></a> <a href="#carousel__slide2_web" class="carousel__next"></a> </li> <li id="carousel__slide2_web" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/demo_web_2.gif" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide1_web" class="carousel__prev"></a> <a href="#carousel__slide3_web" class="carousel__next"></a> </li> <li id="carousel__slide3_web" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/demo_web_3.gif" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide2_web" class="carousel__prev"></a> <a href="#carousel__slide4_web" class="carousel__next"></a> </li> <li id="carousel__slide4_web" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/demo_web_4.gif" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide3_web" class="carousel__prev"></a> <a href="#carousel__slide5_web" class="carousel__next"></a> </li> <li id="carousel__slide5_web" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/demo_web_5.gif" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide4_web" class="carousel__prev"></a> <a href="#carousel__slide6_web" class="carousel__next"></a> </li> <li id="carousel__slide6_web" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/demo_web_6.gif" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide5_web" class="carousel__prev"></a> <a href="#carousel__slide1_web" class="carousel__next"></a> </li> </ol> </section> <p class="subject">MOBILE BROWSER</p> <section class="carousel carousel-mobile" aria-label="Gallery"> <ol class="carousel__viewport"> <li id="carousel__slide1_mobile" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/demo_mobile_1.gif" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide6_mobile" class="carousel__prev"></a> <a href="#carousel__slide2_mobile" class="carousel__next"></a> </li> <li id="carousel__slide2_mobile" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/demo_mobile_2.gif" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide1_mobile" class="carousel__prev"></a> <a href="#carousel__slide3_mobile" class="carousel__next"></a> </li> <li id="carousel__slide3_mobile" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/demo_mobile_3.gif" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide2_mobile" class="carousel__prev"></a> <a href="#carousel__slide4_mobile" class="carousel__next"></a> </li> <li id="carousel__slide4_mobile" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/demo_mobile_4.gif" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide3_mobile" class="carousel__prev"></a> <a href="#carousel__slide5_mobile" class="carousel__next"></a> </li> <li id="carousel__slide5_mobile" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/demo_mobile_5.gif" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide4_mobile" class="carousel__prev"></a> <a href="#carousel__slide6_mobile" class="carousel__next"></a> </li> <li id="carousel__slide6_mobile" class="carousel__slide"> <img src="/projects/hanul-computer-interaction/demo_mobile_6.gif" alt=""> <div class="carousel__snapper"></div> <a href="#carousel__slide5_mobile" class="carousel__prev"></a> <a href="#carousel__slide1_mobile" class="carousel__next"></a> </li> </ol> </section> </section> <section class="text"> <h6 class="section">VII. ANALYSIS</h6> <p class="subject">AGENCY AS INTERDEPENDENCE</p> <p class="text">
+Agency, as defined in conventional terms, refers to the capacity to act or
+      exert influence. In this work, agency is reframed as a distributed
+      property shared between human and machine. Rather than treating the
+      machine as a passive tool or the human as the sole originator, the project
+      establishes a mutual responsiveness: the user’s body generates movement,
+      which the machine translates into visual language, which then re‑informs
+      the user’s motion in a continuous feedback loop. Neither the human nor the
+      machine can complete the artwork independently. Their co‑presence is
+      essential.
+<br><br>Actor Network Theory supports this reframing by positing that
+      humans are not ontologically privileged over non‑human actors. In this
+      system, the AI model’s role extends beyond execution; it participates in
+      the interpretation and modulation of user behavior. This reciprocal
+      shaping reflects ANT’s assertion that “actors gain strength only through
+      their alliances” and that agency is always enacted through dynamic,
+      interrelated networks.
+</p> <p class="subject">AUTHORSHIP AS MUTUAL MEDIATION</p> <p class="text">
+The project also calls into question the assumption of singular
+      authorship. While the human initiates and curates the experience, the
+      machine interprets and transforms physical motion into visual output. This
+      relationship is not one‑directional or hierarchical; rather, it embodies
+      mutual authorship. Each actant mediates the behavior of the other, and the
+      final output is a product of their interaction rather than the expression
+      of a single will.
+<br><br>ANT further articulates that actants are transformed through
+      encounters and mediation. In this collaboration, the human is shaped by
+      the constraints and possibilities of the system, while the machine is
+      constantly updated by user feedback. Authorship, then, is not a fixed
+      status but a processual phenomenon that is emergent, negotiated, and
+      contingent on real‑time engagement.
+</p> <p class="subject">ASSEMBLAGE AND TEMPORAL ONTOLOGY</p> <p class="text">
+At the core of this system is what ANT refers to as an assemblage: a
+      temporary constellation of human and non‑human components whose
+      interactions give rise to a particular event or effect. In HCI, the
+      artwork exists only through the convergence of user, machine, code, and
+      interface in a specific moment of live interaction. Once this performance
+      ceases, so does the artwork.
+<br><br>This assemblage‑based model resists the idea of the work as an
+      object with intrinsic meaning or authorship. Instead, it positions the
+      artwork as an effect of relational activity, a momentary crystallization
+      of intent, gesture, and computation. In doing so, the project advocates
+      for a new ethic in AI‑mediated design, grounded not in mastery or
+      ownership but in reciprocity, responsibility, and entanglement.
+</p> </section>  </main>  <footer class="site-footer"> <div class="site-footer__inner"> <div class="footer-icons"> <a href="https://www.linkedin.com/in/hanul-park" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"> <img src="/icons/linkedin.svg" alt="LinkedIn" width="24" height="24" loading="lazy" decoding="async" fetchpriority="low"> </a> <a href="https://www.behance.net/hanul-park" target="_blank" rel="noopener noreferrer" aria-label="Behance"> <img src="/icons/behance.svg" alt="Behance" width="24" height="24" loading="lazy" decoding="async" fetchpriority="low"> </a> </div> <div class="footer-copy">© Hanul Park. All Rights Reserved.</div> </div> </footer> <!-- Global site script (keep minimal) --> <script src="/scripts.js" defer></script> </body> </html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"> <head><!-- Meta --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><!-- Page metadata --><title>dream-homeland</title><meta name="description" content="3D interactive environment blending memories, dreams, and experimental moving images to explore immersive narrative"><!-- Favicon (served from /public) --><link rel="icon" href="/favicons/h.png" type="image/png" sizes="16x16"><!-- Global CSS: libraries first, then site styles --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="/style.css"><!-- Per‑page head injections --><script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[])})(window,'partytown','forward');/* Partytown 0.11.2 - MIT QwikDev */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,l,d,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(d=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(l=setTimeout(v,(null==s?void 0:s.fallbackTimeout)||1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.11.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<d.length;n++)(o=r.createElement("script")).innerHTML=d[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(l)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script></head> <body class> <header id="header" class="site-header" role="banner"> <!-- Mobile topbar (hidden >=768px) --> <div class="topbar" aria-hidden="true"> <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu" data-menu-toggle> <svg class="menu-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true" focusable="false" role="img"> <defs> <!-- Top: light gray gradient --> <linearGradient id="menu-cube-top" x1="0" y1="4" x2="0" y2="24" gradientUnits="userSpaceOnUse"> <stop offset="0%" stop-color="#f5f5f5"></stop> <stop offset="100%" stop-color="#e0e0e0"></stop> </linearGradient> <!-- Left: medium gray gradient --> <linearGradient id="menu-cube-left" x1="7" y1="14" x2="24" y2="44" gradientUnits="userSpaceOnUse"> <stop offset="0%" stop-color="#bdbdbd"></stop> <stop offset="100%" stop-color="#9e9e9e"></stop> </linearGradient> <!-- Right: dark gray gradient --> <linearGradient id="menu-cube-right" x1="41" y1="14" x2="24" y2="44" gradientUnits="userSpaceOnUse"> <stop offset="0%" stop-color="#757575"></stop> <stop offset="100%" stop-color="#424242"></stop> </linearGradient> </defs> <polygon class="face-top" points="24 4, 41 14, 24 24, 7 14"></polygon> <polygon class="face-left" points="7 14, 24 24, 24 44, 7 34"></polygon> <polygon class="face-right" points="41 14, 24 24, 24 44, 41 34"></polygon> <title>Open navigation</title> </svg> </button> </div> <!-- Navigation: mobile overlay / desktop right rail --> <nav id="site-nav" class="site-nav" aria-label="Primary"> <div class="site-nav__inner"> <a class="brand-large" href="/">hanul</a> <ul class="nav-list" role="list"> <li><a href="/projects">projects</a></li> <li><a href="/sketches">sketches</a></li> </ul> <button class="menu-close" aria-label="Close menu" data-menu-close></button> </div> <button class="nav-overlay" aria-hidden="true" tabindex="-1" data-menu-close></button> </nav> </header> <script>
+  (() => {
+    const nav = document.getElementById("site-nav");
+    const toggle = document.querySelector("[data-menu-toggle]");
+    const closers = document.querySelectorAll("[data-menu-close]");
+    const body = document.body;
+
+    const openNav = () => {
+      nav.classList.add("open");
+      body.classList.add("nav-open");
+      toggle?.setAttribute("aria-expanded", "true");
+    };
+    const closeNav = () => {
+      nav.classList.remove("open");
+      body.classList.remove("nav-open");
+      toggle?.setAttribute("aria-expanded", "false");
+    };
+
+    toggle?.addEventListener("click", () => {
+      nav.classList.contains("open") ? closeNav() : openNav();
+    });
+    closers.forEach((el) => el.addEventListener("click", closeNav));
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeNav();
+    });
+  })();
+</script> <!-- Each page should include its own <main id="content"> -->  <main id="content" class="detail-surface"> <header aria-labelledby="detail-title" class="work-row detail-header"> <!-- Left column: reuse WorkRow meta stack --> <div class="work-meta"> <h3 id="detail-title" class="work-row__title">dream-homeland</h3> <p class="work-row__synopsis">3D interactive environment blending memories, dreams, and experimental moving images to explore immersive narrative</p> <p class="work-row__year">2019</p> </div> <!-- Right column: domains + links/tools/language in one wrapper for divider --> <div class="detail-right"> <div class="work-row__domains"> <span class="chip">Immersive Narrative</span><span class="chip">Virtual Environment Design</span><span class="chip">Experimental Media</span><span class="chip">Spatial Computing</span> </div> <div class="work-links-and-meta">  <p class="text work-tools">Tools | Unity</p> <p class="text work-language">Language | C#</p> </div> </div> </header>   <section class="text"> <h6 class="section">I. CONCEPT</h6> <p class="subject">Narrative Architecture</p> <p class="text">
+dream-homeland reimagines the concept of home as a subjective emotional
+      construct rather than a spatial constant. Built in Unity, this virtual
+      environment unfolds a personal narrative through surreal materiality and
+      symbolic space, using dream logic to subvert familiar notions of
+      domesticity.
+</p> <p class="subject">Embodied Alterity</p> <p class="text">
+Within the space, characters fly, speak with radical honesty, and exist
+      without constraint. These interactions foster poetic agency and emotional
+      resonance. The goal is not to simulate reality, but to explore interiority
+      and ambiguity. The user navigates a space that evokes disorientation,
+      curiosity, and reflection on belonging.
+</p> </section>  <section class="text"> <h6 class="section">II. PROCESS</h6> <p class="subject">Design Priorities</p> <p class="text">
+- Develop a distinct visual language<br>
+- Center user experience around openness and discovery<br>
+- Translate personal memory through spatial metaphor<br>
+- Encourage emotional immersion through surreal aesthetics
+</p> </section>  <section class="text"> <h6 class="section">III. EXPERIENCE</h6> <p class="subject">User Journey</p> <p class="text">
+The experience begins underwater. Users land on a submerged bed surrounded
+      by static televisions and satellite debris. Movement is open and
+      unconstrained. As users explore, they transition to a dreamlike cityscape
+      that tilts against gravity. Videos embedded within objects activate
+      through proximity, generating audiovisual fragments that shift perception
+      and mood.
+</p> <p class="subject">Observations</p> <p class="text">
+- The visual aesthetic is cohesive and emotionally expressive<br>
+- The juxtaposition of oceanic and architectural elements heightens narrative
+      tension<br>
+- Some users experienced disorientation due to lack of navigation cues<br>
+- Simultaneous use of mouse and keyboard was noted as a usability challenge
+</p> </section>  <section class="text"> <h6 class="section">IV. OUTPUT</h6> <p class="subject">Rendered Environment</p> <div class="embed embed--16x9"> <iframe src="https://www.youtube.com/embed/n_aUlckALWw" title="dream-homeland video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe> </div> <p class="subject">Visual Stills</p> <section class="carousel" aria-label="Gallery"> <ol class="carousel__viewport"> <li id="carousel__dh_slide1" class="carousel__slide"> <img src="/projects/dream-homeland/demo1.png" alt="Visual still 1"> <div class="carousel__snapper"></div> <a href="#carousel__dh_slide5" class="carousel__prev"></a> <a href="#carousel__dh_slide2" class="carousel__next"></a> </li> <li id="carousel__dh_slide2" class="carousel__slide"> <img src="/projects/dream-homeland/demo2.png" alt="Visual still 2"> <div class="carousel__snapper"></div> <a href="#carousel__dh_slide1" class="carousel__prev"></a> <a href="#carousel__dh_slide3" class="carousel__next"></a> </li> <li id="carousel__dh_slide3" class="carousel__slide"> <img src="/projects/dream-homeland/demo3.png" alt="Visual still 3"> <div class="carousel__snapper"></div> <a href="#carousel__dh_slide2" class="carousel__prev"></a> <a href="#carousel__dh_slide4" class="carousel__next"></a> </li> <li id="carousel__dh_slide4" class="carousel__slide"> <img src="/projects/dream-homeland/demo4.png" alt="Visual still 4"> <div class="carousel__snapper"></div> <a href="#carousel__dh_slide3" class="carousel__prev"></a> <a href="#carousel__dh_slide5" class="carousel__next"></a> </li> <li id="carousel__dh_slide5" class="carousel__slide"> <img src="/projects/dream-homeland/demo5.png" alt="Visual still 5"> <div class="carousel__snapper"></div> <a href="#carousel__dh_slide4" class="carousel__prev"></a> <a href="#carousel__dh_slide1" class="carousel__next"></a> </li> </ol> </section> </section>  <section class="text"> <h6 class="section">V. REFLECTION</h6> <p class="subject">Speculation as Shelter</p> <p class="text">
+Home is not a fixed space. It is a site of memory, vulnerability, and
+      transformation. dream homeland proposes a speculative alternative to
+      domestic architecture, shaped by emotion, contradiction, and the surreal.
+      It explores what it means to feel at home within discomfort, and how
+      dreams coexist with unresolved histories. This work reclaims digital space
+      as both a poetic and critical medium for emotional world-making.
+</p> </section>  </main>  <footer class="site-footer"> <div class="site-footer__inner"> <div class="footer-icons"> <a href="https://www.linkedin.com/in/hanul-park" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"> <img src="/icons/linkedin.svg" alt="LinkedIn" width="24" height="24" loading="lazy" decoding="async" fetchpriority="low"> </a> <a href="https://www.behance.net/hanul-park" target="_blank" rel="noopener noreferrer" aria-label="Behance"> <img src="/icons/behance.svg" alt="Behance" width="24" height="24" loading="lazy" decoding="async" fetchpriority="low"> </a> </div> <div class="footer-copy">© Hanul Park. All Rights Reserved.</div> </div> </footer> <!-- Global site script (keep minimal) --> <script src="/scripts.js" defer></script> </body> </html>

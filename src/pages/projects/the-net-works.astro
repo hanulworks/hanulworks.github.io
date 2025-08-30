@@ -1,0 +1,262 @@
+---
+import DetailLayout from "../../layouts/DetailLayout.astro";
+import { getProjectBySlug } from "../../data/projects";
+
+const project = getProjectBySlug("the-net-works");
+if (!project) {
+  throw new Error("Project data not found for 'the-net-works'");
+}
+
+const {
+  title,
+  synopsis,
+  year,
+  domains = [],
+  links = [],
+  tools,
+  language,
+} = project;
+---
+
+<DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
+  <section class="text">
+    <h6 class="section">I. CONCEPT</h6>
+
+    <p class="subject">WHAT</p>
+    <p class="text">
+      This research project delves into the cyber environment of the messaging
+      platform Telegram, specifically analyzing its role in the infamous "Nth
+      Room" case, a harrowing example of sextortion and human trafficking. The
+      project sheds light on the often-overlooked aspects of Telegram's
+      technical features that may have facilitated these crimes. Employing an
+      ethnographic approach, the research is visualized as an interactive web
+      map resource. This contribution aims to serve as a valuable tool for
+      online communities and collectives working towards global justice in the
+      fight against digital sex crimes.
+    </p>
+
+    <p class="subject">WHY</p>
+    <p class="text">
+      This project investigates the role of Telegram, a secure and widely used
+      messaging platform, in facilitating the horrific "Nth Room" case. This
+      case involved a series of interconnected digital sex crimes, including
+      blackmail, sextortion, and the distribution of exploitative content. While
+      the crimes have received significant attention, the technical aspects of
+      Telegram that may have enabled them remain largely unexamined.
+      <br /><br />
+      This research addresses this gap by employing an ethnographic approach to analyze
+      Telegram's cyber environment. By examining the "Nth Room" case through this
+      lens, the project aims to illuminate how specific features of the platform
+      may have contributed to the crimes' scope, duration, and complexity. The resulting
+      web map resource, "The Net Works," serves as a critical exploration of this
+      connection, offering valuable insights for online safety advocates and policymakers
+      working to combat digital sex crimes.
+    </p>
+
+    <p class="subject">HOW</p>
+    <p class="text">
+      This project employs an ethnographic approach to investigate the Telegram
+      environment in the context of the "Nth Room" case. Ethnography involves
+      immersing oneself in a particular social setting to understand its culture
+      and practices. In this case, the research analyzes user behavior, platform
+      functionalities, and the broader online discourse surrounding the case.
+      <br /><br />
+      By examining how Telegram's features (e.g., encryption, anonymity) potentially
+      interacted with the abusive culture within the platform, the project illuminates
+      the factors that may have contributed to the crimes' severity and scale. This
+      analysis is visualized through an interactive web-based map, "The Net Works,"
+      which illustrates these interconnections and serves as a tool for online safety
+      advocates and policymakers.
+      <br /><br />
+      The findings contribute to a nuanced understanding of the complex relationship
+      between technology and social harm. It challenges simplistic narratives of
+      "democratic technology" by exposing how seemingly neutral tools can be repurposed
+      for harm. Ultimately, this research sparks critical conversations about privacy,
+      anonymity, and the ethical responsibilities of technology companies in creating
+      safer online spaces.
+    </p>
+  </section>
+
+  <section class="text">
+    <h6 class="section">II. PRODUCT</h6>
+    <p class="subject">DOCUMENTATION</p>
+    <section class="carousel" aria-label="Gallery">
+      <ol class="carousel__viewport">
+        <li class="carousel__slide">
+          <img src="/projects/the-net-works/1.gif" alt="demo 1" loading="lazy" />
+        </li>
+        <li class="carousel__slide">
+          <img src="/projects/the-net-works/2.gif" alt="demo 2" loading="lazy" />
+        </li>
+        <li class="carousel__slide">
+          <img src="/projects/the-net-works/3.gif" alt="demo 3" loading="lazy" />
+        </li>
+        <li class="carousel__slide">
+          <img src="/projects/the-net-works/4.gif" alt="demo 4" loading="lazy" />
+        </li>
+        <li class="carousel__slide">
+          <img src="/projects/the-net-works/5.gif" alt="demo 5" loading="lazy" />
+        </li>
+        <li class="carousel__slide">
+          <img src="/projects/the-net-works/6.gif" alt="demo 6" loading="lazy" />
+        </li>
+      </ol>
+    </section>
+  </section>
+
+  <section class="text">
+    <h6 class="section">III. ANNOTATED BIBLIOGRAPHY</h6>
+
+    <p class="subject">
+      Kim, Hyejin. “Current Status of Response to Digital Child Sexual Slavery
+      and Comparative Analysis of Overseas Crime Prediction System Using
+      Artificial Intelligence.” Journal of Digital Convergence 18.7 (2020):
+      357–368.
+    </p>
+    <p class="text">
+      This article, authored by the CEO of the Global Digital Sexual Crime
+      Policy Research Institute, offers a critical analysis of the "Nth Room"
+      case. The author delves into the criminal methods employed, highlighting
+      how the perpetrators exploited Telegram's secure communication features
+      and darkcoin exchange systems. The article emphasizes the devastating
+      mental and psychological impact on the victims, prompting a necessary
+      discussion about the role of technology in facilitating new forms of
+      sexual exploitation.
+      <br /><br />
+      Several key findings resonate with this project. First, the article underscores
+      cyber sextortion as the initial step in a multi-layered exploitation process.
+      Second, it raises the important issue of "possession" in the context of image-based
+      sexual abuse, where streaming distribution is becoming more prevalent. Third,
+      the article highlights the responsibility of digital platforms to prevent the
+      spread of exploitative content. In the "Nth Room" case, Telegram's refusal
+      to cooperate with the investigation due to privacy concerns is a critical point.
+      <br /><br />
+      The research also identifies challenges in combating these crimes, such as
+      the limitations of tracing cryptocurrency transactions across foreign exchanges
+      and the ease with which evidence can be deleted on platforms like Telegram.
+      These insights are valuable as this project explores the connections between
+      criminal methodologies and the technological features that enable them.
+    </p>
+
+    <p class="subject">
+      Charles, Angela T. “The Abuse of Teenagers by Online Predators Facilitated
+      Through the Internet and Social Media.” MS Thesis, Utica College, 2017.
+    </p>
+    <p class="text">
+      This article provides a valuable framework for analyzing cyber sexual
+      abuse, particularly relevant to the "Nth Room" case. The author
+      effectively introduces key concepts and terminology related to cybercrime,
+      including the distinction between "advanced cybercrime" and "cyber-enabled
+      crime." Critically, the article focuses on cyber-enabled crimes, which
+      encompass sexual extortion and exploitation – the core methods of abuse in
+      the "Nth Room" case. This contextualization helps position the research
+      within the broader landscape of cyber sexual abuse.
+      <br /><br />
+      Beyond definitions, the article explores the ways in which the internet and
+      social media facilitate these crimes. It delves into various types of online
+      sexual predators and their methods. The chapter "The Different Acts of Abuse
+      that are Committed Using the Internet" is particularly insightful, providing
+      detailed explanations of relevant methods like human sex trafficking (sexual
+      exploitation) and sextortion, both crucial aspects of the "Nth Room" case.
+    </p>
+
+    <p class="subject">
+      O’Malley, Roberta L., and Karen M. Holt. “Cyber Sextortion: An Exploratory
+      Analysis of Different Perpetrators Engaging in a Similar Crime.” Journal
+      of Interpersonal Violence (2020): 1–26.
+    </p>
+    <p class="text">
+      Focused on cyber sextortion as a form of image-based sexual abuse (IBSA),
+      this article provides valuable insights for analyzing this project's
+      subject. The authors conducted a qualitative content analysis of media
+      articles and court documents related to 152 cyber sextortion offenders.
+      Their analysis identified four key themes, including two particularly
+      relevant to the "Nth Room" case: minor-focused offenders and
+      cybercrime-oriented offenders.
+      <br /><br />
+      The article highlights three key characteristics that differentiate cyber sextortion
+      from other interpersonal crimes: the cyberspace element, the possession of
+      compromising material, and the extortion component. Despite diverse motivations
+      (sex, power, dominance, coercion, or money), cyber sextortion offenders often
+      employ similar methods. The article's data-driven approach offers helpful examples
+      for structuring analytical frameworks.
+    </p>
+  </section>
+
+  <section class="text">
+    <h6 class="section">IV. PUBLISHING</h6>
+
+    <p class="subject">
+      Anthropology &amp; Design Exhibition. The New School, 2021.
+    </p>
+    <p class="text">
+      <em
+        >“ADX invites students from varied disciplinary backgrounds to explore
+        and experiment with anthropological and design research methods that
+        open up new epistemological and creative possibilities, and illuminate
+        our lived experiences and imaginations. The exhibition consists of a
+        virtual reality showcase and a series of virtual moderated panels with
+        artists and presenters.”</em
+      >
+      <br /><br />
+      <a
+        class="work-link work-link--external"
+        href="https://sites.google.com/newschool.edu/adx/home?authuser=0"
+        target="_blank"
+        rel="noopener noreferrer">Read More</a
+      >
+      <br /><br />GALLERY 1 (AUTO)ETHNOGRAPHY &amp; MAPPING
+      <br /><br />
+      <img
+        class="detailImage"
+        src="/projects/the-net-works/adx1.png"
+        alt="ADX 1"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/the-net-works/adx2.png"
+        alt="ADX 2"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/the-net-works/adx3.png"
+        alt="ADX 3"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/the-net-works/adx4.png"
+        alt="ADX 4"
+        loading="lazy"
+      />
+      <br /><br />
+      <a
+        class="work-link work-link--external"
+        href="https://hubs.mozilla.com/egD3xPw/lighthearted-private-festivity"
+        target="_blank"
+        rel="noopener noreferrer">VR Exhibition Space</a
+      >
+    </p>
+
+    <p class="subject">
+      National Undergraduate Research Conference on Science, Technology,
+      Medicine and Society. Vassar College, 2021.
+    </p>
+    <p class="text">
+      <em
+        >“The STMS Conference is an opportunity for undergraduates from across
+        divisions to present their research on myriad topics related to the
+        intersections of science, technology, medicine, and society.”</em
+      >
+      <br /><br />
+      <a
+        class="work-link work-link--external"
+        href="https://pages.vassar.edu/stms/"
+        target="_blank"
+        rel="noopener noreferrer">Read More</a
+      >
+    </p>
+  </section>
+</DetailLayout>

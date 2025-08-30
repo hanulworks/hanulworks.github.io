@@ -1,166 +1,76 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en"> <head><!-- Meta --><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><!-- Page metadata --><title>Hanul</title><meta name="description" content="Portfolio of Hanul Park"><!-- Favicon (served from /public) --><link rel="icon" href="/favicons/h.png" type="image/png" sizes="16x16"><!-- Global CSS: libraries first, then site styles --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="/style.css"><!-- Per‑page head injections --> <link rel="icon" href="/h.png" type="image/png" sizes="16x16"> <script src="https://cdn.jsdelivr.net/npm/p5@1.3.0/lib/p5.js"></script> <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script> <script src="/turtle.js"></script> <script src="/bluetree.js" async></script> <script>!(function(w,p,f,c){if(!window.crossOriginIsolated && !navigator.serviceWorker) return;c=w[p]=Object.assign(w[p]||{},{"lib":"/~partytown/","debug":false});c[f]=(c[f]||[])})(window,'partytown','forward');/* Partytown 0.11.2 - MIT QwikDev */
+const t={preserveBehavior:!1},e=e=>{if("string"==typeof e)return[e,t];const[n,r=t]=e;return[n,{...t,...r}]},n=Object.freeze((t=>{const e=new Set;let n=[];do{Object.getOwnPropertyNames(n).forEach((t=>{"function"==typeof n[t]&&e.add(t)}))}while((n=Object.getPrototypeOf(n))!==Object.prototype);return Array.from(e)})());!function(t,r,o,i,a,s,c,l,d,p,u=t,f){function h(){f||(f=1,"/"==(c=(s.lib||"/~partytown/")+(s.debug?"debug/":""))[0]&&(d=r.querySelectorAll('script[type="text/partytown"]'),i!=t?i.dispatchEvent(new CustomEvent("pt1",{detail:t})):(l=setTimeout(v,(null==s?void 0:s.fallbackTimeout)||1e4),r.addEventListener("pt0",w),a?y(1):o.serviceWorker?o.serviceWorker.register(c+(s.swPath||"partytown-sw.js"),{scope:c}).then((function(t){t.active?y():t.installing&&t.installing.addEventListener("statechange",(function(t){"activated"==t.target.state&&y()}))}),console.error):v())))}function y(e){p=r.createElement(e?"script":"iframe"),t._pttab=Date.now(),e||(p.style.display="block",p.style.width="0",p.style.height="0",p.style.border="0",p.style.visibility="hidden",p.setAttribute("aria-hidden",!0)),p.src=c+"partytown-"+(e?"atomics.js?v=0.11.2":"sandbox-sw.html?"+t._pttab),r.querySelector(s.sandboxParent||"body").appendChild(p)}function v(n,o){for(w(),i==t&&(s.forward||[]).map((function(n){const[r]=e(n);delete t[r.split(".")[0]]})),n=0;n<d.length;n++)(o=r.createElement("script")).innerHTML=d[n].innerHTML,o.nonce=s.nonce,r.head.appendChild(o);p&&p.parentNode.removeChild(p)}function w(){clearTimeout(l)}s=t.partytown||{},i==t&&(s.forward||[]).map((function(r){const[o,{preserveBehavior:i}]=e(r);u=t,o.split(".").map((function(e,r,o){var a;u=u[o[r]]=r+1<o.length?u[o[r]]||(a=o[r+1],n.includes(a)?[]:{}):(()=>{let e=null;if(i){const{methodOrProperty:n,thisObject:r}=((t,e)=>{let n=t;for(let t=0;t<e.length-1;t+=1)n=n[e[t]];return{thisObject:n,methodOrProperty:e.length>0?n[e[e.length-1]]:void 0}})(t,o);"function"==typeof n&&(e=(...t)=>n.apply(r,...t))}return function(){let n;return e&&(n=e(arguments)),(t._ptf=t._ptf||[]).push(o,arguments),n}})()}))})),"complete"==r.readyState?h():(t.addEventListener("DOMContentLoaded",h),t.addEventListener("load",h))}(window,document,navigator,top,window.crossOriginIsolated);;(e=>{e.addEventListener("astro:before-swap",e=>{let r=document.body.querySelector("iframe[src*='/~partytown/']");if(r)e.newDocument.body.append(r)})})(document);</script></head> <body class="home"> <header id="header" class="site-header" role="banner"> <!-- Mobile topbar (hidden >=768px) --> <div class="topbar" aria-hidden="true"> <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu" data-menu-toggle> <svg class="menu-icon" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true" focusable="false" role="img"> <defs> <!-- Top: light gray gradient --> <linearGradient id="menu-cube-top" x1="0" y1="4" x2="0" y2="24" gradientUnits="userSpaceOnUse"> <stop offset="0%" stop-color="#f5f5f5"></stop> <stop offset="100%" stop-color="#e0e0e0"></stop> </linearGradient> <!-- Left: medium gray gradient --> <linearGradient id="menu-cube-left" x1="7" y1="14" x2="24" y2="44" gradientUnits="userSpaceOnUse"> <stop offset="0%" stop-color="#bdbdbd"></stop> <stop offset="100%" stop-color="#9e9e9e"></stop> </linearGradient> <!-- Right: dark gray gradient --> <linearGradient id="menu-cube-right" x1="41" y1="14" x2="24" y2="44" gradientUnits="userSpaceOnUse"> <stop offset="0%" stop-color="#757575"></stop> <stop offset="100%" stop-color="#424242"></stop> </linearGradient> </defs> <polygon class="face-top" points="24 4, 41 14, 24 24, 7 14"></polygon> <polygon class="face-left" points="7 14, 24 24, 24 44, 7 34"></polygon> <polygon class="face-right" points="41 14, 24 24, 24 44, 41 34"></polygon> <title>Open navigation</title> </svg> </button> </div> <!-- Navigation: mobile overlay / desktop right rail --> <nav id="site-nav" class="site-nav" aria-label="Primary"> <div class="site-nav__inner"> <a class="brand-large" href="/">hanul</a> <ul class="nav-list" role="list"> <li><a href="/projects">projects</a></li> <li><a href="/sketches">sketches</a></li> </ul> <button class="menu-close" aria-label="Close menu" data-menu-close></button> </div> <button class="nav-overlay" aria-hidden="true" tabindex="-1" data-menu-close></button> </nav> </header> <script>
+  (() => {
+    const nav = document.getElementById("site-nav");
+    const toggle = document.querySelector("[data-menu-toggle]");
+    const closers = document.querySelectorAll("[data-menu-close]");
+    const body = document.body;
 
-<head>
-  <meta charset="ütf=8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>hanul</title>
-  <!-- Icon -->
-  <link rel="icon" href="h.png" type="image/png" sizes="16x16">
-  <!-- p5.js scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.3.0/lib/p5.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
-  <script language="javascript" type="text/javascript" src="turtle.js"></script>
-  <script src="bluetree.js" async></script>
-  <!-- CSS Stylesheets -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link href="https://unpkg.com/@primer/css@^16.0.0/dist/primer.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <link rel="stylesheet" type="text/css" href="style.css">
-</head>
+    const openNav = () => {
+      nav.classList.add("open");
+      body.classList.add("nav-open");
+      toggle?.setAttribute("aria-expanded", "true");
+    };
+    const closeNav = () => {
+      nav.classList.remove("open");
+      body.classList.remove("nav-open");
+      toggle?.setAttribute("aria-expanded", "false");
+    };
 
-<body>
-
-  <!-- Header -->
-  <section id="header">
-
-    <nav class="navbar navbar-expand fixed-top bg-white">
-      <a class="navbar-brand" href="index.html">hanul</a>
-      <ul class="navbar-nav ms-auto">
-        <a class="nav-item nav-link text-dark" aria-current="page" href="projects.html">projects</a>
-        <a class="nav-item nav-link text-dark" aria-current="page" href="sketches.html">sketches</a>
-      </ul>
-    </nav>
-
-  </section>
-
-  <!-- Content -->
-  <section id="content">
-
-    <div class="container-fluid">
-
-      <!-- Introduction -->
-      <div class="row introduction">
-
-        <div class="col-lg-12 col-md-12 col-sm-12">
-          <h1 class="heading1 animate__animated animate__bounceInDown">
-            "CREATIVE TECHNOLOGY"
-          </h1>
-        </div>
-
-        <div class="col-lg-8 col-md-6 col-sm-4 col-4"></div>
-        <div class="col-lg-4 col-md-6 col-sm-8 col-8">
-          <h2 class="heading2 animate__animated animate__bounceInRight">
-            I ideate, prototype, iterate, and produce digital artifacts and interactive experiences.
-          </h2>
-        </div>
-
-      </div>
-
-      <!-- Information -->
-      <div class="row information">
-
-        <div class="row info-part">
-
-          <div class="col-lg-3 col-md-3">
-            <img class="profile-image" src="hanul/2023.jpeg">
-            <p class="credit">Photo by Zeeyou Kim</p>
-          </div>
-
-          <div class="col-lg-1 col-md-1"></div>
-
-          <div class="col-lg-8 col-md-8">
-            <p class="info-1 text-wrap">Hanul grew up in South Korea, near the ocean and mountains. "Hanul" means "sky" in Korean and is a pure <u><a href="https://en.wikipedia.org/wiki/Hangul" target="_blank">Hangul</a></u> word. Hanul spent most
-              of their adult life in New York City, where they earned a <u><a href="https://www.newschool.edu/parsons/bfa-design-technology/" target="_blank">BFA in Design and Technology</a></u> with a <u><a
-                  href="https://www.newschool.edu/undergrad-minors/data-visualization/" target="_blank">minor in Data Visualization</a></u> at Parsons School of Design and a <u><a href="https://www.newschool.edu/lang/culture-and-media/"
-                  target="_blank">BA in Culture and Media</a></u> at The New School. Hanul integrates expertise in design and engineering to manage projects and consult on embedded software systems, specializing in 3D and HMI. 
-            </p>
-          </div>
-
-        </div>
-       
-        <div class="row info-part">
-
-          <div class="col-lg-3">
-            <h3 class="info-2">Hanul Park: Becoming a Creative Conceptual Thinker</h3>  
-            <!-- <p class="credit">A student profile film by The New School</p>      --> 
-          </div>
-
-          <div class="col-lg-1"></div>
-
-          <div class="col-lg-8">
-            <div style="padding:56.25% 0 0 0; position:relative;">
-              <iframe src="https://www.youtube.com/embed/QVbEogG86xI?si=MDGu0BcwTqi1ezt_" style="position:absolute;top:0;left:0;width:100%;height:100%;border-radius:5px;"
-              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <script src="https://player.vimeo.com/api/player.js"></script>
-          </div>
-  
-        </div>
-
-        <div class="row info-part">
-
-          <div class="col-lg-6">
-            <button type="button" class="btn-sm collapsible">
-              <i class="fas fa-book-open"></i> PHILOSOPHY
-            </button>
-            <div class="info-button">
-              Hanul's body of work encompasses a diverse array of projects such as algorithmically generated visuals, data-driven infographics, and immersive XR narratives, highlighting their proficiency across multiple disciplines. They utilize a
-              variety of software tools to bring their ideas to life, and are always learning something new. "Remember to imagine and craft the world you cannot live without, just as you dismantle the ones you cannot live within," said <u><a
-                  href="https://www.ruhabenjamin.com/" target="_blank">Ruha Benjamin</a></u>. In their creative practice, Hanul critically re-examines the current state of things, re-imagines their content and structure, and re-builds them in digital
-              environments. Hanul believes that envisioning alternative versions of the world can help us work towards a better reality.
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <button type="button" class="btn-sm collapsible">
-              <i class="fas fa-scroll"></i> BIOGRAPHY
-            </button>
-            <div class="info-button">
-              Born in the mid 90s and raised in South Korea, Hanul witnessed the emergence of internet culture and its impact on many aspects of everyday life. Hanul grew up on SayClub and <u><a href="https://en.wikipedia.org/wiki/Cyworld"
-                  target="blank_">Cyworld</a></u>, Korea's earliest social networking platforms, and read <u><a href="https://en.wikipedia.org/wiki/Webtoon" target="blank_">Webtoons</a></u>, which are digital comics created, shared, and enjoyed fully
-              online. This formative and in-depth engagement with internet culture has furnished Hanul with a multi-faceted comprehension of digital technology's pervasive influence on communication and entertainment. Hanul is fascinated by how art,
-              media, and technology intersect and interact within the context of digital culture. This keen curiosity has led Hanul to <u><a href="https://en.wikipedia.org/wiki/User-centered_design" target="blank_">user-centered design</a></u> and
-              <u><a href="https://en.wikipedia.org/wiki/Human-centered_computing" target="blank_">human-centered computing</a></u>.
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- Footer -->
-  <footer id="footer">
-    <div class="position-relative">
-      <a class="link" href="https://www.linkedin.com/in/hanul-park/" target="_blank">
-        <button type="button" class="btn-link">
-          <i class="fa-brands fa-linkedin"></i>
-        </button>
-      </a>
-      <a class="link" href="https://www.behance.net/hanul-park" target="_blank">
-        <button type="button" class="btn-link">
-          <i class="fa-brands fa-square-behance"></i>
-        </button>
-      </a>
-      <p class="position-absolute bottom-0 end-0 copyright">© Hanul Park. All Rights Reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="scripts.js" async></script>
-  <!-- JQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/5c33c2beb0.js" crossorigin="anonymous"></script>
-  <!-- Bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-  <!-- anime.js -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
-  <script src="anime.min.js" async></script>
-</body>
-
-</html>
+    toggle?.addEventListener("click", () => {
+      nav.classList.contains("open") ? closeNav() : openNav();
+    });
+    closers.forEach((el) => el.addEventListener("click", closeNav));
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeNav();
+    });
+  })();
+</script> <!-- Each page should include its own <main id="content"> -->   <main id="content"> <!-- Introduction --> <section class="introduction" aria-labelledby="intro-title"> <h1 id="intro-title" class="heading1 animate__animated animate__bounceInDown">
+"CREATIVE TECHNOLOGY"
+</h1> <h2 class="heading2 animate__animated animate__bounceInRight">
+I ideate, prototype, iterate, and produce digital artifacts and
+        interactive experiences.
+</h2> </section> <!-- About card --> <section class="media-section" aria-labelledby="about-title"> <article class="media-card card"> <div class="media-card-content media-col"> <p class="section-title">About</p> <h3 id="about-title" class="media-title">
+Interdisciplinary Technologist
+</h3> <p>
+Hanul grew up in South Korea, near the ocean and mountains. "Hanul"
+            means "sky" in Korean and is a pure
+<u> <a href="https://en.wikipedia.org/wiki/Hangul" target="_blank" rel="noopener noreferrer">Hangul</a> </u>
+word. Hanul spent most of their adult life in New York City, where they
+            earned a
+<u> <a href="https://www.newschool.edu/parsons/bfa-design-technology/" target="_blank" rel="noopener noreferrer">BFA in Design and Technology</a> </u>
+with a
+<u> <a href="https://www.newschool.edu/undergrad-minors/data-visualization/" target="_blank" rel="noopener noreferrer">minor in Data Visualization</a> </u>
+at Parsons School of Design and a
+<u> <a href="https://www.newschool.edu/lang/culture-and-media/" target="_blank" rel="noopener noreferrer">BA in Culture and Media</a> </u>
+at The New School. Their design and engineering practice is grounded
+            in a commitment to inclusivity and accessibility.
+</p> </div> <div class="media-col"> <figure class="media-card-image"> <img class="profile-image" src="/images/2023.png" alt="Hanul Park portrait" loading="lazy" decoding="async"> <figcaption class="credit">Photo by Zeeyou Kim</figcaption> </figure> </div> </article> </section> <!-- Philosophy & Biography disclosures --> <section class="disclosure-section" aria-label="Philosophy and Biography"> <details class="disclosure card"> <summary><i class="fas fa-book-open" aria-hidden="true"></i> Philosophy</summary> <div class="disclosure-content">
+Hanul's body of work encompasses a diverse array of projects such as
+          algorithmically generated visuals, data-driven infographics, and
+          immersive XR narratives, highlighting their proficiency across
+          multiple disciplines. They utilize a variety of software tools to
+          bring their ideas to life, and are always learning something new.
+          "Remember to imagine and craft the world you cannot live without, just
+          as you dismantle the ones you cannot live within," said <u><a href="https://www.ruhabenjamin.com/" target="_blank" rel="noopener noreferrer">Ruha Benjamin</a></u>. In their creative practice, Hanul critically re-examines the
+          current state of things, re-imagines their content and structure, and
+          re-builds them in digital environments. Hanul believes that
+          envisioning alternative versions of the world can help us work towards
+          a better reality.
+</div> </details> <details class="disclosure card"> <summary><i class="fas fa-scroll" aria-hidden="true"></i> Biography</summary> <div class="disclosure-content">
+Born in the mid 90s and raised in South Korea, Hanul witnessed the
+          emergence of internet culture and its impact on many aspects of
+          everyday life. Hanul grew up on SayClub and <u><a href="https://en.wikipedia.org/wiki/Cyworld" target="_blank" rel="noopener noreferrer">Cyworld</a></u>, Korea's earliest social networking platforms, and read <u><a href="https://en.wikipedia.org/wiki/Webtoon" target="_blank" rel="noopener noreferrer">Webtoons</a></u>, which are digital comics created, shared, and enjoyed fully online.
+          This formative engagement with internet culture has furnished Hanul
+          with a multi-faceted comprehension of digital technology's pervasive
+          influence on communication and entertainment. Hanul is fascinated by
+          how art, media, and technology intersect within digital
+          culture—leading to <u><a href="https://en.wikipedia.org/wiki/User-centered_design" target="_blank" rel="noopener noreferrer">user-centered design</a></u>
+and <u><a href="https://en.wikipedia.org/wiki/Human-centered_computing" target="_blank" rel="noopener noreferrer">human-centered computing</a></u>.
+</div> </details> </section> <!-- Documentary card --> <section class="media-section" aria-labelledby="doc-title"> <article class="media-card card"> <div class="media-card-content media-col"> <p class="section-title">Documentary</p> <h3 id="doc-title" class="media-title">
+Hanul Park: Becoming a Creative Conceptual Thinker
+</h3> <figure class="media-quote"> <blockquote cite="https://www.youtube.com/watch?v=QVbEogG86xI">
+&hellip;Hanul immersed herself in what she calls the university’s
+              “progressive and practical” approach to learning.
+</blockquote> </figure> </div> <div class="media-col"> <div class="media-player ratio-16x9"> <iframe src="https://www.youtube-nocookie.com/embed/QVbEogG86xI?rel=0" title="Hanul Park: Becoming a Creative Conceptual Thinker" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+            </iframe> </div> </div> </article> </section> </main>  <footer class="site-footer"> <div class="site-footer__inner"> <div class="footer-icons"> <a href="https://www.linkedin.com/in/hanul-park" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"> <img src="/icons/linkedin.svg" alt="LinkedIn" width="24" height="24" loading="lazy" decoding="async" fetchpriority="low"> </a> <a href="https://www.behance.net/hanul-park" target="_blank" rel="noopener noreferrer" aria-label="Behance"> <img src="/icons/behance.svg" alt="Behance" width="24" height="24" loading="lazy" decoding="async" fetchpriority="low"> </a> </div> <div class="footer-copy">© Hanul Park. All Rights Reserved.</div> </div> </footer> <!-- Global site script (keep minimal) --> <script src="/scripts.js" defer></script> </body> </html>
