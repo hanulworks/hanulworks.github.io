@@ -1,0 +1,224 @@
+---
+import DetailLayout from "../../layouts/DetailLayout.astro";
+import { getProjectBySlug } from "../../data/projects";
+
+const project = getProjectBySlug("bird-dress");
+if (!project) {
+  throw new Error("Project data not found for 'bird-dress'");
+}
+
+const {
+  title,
+  synopsis,
+  year,
+  domains = [],
+  links = [],
+  tools,
+  language,
+} = project;
+---
+
+<DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
+  <section class="text">
+    <h6 class="section">I. CONCEPT</h6>
+
+    <p class="subject">OVERVIEW</p>
+    <p class="text">
+      BirDress is an exploratory project that uses StyleGAN to draw visual
+      parallels between organic avian forms and contemporary haute couture. It
+      investigates how machine learning can translate structural and textural
+      cues from nature into fashion-adjacent imagery.
+    </p>
+
+    <p class="subject">MOTIVATION</p>
+    <p class="text">
+      The project asks how organic life forms might inform design language.
+      While an ecological focus on extinct species was considered, limited
+      imagery shifted the emphasis toward visual experimentation and dataset
+      curation.
+    </p>
+
+    <p class="subject">APPROACH</p>
+    <p class="text">
+      Training was performed with curated bird and fashion image sets. To
+      stabilize outputs, datasets were preprocessed for axial alignment so
+      aspect ratios and orientations corresponded before StyleGAN training.
+    </p>
+  </section>
+
+  <section class="text">
+    <h6 class="section">II. DATA</h6>
+
+    <p class="subject">DOMAINS</p>
+    <figure class="detailImage">
+      <img
+        src="/projects/bird-dress/Domains.png"
+        alt="Reference domains map for BirDress"
+        loading="lazy"
+      />
+    </figure>
+
+    <p class="subject">DATASETS</p>
+    <p class="text">
+      <strong>Bird imagery:</strong> Caltech-UCSD Birds 200 (CUB-200-2011) refined
+      to 83 curated images across visually distinctive species.
+      <br /><br />
+      <strong>Fashion imagery:</strong> 400 images collected from Iris van Herpen’s
+      haute couture collections for their kinetic, organic qualities.
+    </p>
+
+    <figure class="detailImage">
+      <img
+        src="/projects/bird-dress/Dataset_Birds.png"
+        alt="Curated bird dataset montage"
+        loading="lazy"
+      />
+    </figure>
+
+    <p class="subject">MODEL TRAINING</p>
+    <p class="text">
+      Early runs with single-domain data under-performed. Preprocessing both
+      datasets to align orientation and crop yielded more coherent hybrid
+      outputs, indicating visual structure and alignment can matter more than
+      dataset size at short training horizons.
+    </p>
+  </section>
+
+  <section class="text">
+    <h6 class="section">III. RESULTS</h6>
+
+    <p class="subject">SELECTED OUTPUTS – 6 HOURS</p>
+    <div class="gallery">
+      <img
+        class="detailImage"
+        src="/projects/bird-dress/6_Hours (1).png"
+        alt="6-hour output 1"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/bird-dress/6_Hours (2).png"
+        alt="6-hour output 2"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/bird-dress/6_Hours (3).png"
+        alt="6-hour output 3"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/bird-dress/6_Hours (4).png"
+        alt="6-hour output 4"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/bird-dress/6_Hours (5).png"
+        alt="6-hour output 5"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/bird-dress/6_Hours (6).png"
+        alt="6-hour output 6"
+        loading="lazy"
+      />
+    </div>
+
+    <p class="subject">SELECTED OUTPUTS – 9 HOURS</p>
+    <div class="gallery">
+      <img
+        class="detailImage"
+        src="/projects/bird-dress/9_Hours (1).png"
+        alt="9-hour output 1"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/bird-dress/9_Hours (2).png"
+        alt="9-hour output 2"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/bird-dress/9_Hours (3).png"
+        alt="9-hour output 3"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/bird-dress/9_Hours (4).png"
+        alt="9-hour output 4"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/bird-dress/9_Hours (5).png"
+        alt="9-hour output 5"
+        loading="lazy"
+      />
+      <img
+        class="detailImage"
+        src="/projects/bird-dress/9_Hours (6).png"
+        alt="9-hour output 6"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <section class="text">
+    <h6 class="section">IV. POSTERS</h6>
+    <section class="carousel carousel--portrait" aria-label="BirDress posters">
+      <ol class="carousel__viewport">
+        <li class="carousel__slide">
+          <img src="/projects/bird-dress/poster_1.JPEG" alt="BirDress poster 1" loading="lazy" />
+        </li>
+        <li class="carousel__slide">
+          <img src="/projects/bird-dress/poster_2.JPEG" alt="BirDress poster 2" loading="lazy" />
+        </li>
+        <li class="carousel__slide">
+          <img src="/projects/bird-dress/poster_3.JPEG" alt="BirDress poster 3" loading="lazy" />
+        </li>
+      </ol>
+    </section>
+    <p class="text">
+      * created in the style of and as homage to designer
+      <a
+        class="work-link work-link--external"
+        href="http://www.davidcarsondesign.com/"
+        target="_blank"
+        rel="noopener noreferrer">David Carson</a>
+    </p>
+  </section>
+
+  <section class="text">
+    <h6 class="section">V. VIDEO</h6>
+    <figure class="embed embed--16x9">
+      <iframe
+        src="https://www.youtube.com/embed/jGzjEio3J5A"
+        title="BirDress — video demo"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </figure>
+  </section>
+
+  <section class="text">
+    <h6 class="section">VI. INSIGHTS</h6>
+    <p class="subject">TECHNICAL</p>
+    <p class="text">
+      Visual structure and axial alignment impacted short-horizon training more
+      than raw dataset size.
+    </p>
+
+    <p class="subject">CONCEPTUAL</p>
+    <p class="text">
+      Intentional curation enables StyleGAN to generate compelling abstractions
+      that merge fashion and nature imagery.
+    </p>
+  </section>
+</DetailLayout>

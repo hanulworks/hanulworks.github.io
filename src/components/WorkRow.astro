@@ -1,0 +1,82 @@
+---
+export interface LinkItem {
+  href: string;
+  label: string;
+  context?: "summary" | "detail";
+  external?: boolean;
+}
+export interface WorkRowProps {
+  title: string;
+  synopsis?: string;
+  year?: string;
+  links?: LinkItem[];
+  domains?: string[];
+
+  image?: string;
+  imageAlt?: string;
+}
+const {
+  title,
+  synopsis = "",
+  year,
+  links = [],
+  domains = [],
+  image,
+  imageAlt = "",
+} = Astro.props as WorkRowProps;
+const summaryLinks = (links || []).filter((l) => l.context !== "detail");
+---
+
+<article class="work-row card">
+  <div class="work-meta">
+    <h3 class="work-row__title colorful">{title}</h3>
+    {synopsis && <p class="work-row__synopsis">{synopsis}</p>}
+    {year && <span class="work-row__year">{year}</span>}
+    {
+      summaryLinks.length > 0 && (
+        <ul class="work-row__links">
+          {summaryLinks.map((l) => (
+            <li>
+              {(() => {
+                const isExternal =
+                  (typeof l.external === "boolean" && l.external) ||
+                  (typeof l.href === "string" && (l.href.startsWith("http://") || l.href.startsWith("https://")));
+                const isDetail =
+                  !isExternal ||
+                  (typeof l.label === "string" && l.label.toUpperCase() === "VIEW DETAILS");
+                const cls = `work-link ${isDetail ? "work-link--detail" : "work-link--external"}`;
+                return (
+                  <a
+                    href={l.href}
+                    class={cls}
+                    target={isDetail ? undefined : "_blank"}
+                    rel={isDetail ? undefined : "noopener noreferrer"}
+                    aria-label={isDetail ? l.label : `${l.label} (opens in new tab)`}
+                  >
+                    {l.label}
+                  </a>
+                );
+              })()}
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+  {
+    domains.length > 0 && (
+      <div class="work-row__domains">
+        {domains.map((t) => (
+          <span class="chip">{t}</span>
+        ))}
+      </div>
+    )
+  }
+  {
+    image && (
+      <figure class="work-row__image">
+        <img src={image} alt={imageAlt} loading="lazy" decoding="async" />
+      </figure>
+    )
+  }
+</article>

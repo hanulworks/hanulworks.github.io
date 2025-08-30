@@ -1,0 +1,67 @@
+---
+import DetailLayout from "../../layouts/DetailLayout.astro";
+import { getProjectBySlug } from "../../data/projects";
+
+const project = getProjectBySlug("fulcrum-analytics");
+if (!project) {
+  throw new Error("Project data not found for 'fulcrum-analytics'");
+}
+
+const {
+  title,
+  synopsis,
+  year,
+  domains = [],
+  links = [],
+  tools,
+  language,
+} = project;
+---
+
+<DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
+  <section class="text">
+    <h6 class="section">I. CAMPAIGN REPORT INFOGRAPHICS</h6>
+
+    <p class="subject">OVERVIEW</p>
+    <p class="text">
+      A series of concise, data-driven infographics designed for executive-level
+      reporting. Visual hierarchy emphasizes outcomes first, followed by key
+      drivers and supporting metrics. Assets delivered for web and PDF.
+    </p>
+
+    <p class="subject">SELECTED PANELS</p>
+    <figure class="detailImage">
+      <img
+        src="/projects/fulcrum-analytics/Infographic1.png"
+        alt="Campaign infographic panel 1"
+        loading="lazy"
+      />
+    </figure>
+    <figure class="detailImage">
+      <img
+        src="/projects/fulcrum-analytics/Infographic2.png"
+        alt="Campaign infographic panel 2"
+        loading="lazy"
+      />
+    </figure>
+  </section>
+
+  <section class="text">
+    <h6 class="section">II. HOLIDAY CARD</h6>
+
+    <p class="subject">CONCEPT</p>
+    <p class="text">
+      A playful year-end visual celebrating the team’s analytics culture. The
+      card extends brand typography and color; a lightweight motion version was
+      prepared for digital channels.
+    </p>
+
+    <figure class="detailImage">
+      <img
+        src="/projects/fulcrum-analytics/Holiday.png"
+        alt="Fulcrum Analytics holiday card"
+        loading="lazy"
+      />
+    </figure>
+  </section>
+</DetailLayout>
