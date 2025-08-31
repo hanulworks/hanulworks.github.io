@@ -42,9 +42,25 @@ const detailLinks = (links || []).filter((l) => l.context === "detail");
                 <h3 id="detail-title" class="work-row__title">{title}</h3>
                 {synopsis && <p class="work-row__synopsis">{synopsis}</p>}
                 {year && <p class="work-row__year">{year}</p>}
+                {detailLinks.length > 0 && (
+                    <ul class="work-row__links">
+                        {detailLinks.map((l) => (
+                            <li>
+                                <a
+                                    class={`work-link ${l.external ? "work-link--external" : "work-link--detail"}`}
+                                    href={l.href}
+                                    target={l.external ? "_blank" : undefined}
+                                    rel={l.external ? "noopener noreferrer" : undefined}
+                                >
+                                    {l.label}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </div>
 
-            <!-- Right column: domains + links/tools/language in one wrapper for divider -->
+            <!-- Right column: domains + tools/language in one wrapper for divider -->
             <div class="detail-right">
                 {domains.length > 0 && (
                     <div class="work-row__domains">
@@ -54,24 +70,8 @@ const detailLinks = (links || []).filter((l) => l.context === "detail");
                     </div>
                 )}
 
-                {(detailLinks.length > 0 || tools || language) && (
+                {(tools || language) && (
                     <div class="work-links-and-meta">
-                        {detailLinks.length > 0 && (
-                            <ul class="work-row__links">
-                                {detailLinks.map((l) => (
-                                    <li>
-                                        <a
-                                            class={`work-link ${l.external ? "work-link--external" : "work-link--detail"}`}
-                                            href={l.href}
-                                            target={l.external ? "_blank" : undefined}
-                                            rel={l.external ? "noopener noreferrer" : undefined}
-                                        >
-                                            {l.label}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
                         {tools && <p class="text work-tools">Tools | {tools}</p>}
                         {language && <p class="text work-language">Language | {language}</p>}
                     </div>

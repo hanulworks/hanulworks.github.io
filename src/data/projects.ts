@@ -89,8 +89,10 @@ export const projects: Project[] = [
     title: "The_Net_Works",
     synopsis: "Digital ethnographic resource analyzing the infrastructures of sexual cybercrime through the ‘Nth Room’ case study",
     year: "2021",
-    links: [{ href: "/projects/the-net-works", label: "VIEW DETAILS", context: "summary" },
-    { href: "/projects/the-net-works/index.html", label: "EXPLORE PROJECT", external: true, context: "detail" }],
+    links: [
+      { href: "/projects/the-net-works", label: "VIEW DETAILS", context: "summary" },
+      { href: "/projects/the-net-works/index.html", label: "EXPLORE PROJECT", external: true, context: "detail" }
+    ],
     domains: ["Digital Ethnography", "Cybersecurity Studies", "Civic Technology", "Research Documentation"],
     tools: "Google Sheets, Looker Studio, Figma",
     language: "HTML, CSS, JavaScript",
@@ -102,9 +104,12 @@ export const projects: Project[] = [
     title: "cyb-org",
     synopsis: "Interactive diagram mapping ‘Experience, Network, Information’ through media theory, based on Motoko Kusanagi from ‘Ghost in the Shell’",
     year: "2020",
-    links: [{ href: "/projects/cyb-org", label: "VIEW DETAILS", context: "summary" }],
+    links: [
+      { href: "/projects/cyb-org", label: "VIEW DETAILS", context: "summary" },
+      { href: "/projects/cyb-org/index.html", label: "EXPLORE PROJECT", external: true, context: "detail" }
+    ],
     domains: ["Media Theory", "Network Visualization", "Systems Mapping", "Information Architecture"],
-    tools: "Cytoscape.js",
+    tools: "Visual Studio Code",
     language: "JavaScript, HTML, CSS",
     image: "/projects/cyb-org/cyb-org.png",
     imageAlt: "cyb-org"

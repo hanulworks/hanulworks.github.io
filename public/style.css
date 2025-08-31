@@ -28,16 +28,15 @@
   --space-xl: clamp(32px, 4vw, 56px);
 
   /* TYPE SCALE */
-  --text-xs: clamp(0.75rem, 0.72rem + 0.10vw, 0.80rem);
-  --text-sm: clamp(0.875rem, 0.84rem + 0.18vw, 0.95rem);
-  --text-md: clamp(1rem, 0.95rem + 0.22vw, 1.10rem);
-  --text-lg: clamp(1.25rem, 1.15rem + 0.35vw, 1.40rem);
-  --text-xl: clamp(1.50rem, 1.35rem + 0.55vw, 1.80rem);
+  --text-xs: clamp(0.68rem, 0.60rem + 0.40vw, 0.78rem);
+  --text-sm: clamp(0.78rem, 0.64rem + 0.55vw, 0.92rem);
+  --text-md: clamp(0.90rem, 0.70rem + 0.70vw, 1.05rem);
+  --text-lg: clamp(1.05rem, 0.85rem + 0.85vw, 1.25rem);
 
   /* TYPOGRAPHY */
-  --display-sm: clamp(1.75rem, 4vw, 2.5rem);
-  --text-year: clamp(.95rem, 1.6vw, 1.05rem);
-  --text-synopsis: clamp(1.125rem, 1.8vw, 1.625rem);
+  --display-sm: clamp(1.25rem, 2.5vw, 1.75rem);
+  --display-md: clamp(1.50rem, 3.5vw, 2.25rem);
+  --display-lg: clamp(1.75rem, 6vw, 3.25rem);
 
   /* CARDS & SECTIONS */
   --card-pad: clamp(1rem, 2vw, 1.5rem);
@@ -98,8 +97,15 @@ body {
 /* Detail pages use a plain surface background */
 
 main#content {
-  padding-block: clamp(12px, 6vw, 24px);
-  padding-inline: clamp(12px, 10vw, 120px);
+  padding-block: clamp(16px, 4vw, 32px);
+  padding-inline: clamp(16px, 6vw, 96px);
+}
+
+@media (min-width: 992px) {
+  /* Wider gutters for very large viewports */
+  main#content {
+    margin-inline: clamp(120px, 10vw, 240px);
+  }
 }
 
 body p {
@@ -152,9 +158,6 @@ body :is(p, h1, h2, h3, h4, h5, h6, a, li, span, .text, .synopsis, .domain, .sub
   color: var(--brand-ink);
 }
 
-body.nav-open .menu-toggle {
-  visibility: hidden;
-}
 
 /* GLOBAL CARD (utility) */
 .card {
@@ -252,7 +255,7 @@ u a {
   position: fixed;
   top: var(--space-sm);
   right: var(--space-sm);
-  z-index: 1150;
+  z-index: 2001;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -349,7 +352,7 @@ u a {
 
 .site-nav__inner {
   position: fixed;
-  top: var(--space-sm);
+  top: calc(var(--space-sm) + 56px);
   right: var(--space-sm);
   bottom: auto;
   z-index: 2;
@@ -510,7 +513,7 @@ body.nav-open {
 .heading1 {
   margin-block: clamp(10rem, 10vw, 20rem);
   font-weight: 100;
-  font-size: clamp(2rem, 6vw, 5rem);
+  font-size: var(--display-lg);
   line-height: 1.1;
 }
 
@@ -520,7 +523,7 @@ body.nav-open {
   max-width: clamp(28ch, 40vw, 52ch);
   text-align: right;
   font-weight: 300;
-  font-size: clamp(1.25rem, 3vw, 2.5rem);
+  font-size: var(--display-md);
   line-height: 1.3;
 }
 
@@ -559,6 +562,24 @@ body.nav-open {
   row-gap: var(--space-md);
 }
 
+/* Tighter media-card spacing on small screens */
+@media (max-width: 768px) {
+
+  .media-section,
+  .disclosure-section {
+    margin: var(--space-lg) auto;
+  }
+
+  .media-card {
+    column-gap: var(--space-md);
+    row-gap: var(--space-sm);
+  }
+
+  .disclosure-section .disclosure {
+    margin: var(--space-md) auto;
+  }
+}
+
 /* Inner columns */
 .media-col {
   padding: var(--space-md);
@@ -574,6 +595,7 @@ body.nav-open {
 
 .media-card-image .profile-image {
   width: 100%;
+  max-width: clamp(220px, 40vw, 420px);
   height: auto;
   border-radius: var(--card-radius);
 }
@@ -636,7 +658,7 @@ body.nav-open {
 }
 
 /* Desktop layouts */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 
   /* Base 2-col */
   .media-card {
@@ -658,6 +680,7 @@ body.nav-open {
    6) DISCLOSURES — Philosophy & Biography
    ========================================================= */
 
+/* Base layout */
 .disclosure-section {
   display: grid;
   grid-template-columns: 1fr;
@@ -666,17 +689,7 @@ body.nav-open {
   margin: var(--space-xl) auto;
 }
 
-@media (min-width: 1200px) {
-  .disclosure-section {
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
-
-  .disclosure-section [class*="col-"] {
-    padding: 0;
-  }
-}
-
+/* Each disclosure card */
 .disclosure-section .disclosure {
   width: 100%;
   margin: 0 0 1rem;
@@ -685,12 +698,7 @@ body.nav-open {
   gap: .5rem;
 }
 
-@media (min-width: 1200px) {
-  .disclosure-section .disclosure {
-    margin: 0;
-  }
-}
-
+/* Summary (click target) */
 .disclosure-section .disclosure summary {
   display: flex;
   align-items: center;
@@ -706,6 +714,7 @@ body.nav-open {
   transition: background-color .25s ease, color .25s ease, font-weight .25s ease;
 }
 
+/* States */
 .disclosure-section .disclosure summary:hover,
 .disclosure-section .disclosure summary:active,
 .disclosure-section .disclosure[open] summary {
@@ -717,6 +726,7 @@ body.nav-open {
   outline-offset: 2px;
 }
 
+/* Open content */
 .disclosure-section .disclosure[open] .disclosure-content {
   margin-top: 1rem;
   padding-top: .25rem;
@@ -724,6 +734,22 @@ body.nav-open {
 
 .disclosure-section .disclosure-content> :first-child {
   margin-top: 0;
+}
+
+/* Desktop (>=1200px): 2 columns, remove per-card bottom margin */
+@media (min-width: 1200px) {
+  .disclosure-section {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .disclosure-section [class*="col-"] {
+    padding: 0;
+  }
+
+  .disclosure-section .disclosure {
+    margin: 0;
+  }
 }
 
 /* =========================================================
@@ -789,7 +815,7 @@ body.nav-open {
     "domains"
     "image";
   column-gap: clamp(32px, 5vw, 80px);
-  row-gap: var(--space-md);
+  row-gap: var(--space-sm);
   align-items: start;
   justify-items: start;
   overflow: clip;
@@ -816,7 +842,7 @@ body.nav-open {
 .work-row__synopsis {
   margin: 0;
   max-width: 60ch;
-  font-size: var(--text-synopsis);
+  font-size: var(--text-lg);
   line-height: 1.45;
   font-weight: 300;
 }
@@ -824,7 +850,7 @@ body.nav-open {
 /* Year */
 .work-row__year {
   display: block;
-  font-size: var(--text-year);
+  font-size: var(--text-sm);
   font-weight: 400;
   color: var(--brand-ink-2);
   margin: var(--space-xs) 0 0;
@@ -881,7 +907,7 @@ body.nav-open {
   flex-wrap: wrap;
   column-gap: .6rem;
   row-gap: .4rem;
-  margin-top: var(--space-sm);
+  margin-bottom: var(--space-sm);
 }
 
 .work-row__domains .chip {
@@ -1026,14 +1052,24 @@ body.nav-open {
   padding-bottom: var(--space-lg);
   margin-bottom: var(--section-gap);
 }
+
 .detail-header::after {
   content: "";
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   bottom: 0;
-  width: 100vw;                 /* full-bleed divider line */
+  width: 100vw;
+  /* full-bleed divider line */
   border-bottom: 1px solid var(--brand-ink);
+}
+
+/* Ensure mobile (single-column) behavior holds up to 992px */
+@media (max-width: 992px) {
+  .detail-header {
+    display: block;
+    /* overrides .work-row grid at 768–992 */
+  }
 }
 
 /* Detail pages: use card surface background */
@@ -1055,13 +1091,27 @@ main#content.detail-surface {
   grid-area: auto;
 }
 
-@media (min-width: 768px) {
-  .detail-header > .work-meta {
+/* More breathing room between domains and links in detail header */
+.detail-header .work-row__domains {
+  margin-bottom: var(--space-md);
+}
+
+@media (min-width: 992px) {
+
+  /* Make header grid 70% / 30% at desktop sizes */
+  .detail-header {
+    background: none;
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+    column-gap: clamp(24px, 4vw, 56px);
+  }
+
+  .detail-header>.work-meta {
     grid-column: 1;
     padding-right: clamp(24px, 4vw, 56px);
   }
 
-  .detail-header > .detail-right {
+  .detail-header>.detail-right {
     grid-column: 2;
     padding-left: clamp(24px, 4vw, 56px);
     background: color-mix(in srgb, var(--brand-accent-soft) 12%, transparent);
@@ -1069,22 +1119,14 @@ main#content.detail-surface {
     padding-block: var(--space-sm);
     padding-inline: clamp(12px, 2vw, 16px);
   }
-
-  .detail-header {
-    background: none; /* remove gradient trick */
-  }
 }
+
 section.text {
   margin-block: var(--section-gap);
   display: grid;
   /* always grid so we can use row-gap for rhythm */
   row-gap: var(--space-xl);
   /* consistent vertical space between children */
-}
-
-/* extra paragraph spacing within detail sections */
-section.text p + p {
-  margin-top: var(--space-md);
 }
 
 /* headings & copy */
@@ -1143,27 +1185,29 @@ section.text p + p {
 }
 
 /* tablet+ grid: 20% subjects / 80% texts & media */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   section.text {
-    grid-template-columns: 0.2fr 0.8fr; /* 20 / 80 split */
+    grid-template-columns: 0.2fr 0.8fr;
+    /* 20 / 80 split */
     column-gap: clamp(24px, 4vw, 56px);
-    row-gap: var(--space-lg); /* keep same rhythm on desktop */
+    row-gap: var(--space-lg);
+    /* keep same rhythm on desktop */
     align-items: start;
   }
 
-  section.text > .section {
+  section.text>.section {
     grid-column: 1 / -1;
   }
 
-  section.text > .subject {
+  section.text>.subject {
     grid-column: 1;
   }
 
-  section.text > .text {
+  section.text>.text {
     grid-column: 2;
   }
 
-  section.text > .detailImage {
+  section.text>.detailImage {
     grid-column: 2;
   }
 }
@@ -1187,7 +1231,10 @@ section.text p + p {
 }
 
 /* Ensure gallery images/gifs fill their cells neatly */
-.gallery .detailImage { margin: 0; }
+.gallery .detailImage {
+  margin: 0;
+}
+
 .gallery .detailImage img {
   display: block;
   width: 100%;
@@ -1195,7 +1242,9 @@ section.text p + p {
 }
 
 /* Wider embeds that fill the container; use with .embed--16x9 when needed */
-.embed--wide { max-width: 100%; }
+.embed--wide {
+  max-width: 100%;
+}
 
 .gallery img {
   display: block;
