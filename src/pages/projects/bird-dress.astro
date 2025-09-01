@@ -16,6 +16,29 @@ const {
   tools,
   language,
 } = project;
+
+// Auto-collect & sort outputs from /public/projects/bird-dress
+const sixHourEntries = Object.entries(
+  import.meta.glob("/public/projects/bird-dress/6hrs*.*", {
+    eager: true,
+    as: "url",
+  }),
+);
+const nineHourEntries = Object.entries(
+  import.meta.glob("/public/projects/bird-dress/9hrs*.*", {
+    eager: true,
+    as: "url",
+  }),
+);
+
+// Sort numerically by filename and map to plain URLs
+const sixHourImgs = sixHourEntries
+  .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+  .map(([, url]) => url as string);
+
+const nineHourImgs = nineHourEntries
+  .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+  .map(([, url]) => url as string);
 ---
 
 <DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
@@ -86,125 +109,66 @@ const {
 
   <section class="text">
     <h6 class="section">III. RESULTS</h6>
-
-    <p class="subject">SELECTED OUTPUTS – 6 HOURS</p>
-    <div class="gallery">
-      <img
-        class="detailImage"
-        src="/projects/bird-dress/6_Hours (1).png"
-        alt="6-hour output 1"
-        loading="lazy"
-      />
-      <img
-        class="detailImage"
-        src="/projects/bird-dress/6_Hours (2).png"
-        alt="6-hour output 2"
-        loading="lazy"
-      />
-      <img
-        class="detailImage"
-        src="/projects/bird-dress/6_Hours (3).png"
-        alt="6-hour output 3"
-        loading="lazy"
-      />
-      <img
-        class="detailImage"
-        src="/projects/bird-dress/6_Hours (4).png"
-        alt="6-hour output 4"
-        loading="lazy"
-      />
-      <img
-        class="detailImage"
-        src="/projects/bird-dress/6_Hours (5).png"
-        alt="6-hour output 5"
-        loading="lazy"
-      />
-      <img
-        class="detailImage"
-        src="/projects/bird-dress/6_Hours (6).png"
-        alt="6-hour output 6"
-        loading="lazy"
-      />
+    <p class="subject">6 HOURS</p>
+    <div class="gallery gallery--full">
+      {
+        sixHourImgs.map((src, i) => (
+          <img
+            class="detailImage"
+            src={src}
+            alt={`6-hour output ${i + 1}`}
+            loading="lazy"
+          />
+        ))
+      }
     </div>
-
-    <p class="subject">SELECTED OUTPUTS – 9 HOURS</p>
-    <div class="gallery">
-      <img
-        class="detailImage"
-        src="/projects/bird-dress/9_Hours (1).png"
-        alt="9-hour output 1"
-        loading="lazy"
-      />
-      <img
-        class="detailImage"
-        src="/projects/bird-dress/9_Hours (2).png"
-        alt="9-hour output 2"
-        loading="lazy"
-      />
-      <img
-        class="detailImage"
-        src="/projects/bird-dress/9_Hours (3).png"
-        alt="9-hour output 3"
-        loading="lazy"
-      />
-      <img
-        class="detailImage"
-        src="/projects/bird-dress/9_Hours (4).png"
-        alt="9-hour output 4"
-        loading="lazy"
-      />
-      <img
-        class="detailImage"
-        src="/projects/bird-dress/9_Hours (5).png"
-        alt="9-hour output 5"
-        loading="lazy"
-      />
-      <img
-        class="detailImage"
-        src="/projects/bird-dress/9_Hours (6).png"
-        alt="9-hour output 6"
-        loading="lazy"
-      />
+    <p class="subject">9 HOURS</p>
+    <div class="gallery gallery--full">
+      {
+        nineHourImgs.map((src, i) => (
+          <img
+            class="detailImage"
+            src={src}
+            alt={`9-hour output ${i + 1}`}
+            loading="lazy"
+          />
+        ))
+      }
     </div>
   </section>
 
   <section class="text">
     <h6 class="section">IV. POSTERS</h6>
-    <section class="carousel carousel--portrait" aria-label="BirDress posters">
-      <ol class="carousel__viewport">
-        <li class="carousel__slide">
-          <img src="/projects/bird-dress/poster_1.JPEG" alt="BirDress poster 1" loading="lazy" />
-        </li>
-        <li class="carousel__slide">
-          <img src="/projects/bird-dress/poster_2.JPEG" alt="BirDress poster 2" loading="lazy" />
-        </li>
-        <li class="carousel__slide">
-          <img src="/projects/bird-dress/poster_3.JPEG" alt="BirDress poster 3" loading="lazy" />
-        </li>
-      </ol>
-    </section>
-    <p class="text">
-      * created in the style of and as homage to designer
-      <a
-        class="work-link work-link--external"
-        href="http://www.davidcarsondesign.com/"
-        target="_blank"
-        rel="noopener noreferrer">David Carson</a>
-    </p>
-  </section>
-
-  <section class="text">
-    <h6 class="section">V. VIDEO</h6>
-    <figure class="embed embed--16x9">
-      <iframe
-        src="https://www.youtube.com/embed/jGzjEio3J5A"
-        title="BirDress — video demo"
+    <div
+      class="gallery gallery--docs gallery--full"
+      aria-label="BirDress posters"
+    >
+      <img
+        src="/projects/bird-dress/poster_1.JPEG"
+        alt="BirDress poster 1"
         loading="lazy"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-      ></iframe>
-    </figure>
+      />
+      <img
+        src="/projects/bird-dress/poster_2.JPEG"
+        alt="BirDress poster 2"
+        loading="lazy"
+      />
+      <img
+        src="/projects/bird-dress/poster_3.JPEG"
+        alt="BirDress poster 3"
+        loading="lazy"
+      />
+      <p class="text">
+        <em
+          >Created in the style of, and as an homage to, designer <a
+            class="work-link work-link--external"
+            href="http://www.davidcarsondesign.com/"
+            target="_blank"
+            rel="noopener noreferrer">David Carson</a
+          >.</em
+        >
+      </p>
+    </div>
   </section>
 
   <section class="text">

@@ -19,26 +19,22 @@ const {
 ---
 
 <DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
-  <section class="text">
+  <section class="text text--compact">
     <h6 class="section">I. RESEARCH FRAMEWORK</h6>
     <p class="subject">CONCEPTUAL FOUNDATIONS</p>
     <p class="text">
-      The project begins with three foundational keywords: <strong
-        >Experience</strong
-      >,
-      <strong>Network</strong>, and <strong>Information</strong>. Through
-      critical synthesis, these themes converge into the broader concept of the <strong
-        >Cyborg</strong
-      > as a figure of entanglement between the human and the technological.
+      The project begins with three foundational keywords: Experience, Network,
+      and Information. Through critical synthesis, these themes converge into
+      the broader concept of the Cyborg as a figure of entanglement between the
+      human and the technological.
     </p>
 
     <p class="subject">CASE STUDY FOCUS</p>
     <p class="text">
-      To ground the theoretical exploration, I analyzed <strong
-        >Motoko Kusanagi</strong
-      >, the cybernetic protagonist of <em>Ghost in the Shell</em>, as a
-      cultural artifact situated at the nexus of human experience, data systems,
-      and networked embodiment.
+      To ground the theoretical exploration, I analyzed Motoko Kusanagi, the
+      cybernetic protagonist of <em>Ghost in the Shell</em>, as a cultural
+      artifact situated at the nexus of human experience, data systems, and
+      networked embodiment.
     </p>
   </section>
 
@@ -67,7 +63,7 @@ const {
         class="work-link work-link--external"
         href="/projects/cyb-org/Experience Analysis.pdf"
         target="_blank"
-        rel="noopener noreferrer">Experience Analysis</a
+        rel="noopener noreferrer">Experience Analysis Essay</a
       >
     </p>
 
@@ -77,7 +73,7 @@ const {
         class="work-link work-link--external"
         href="/projects/cyb-org/Network Analysis.pdf"
         target="_blank"
-        rel="noopener noreferrer">Network Analysis</a
+        rel="noopener noreferrer">Network Analysis Essay</a
       >
     </p>
 
@@ -87,30 +83,24 @@ const {
         class="work-link work-link--external"
         href="/projects/cyb-org/Information Analysis.pdf"
         target="_blank"
-        rel="noopener noreferrer">Information Analysis</a
+        rel="noopener noreferrer">Information Analysis Essay</a
       >
     </p>
   </section>
 
   <section class="text">
     <h6 class="section">IV. DOCUMENTATION</h6>
+    <!-- Always full-width image -->
     <figure class="detailImage">
       <img src="/projects/cyb-org/cyb-org.png" alt="cyb-org" loading="lazy" />
     </figure>
-    <figure class="detailImage">
+    <!-- GIFs: 1-up on mobile, 2-up at ≥992px via existing .gallery--docs CSS -->
+    <div class="gallery gallery--docs">
       <img src="/projects/cyb-org/1.gif" alt="demo 1" loading="lazy" />
-    </figure>
-    <figure class="detailImage">
       <img src="/projects/cyb-org/2.gif" alt="demo 2" loading="lazy" />
-    </figure>
-    <figure class="detailImage">
       <img src="/projects/cyb-org/3.gif" alt="demo 3" loading="lazy" />
-    </figure>
-    <figure class="detailImage">
       <img src="/projects/cyb-org/4.gif" alt="demo 4" loading="lazy" />
-    </figure>
-    <figure class="detailImage">
       <img src="/projects/cyb-org/5.gif" alt="demo 5" loading="lazy" />
-    </figure>
+    </div>
   </section>
 </DetailLayout>

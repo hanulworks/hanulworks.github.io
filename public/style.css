@@ -9,14 +9,10 @@
   --brand-surface: #FFFFFF;
   --brand-ink: #1A1C1E;
   --brand-ink-2: #44474F;
-  --brand-neutral: #E6E1E5;
   --brand-accent: #2F87A6;
   --brand-accent-soft: #DDF3FA;
-  --brand-secondary: #2CA37A;
   --brand-secondary-soft: #D6F4E6;
   --brand-accent-warm: #FFE6DE;
-  --error: #BA1A1A;
-  --error-soft: #FFDAD6;
   --pattern-strong: rgba(255, 255, 255, 0.95);
   --pattern-weak: rgba(255, 255, 255, 0.45);
 
@@ -34,9 +30,8 @@
   --text-lg: clamp(1.05rem, 0.85rem + 0.85vw, 1.25rem);
 
   /* TYPOGRAPHY */
-  --display-sm: clamp(1.25rem, 2.5vw, 1.75rem);
-  --display-md: clamp(1.50rem, 3.5vw, 2.25rem);
-  --display-lg: clamp(1.75rem, 6vw, 3.25rem);
+  --display-sm: clamp(1.25rem, 3vw, 2.25rem);
+  --display-lg: clamp(2.25rem, 6vw, 3.25rem);
 
   /* CARDS & SECTIONS */
   --card-pad: clamp(1rem, 2vw, 1.5rem);
@@ -50,6 +45,14 @@
   --menu-font: clamp(12px, 4vw, 14px);
   --toggle-size: 28px;
   --toggle-stroke: 1.5px;
+}
+
+/* Mobile density: make cards tighter on small screens */
+@media (max-width: 767px) {
+  :root {
+    /* Smaller inner padding and gaps for cards on phones */
+    --card-pad: var(--space-xs);
+  }
 }
 
 /* =========================================================
@@ -102,6 +105,7 @@ main#content {
 }
 
 @media (min-width: 992px) {
+
   /* Wider gutters for very large viewports */
   main#content {
     margin-inline: clamp(120px, 10vw, 240px);
@@ -188,38 +192,31 @@ body :is(p, h1, h2, h3, h4, h5, h6, a, li, span, .text, .synopsis, .domain, .sub
 /* =========================================================
    2) LINKS (global)
    ========================================================= */
-a {
+a,
+a:visited,
+a:hover,
+a:focus {
   color: var(--brand-ink);
-  text-decoration: none;
+  text-decoration: underline dotted;
+  text-underline-offset: 2px;
   transition: background-color .25s ease, color .25s ease;
+  outline: 0;
 }
 
+/* Optional hover tint without changing underline */
 a:hover,
 a:focus {
   background-color: var(--brand-accent-warm);
-  color: var(--brand-ink);
-  outline: 0;
-  text-decoration: none;
 }
 
-.site-footer a:hover,
-.site-footer a:focus {
-  background-color: transparent !important;
-  color: var(--brand-ink);
-  text-decoration: none;
-  outline: 0;
-}
-
+/* Footer & nav still keep accessibility focus outline */
 .site-footer a:focus-visible,
 .site-nav a:focus-visible {
   outline: 2px solid var(--brand-accent-soft);
   outline-offset: 2px;
 }
 
-a:active {
-  text-decoration: none;
-}
-
+/* Preserve explicit underline behavior when wrapped in <u> */
 u,
 u a {
   text-decoration: underline dotted;
@@ -511,19 +508,19 @@ body.nav-open {
 }
 
 .heading1 {
-  margin-block: clamp(10rem, 10vw, 20rem);
-  font-weight: 100;
+  margin-block: clamp(8rem, 10vw, 20rem);
+  font-weight: 200;
   font-size: var(--display-lg);
   line-height: 1.1;
 }
 
 .heading2 {
   margin-left: auto;
-  margin-bottom: clamp(24rem, 20vw, 48rem);
+  margin-bottom: clamp(24rem, 12vw, 36rem);
   max-width: clamp(28ch, 40vw, 52ch);
   text-align: right;
   font-weight: 300;
-  font-size: var(--display-md);
+  font-size: var(--display-sm);
   line-height: 1.3;
 }
 
@@ -558,26 +555,7 @@ body.nav-open {
   display: grid;
   grid-template-columns: 1fr;
   align-items: start;
-  column-gap: clamp(32px, 5vw, 80px);
-  row-gap: var(--space-md);
-}
-
-/* Tighter media-card spacing on small screens */
-@media (max-width: 768px) {
-
-  .media-section,
-  .disclosure-section {
-    margin: var(--space-lg) auto;
-  }
-
-  .media-card {
-    column-gap: var(--space-md);
-    row-gap: var(--space-sm);
-  }
-
-  .disclosure-section .disclosure {
-    margin: var(--space-md) auto;
-  }
+  gap: var(--space-xs);
 }
 
 /* Inner columns */
@@ -608,7 +586,7 @@ body.nav-open {
 
 /* Content */
 .section-title {
-  margin-bottom: var(--space-md);
+  margin: 0 0 var(--space-sm);
   font-size: var(--text-xs);
   letter-spacing: .15em;
   font-weight: 600;
@@ -622,17 +600,6 @@ body.nav-open {
   font-weight: 600;
   line-height: 1.2;
   color: var(--brand-ink-2);
-}
-
-.media-quote {
-  margin-top: calc(var(--space-sm) * 1.5);
-  padding-left: var(--space-md);
-  border-left: 3px solid var(--brand-accent);
-}
-
-.media-quote blockquote {
-  margin: 0;
-  font-style: italic;
 }
 
 /* Video */
@@ -663,9 +630,9 @@ body.nav-open {
   /* Base 2-col */
   .media-card {
     grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
   }
 
-  /* About (narrow image) */
   .media-section[aria-labelledby="about-title"] .media-card {
     grid-template-columns: 1.35fr 1fr;
   }
@@ -676,26 +643,40 @@ body.nav-open {
   }
 }
 
+/* Mobile-only: tighter internal spacing inside media card columns */
+@media (max-width: 767.98px) {
+  .media-col {
+    padding: var(--space-xs);
+  }
+
+  /* override global paragraph spacing inside cards */
+  .media-card-content p {
+    margin-top: var(--space-sm);
+  }
+
+  .section-title {
+    margin-bottom: var(--space-xs);
+  }
+
+  .media-card-image .credit {
+    margin-top: var(--space-xs);
+  }
+}
+
 /* =========================================================
    6) DISCLOSURES — Philosophy & Biography
    ========================================================= */
 
-/* Base layout */
+/* Disclosures — streamlined */
 .disclosure-section {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-lg);
-  max-width: 1200px;
-  margin: var(--space-xl) auto;
+  gap: var(--section-gap);
+  margin: var(--section-gap) auto;
 }
 
-/* Each disclosure card */
 .disclosure-section .disclosure {
-  width: 100%;
-  margin: 0 0 1rem;
-  padding: var(--card-pad);
-  border: 0;
-  gap: .5rem;
+  margin: 0;
 }
 
 /* Summary (click target) */
@@ -703,7 +684,7 @@ body.nav-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
   padding: var(--space-xs) var(--space-sm);
   border-radius: 6px;
   cursor: pointer;
@@ -728,7 +709,7 @@ body.nav-open {
 
 /* Open content */
 .disclosure-section .disclosure[open] .disclosure-content {
-  margin-top: 1rem;
+  margin-top: var(--space-xs);
   padding-top: .25rem;
 }
 
@@ -736,19 +717,12 @@ body.nav-open {
   margin-top: 0;
 }
 
-/* Desktop (>=1200px): 2 columns, remove per-card bottom margin */
+/* Desktop (>=1200px): 2 columns, match media card spacing */
 @media (min-width: 1200px) {
   .disclosure-section {
     grid-template-columns: 1fr 1fr;
     align-items: start;
-  }
-
-  .disclosure-section [class*="col-"] {
-    padding: 0;
-  }
-
-  .disclosure-section .disclosure {
-    margin: 0;
+    gap: var(--space-xl);
   }
 }
 
@@ -757,8 +731,8 @@ body.nav-open {
    ========================================================= */
 .site-footer {
   background: transparent;
-  padding: .75rem var(--card-pad) 1.5rem;
   margin-top: var(--section-gap);
+  padding: var(--space-lg);
 }
 
 .site-footer__inner {
@@ -766,7 +740,8 @@ body.nav-open {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
 }
 
 .footer-icons {
@@ -914,7 +889,7 @@ body.nav-open {
   line-height: 1;
   padding: .3em .7em;
   border-radius: 999px;
-  background: var(--brand-accent-soft);
+  background: rgb(234, 234, 234);
   color: var(--brand-ink);
   font-weight: 500;
   font-size: var(--text-sm);
@@ -1035,7 +1010,7 @@ body.nav-open {
 }
 
 /* place carousels in the 70% column on tablet+ detail sections */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   section.text>.carousel {
     grid-column: 2;
     width: 100%;
@@ -1062,6 +1037,11 @@ body.nav-open {
   width: 100vw;
   /* full-bleed divider line */
   border-bottom: 1px solid var(--brand-ink);
+}
+
+/* Detail pages: force square media only on this page scope */
+main#content.detail-surface :is(img, video, iframe) {
+  border-radius: 0;
 }
 
 /* Ensure mobile (single-column) behavior holds up to 992px */
@@ -1098,11 +1078,11 @@ main#content.detail-surface {
 
 @media (min-width: 992px) {
 
-  /* Make header grid 70% / 30% at desktop sizes */
+  /* Make header grid 60% / 40% at desktop sizes */
   .detail-header {
     background: none;
     display: grid;
-    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+    grid-template-columns: minmax(0, 6fr) minmax(0, 4fr);
     column-gap: clamp(24px, 4vw, 56px);
   }
 
@@ -1128,6 +1108,9 @@ section.text {
   row-gap: var(--space-xl);
   /* consistent vertical space between children */
 }
+
+/* Compact variant to tighten vertical rhythm for specific sections */
+section.text.text--compact { row-gap: var(--space-lg); }
 
 /* headings & copy */
 .section {
@@ -1181,7 +1164,6 @@ section.text {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: var(--card-radius);
 }
 
 /* tablet+ grid: 20% subjects / 80% texts & media */
@@ -1191,7 +1173,6 @@ section.text {
     /* 20 / 80 split */
     column-gap: clamp(24px, 4vw, 56px);
     row-gap: var(--space-lg);
-    /* keep same rhythm on desktop */
     align-items: start;
   }
 
@@ -1203,13 +1184,13 @@ section.text {
     grid-column: 1;
   }
 
-  section.text>.text {
-    grid-column: 2;
-  }
-
-  section.text>.detailImage {
-    grid-column: 2;
-  }
+  /* Place common right‑column content */
+  section.text > .text,
+  section.text > .detailImage,
+  section.text > .gallery:not(.gallery--full):not(.gallery--docs),
+  section.text > .embed { grid-column: 2; }
+  section.text > .gallery.gallery--full,
+  section.text > .gallery.gallery--docs { grid-column: 1 / -1; }
 }
 
 /* allow non-media content in the right column when reused by DetailLayout */
@@ -1217,47 +1198,37 @@ section.text {
   margin-top: var(--space-sm);
 }
 
-/* detail galleries */
+/* detail galleries (shared) */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-sm);
+  grid-template-columns: repeat(2, 1fr); /* base: 2-up */
 }
 
 @media (min-width: 768px) {
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .gallery { grid-template-columns: repeat(3, 1fr); } /* 3-up on tablet */
 }
 
-/* Ensure gallery images/gifs fill their cells neatly */
-.gallery .detailImage {
-  margin: 0;
+/* Full, dense grid (BirDress) */
+.gallery--full {
+  grid-template-columns: repeat(3, 1fr);
 }
+@media (min-width: 768px)  { .gallery--full { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1200px) { .gallery--full { grid-template-columns: repeat(6, 1fr); } }
 
-.gallery .detailImage img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
+/* Docs grid: 1 per row on phones, 2 per row on desktop; spans both columns via section.text rule */
+.gallery--docs { grid-template-columns: 1fr; }
+@media (min-width: 992px) { .gallery--docs { grid-template-columns: repeat(2, 1fr); } }
+
+/* Make sure images fill cells */
+.gallery img { display: block; width: 100%; height: auto; }
+
+/* Place common right‑column content on desktop; full-width galleries span both columns */
+/* (rules above replaced/merged with main desktop rules for section.text) */
 
 /* Wider embeds that fill the container; use with .embed--16x9 when needed */
 .embed--wide {
   max-width: 100%;
-}
-
-.gallery img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: var(--card-radius);
-}
-
-/* place galleries in the 70% column on tablet+ */
-@media (min-width: 768px) {
-  section.text>.gallery {
-    grid-column: 2;
-  }
 }
 
 /* Responsive media embeds */
@@ -1265,9 +1236,6 @@ section.text {
   width: 100%;
   max-width: min(100%, 920px);
   margin: 0 0 var(--space-md);
-  border-radius: var(--card-radius);
-  overflow: hidden;
-  /* keeps rounded corners without cropping content */
 }
 
 /* perfect fit for YouTube */
@@ -1281,11 +1249,4 @@ section.text {
   width: 100%;
   height: 100%;
   border: 0;
-}
-
-/* place embeds in the 70% column on tablet+ detail sections */
-@media (min-width: 768px) {
-  section.text>.embed {
-    grid-column: 2;
-  }
 }
