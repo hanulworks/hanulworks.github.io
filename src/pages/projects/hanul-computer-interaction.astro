@@ -16,9 +16,55 @@ const {
   tools,
   language,
 } = project;
+
+const webDemos = [
+  // "/projects/hanul-computer-interaction/demo_web_1.gif",
+  // "/projects/hanul-computer-interaction/demo_web_2.gif",
+  "/projects/hanul-computer-interaction/demo_web_3.gif",
+  "/projects/hanul-computer-interaction/demo_web_4.gif",
+  "/projects/hanul-computer-interaction/demo_web_5.gif",
+  "/projects/hanul-computer-interaction/demo_web_6.gif",
+];
+
+const mobileDemos = [
+  "/projects/hanul-computer-interaction/demo_mobile_1.gif",
+  "/projects/hanul-computer-interaction/demo_mobile_2.gif",
+  "/projects/hanul-computer-interaction/demo_mobile_3.gif",
+  "/projects/hanul-computer-interaction/demo_mobile_4.gif",
+  "/projects/hanul-computer-interaction/demo_mobile_5.gif",
+  "/projects/hanul-computer-interaction/demo_mobile_6.gif",
+];
+
+const prototypeStyle1 = [
+  "/projects/hanul-computer-interaction/prototype1.1.jpg",
+  "/projects/hanul-computer-interaction/prototype1.2.jpg",
+  "/projects/hanul-computer-interaction/prototype1.3.jpg",
+];
+
+const prototypeStyle2 = [
+  "/projects/hanul-computer-interaction/prototype2.1.jpg",
+  "/projects/hanul-computer-interaction/prototype2.2.jpg",
+  "/projects/hanul-computer-interaction/prototype2.3.jpg",
+  "/projects/hanul-computer-interaction/prototype2.4.png",
+  "/projects/hanul-computer-interaction/prototype2.5.png",
+];
 ---
 
 <DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
+  <section class="text">
+    <p class="subject">WEB BROWSER</p>
+    <div class="gallery gallery--docs">
+      {webDemos.map((src, i) => (
+        <img src={src} alt={`Web browser demo ${i + 1}`} loading="lazy" />
+      ))}
+    </div>
+    <p class="subject">MOBILE BROWSER</p>
+    <div class="gallery gallery--docs gallery--mobile">
+      {mobileDemos.map((src, i) => (
+        <img src={src} alt={`Mobile browser demo ${i + 1}`} loading="lazy" />
+      ))}
+    </div>
+  </section>
   <section class="text">
     <h6 class="section">I. CONCEPT</h6>
     <p class="subject">OVERVIEW</p>
@@ -161,207 +207,19 @@ const {
     </p>
   </section>
   <section class="text">
-    <h6 class="section">VI. DEMONSTRATION</h6>
-    <p class="subject">PROTOTYPE STYLE 1</p>
-    <section class="carousel carousel-mobile" aria-label="Gallery">
-      <ol class="carousel__viewport">
-        <li id="carousel__slide1_style1" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/prototype1.1.jpg"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide3_style1" class="carousel__prev"></a>
-          <a href="#carousel__slide2_style1" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide2_style1" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/prototype1.2.jpg"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide1_style1" class="carousel__prev"></a>
-          <a href="#carousel__slide3_style1" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide3_style1" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/prototype1.3.jpg"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide2_style1" class="carousel__prev"></a>
-          <a href="#carousel__slide1_style1" class="carousel__next"></a>
-        </li>
-      </ol>
-    </section>
-    <p class="subject">PROTOTYPE STYLE 2</p>
-    <section class="carousel" aria-label="Gallery">
-      <ol class="carousel__viewport">
-        <li id="carousel__slide1_style2" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/prototype2.1.jpg"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide5_style2" class="carousel__prev"></a>
-          <a href="#carousel__slide2_style2" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide2_style2" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/prototype2.2.jpg"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide1_style2" class="carousel__prev"></a>
-          <a href="#carousel__slide3_style2" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide3_style2" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/prototype2.3.jpg"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide2_style2" class="carousel__prev"></a>
-          <a href="#carousel__slide4_style2" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide4_style2" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/prototype2.4.png"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide3_style2" class="carousel__prev"></a>
-          <a href="#carousel__slide5_style2" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide5_style2" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/prototype2.5.png"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide4_style2" class="carousel__prev"></a>
-          <a href="#carousel__slide1_style2" class="carousel__next"></a>
-        </li>
-      </ol>
-    </section>
-    <p class="subject">WEB BROWSER</p>
-    <section class="carousel" aria-label="Gallery">
-      <ol class="carousel__viewport">
-        <li id="carousel__slide1_web" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/demo_web_1.gif"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide6_web" class="carousel__prev"></a>
-          <a href="#carousel__slide2_web" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide2_web" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/demo_web_2.gif"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide1_web" class="carousel__prev"></a>
-          <a href="#carousel__slide3_web" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide3_web" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/demo_web_3.gif"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide2_web" class="carousel__prev"></a>
-          <a href="#carousel__slide4_web" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide4_web" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/demo_web_4.gif"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide3_web" class="carousel__prev"></a>
-          <a href="#carousel__slide5_web" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide5_web" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/demo_web_5.gif"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide4_web" class="carousel__prev"></a>
-          <a href="#carousel__slide6_web" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide6_web" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/demo_web_6.gif"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide5_web" class="carousel__prev"></a>
-          <a href="#carousel__slide1_web" class="carousel__next"></a>
-        </li>
-      </ol>
-    </section>
-    <p class="subject">MOBILE BROWSER</p>
-    <section class="carousel carousel-mobile" aria-label="Gallery">
-      <ol class="carousel__viewport">
-        <li id="carousel__slide1_mobile" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/demo_mobile_1.gif"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide6_mobile" class="carousel__prev"></a>
-          <a href="#carousel__slide2_mobile" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide2_mobile" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/demo_mobile_2.gif"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide1_mobile" class="carousel__prev"></a>
-          <a href="#carousel__slide3_mobile" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide3_mobile" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/demo_mobile_3.gif"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide2_mobile" class="carousel__prev"></a>
-          <a href="#carousel__slide4_mobile" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide4_mobile" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/demo_mobile_4.gif"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide3_mobile" class="carousel__prev"></a>
-          <a href="#carousel__slide5_mobile" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide5_mobile" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/demo_mobile_5.gif"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide4_mobile" class="carousel__prev"></a>
-          <a href="#carousel__slide6_mobile" class="carousel__next"></a>
-        </li>
-        <li id="carousel__slide6_mobile" class="carousel__slide">
-          <img
-            src="/projects/hanul-computer-interaction/demo_mobile_6.gif"
-            alt=""
-          />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__slide5_mobile" class="carousel__prev"></a>
-          <a href="#carousel__slide1_mobile" class="carousel__next"></a>
-        </li>
-      </ol>
-    </section>
+    <h6 class="section">VI. PROTOTYPE</h6>
+    <p class="subject">STYLE 1</p>
+    <div class="gallery gallery--docs gallery--mobile">
+      {prototypeStyle1.map((src, i) => (
+        <img src={src} alt={`Prototype style 1 – image ${i + 1}`} loading="lazy" />
+      ))}
+    </div>
+    <p class="subject">STYLE 2</p>
+    <div class="gallery gallery--docs gallery--mobile">
+      {prototypeStyle2.map((src, i) => (
+        <img src={src} alt={`Prototype style 2 – image ${i + 1}`} loading="lazy" />
+      ))}
+    </div>
   </section>
   <section class="text">
     <h6 class="section">VII. ANALYSIS</h6>

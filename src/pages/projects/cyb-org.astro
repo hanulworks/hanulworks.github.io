@@ -19,6 +19,15 @@ const {
 ---
 
 <DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
+  
+  <div class="detailImage">
+    <img
+      src="/projects/cyb-org/cyb-org.png"
+      alt="cyb-org diagram"
+      loading="lazy"
+    />
+  </div>
+
   <section class="text text--compact">
     <h6 class="section">I. RESEARCH FRAMEWORK</h6>
     <p class="subject">CONCEPTUAL FOUNDATIONS</p>
@@ -90,11 +99,6 @@ const {
 
   <section class="text">
     <h6 class="section">IV. DOCUMENTATION</h6>
-    <!-- Always full-width image -->
-    <figure class="detailImage">
-      <img src="/projects/cyb-org/cyb-org.png" alt="cyb-org" loading="lazy" />
-    </figure>
-    <!-- GIFs: 1-up on mobile, 2-up at ≥992px via existing .gallery--docs CSS -->
     <div class="gallery gallery--docs">
       <img src="/projects/cyb-org/1.gif" alt="demo 1" loading="lazy" />
       <img src="/projects/cyb-org/2.gif" alt="demo 2" loading="lazy" />

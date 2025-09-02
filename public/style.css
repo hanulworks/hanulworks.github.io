@@ -801,7 +801,7 @@ body.nav-open {
   grid-area: meta;
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: var(--space-md);
 }
 
 /* Title */
@@ -828,7 +828,6 @@ body.nav-open {
   font-size: var(--text-sm);
   font-weight: 400;
   color: var(--brand-ink-2);
-  margin: var(--space-xs) 0 0;
 }
 
 /* Links */
@@ -882,7 +881,6 @@ body.nav-open {
   flex-wrap: wrap;
   column-gap: .6rem;
   row-gap: .4rem;
-  margin-bottom: var(--space-sm);
 }
 
 .work-row__domains .chip {
@@ -917,9 +915,9 @@ body.nav-open {
 }
 
 /* Desktop adjustments */
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .work-row {
-    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
     grid-template-areas:
       "meta domains"
       "meta image";
@@ -1024,8 +1022,10 @@ body.nav-open {
 /* subtle divider under detail header */
 .detail-header {
   position: relative;
-  padding-bottom: var(--space-lg);
-  margin-bottom: var(--section-gap);
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: var(--space-sm); /* unified vertical rhythm */
+  padding-bottom: var(--space-sm);
 }
 
 .detail-header::after {
@@ -1035,65 +1035,39 @@ body.nav-open {
   transform: translateX(-50%);
   bottom: 0;
   width: 100vw;
-  /* full-bleed divider line */
   border-bottom: 1px solid var(--brand-ink);
 }
 
 /* Detail pages: force square media only on this page scope */
-main#content.detail-surface :is(img, video, iframe) {
-  border-radius: 0;
-}
-
-/* Ensure mobile (single-column) behavior holds up to 992px */
-@media (max-width: 992px) {
-  .detail-header {
-    display: block;
-    /* overrides .work-row grid at 768–992 */
-  }
-}
+main#content.detail-surface :is(img, video, iframe) { border-radius: 0; }
 
 /* Detail pages: use card surface background */
-main#content.detail-surface {
-  background: var(--card-bg);
-}
+main#content.detail-surface { background: var(--card-bg); }
 
 /* Right column wrapper for detail header */
-.detail-right {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
+.detail-right { display: flex; flex-direction: column; row-gap: var(--space-sm); }
 
-/* In header context, don't use the grid-areas from WorkRow children */
+/* Normalize inner spacing: rely on row-gap, then set explicit bottoms where needed */
+.detail-header .work-row__year { margin: 0; }
+.detail-header .work-row__domains { margin: 0 0 var(--space-lg); }
+.detail-header .work-row__links { margin: 0 0 var(--space-md); }
+
+/* Remove WorkRow grid-areas inside header context */
 .detail-header .work-row__domains,
 .detail-header .work-row__image,
-.detail-header .work-links-and-meta {
-  grid-area: auto;
-}
-
-/* More breathing room between domains and links in detail header */
-.detail-header .work-row__domains {
-  margin-bottom: var(--space-md);
-}
+.detail-header .work-links-and-meta { grid-area: auto; }
 
 @media (min-width: 992px) {
-
-  /* Make header grid 60% / 40% at desktop sizes */
+  /* 60/40 split with consistent column gap */
   .detail-header {
-    background: none;
-    display: grid;
     grid-template-columns: minmax(0, 6fr) minmax(0, 4fr);
     column-gap: clamp(24px, 4vw, 56px);
   }
 
-  .detail-header>.work-meta {
-    grid-column: 1;
-    padding-right: clamp(24px, 4vw, 56px);
-  }
+  .detail-header > .work-meta { grid-column: 1; }
 
-  .detail-header>.detail-right {
+  .detail-header > .detail-right {
     grid-column: 2;
-    padding-left: clamp(24px, 4vw, 56px);
     background: color-mix(in srgb, var(--brand-accent-soft) 12%, transparent);
     border-radius: 8px;
     padding-block: var(--space-sm);
@@ -1156,7 +1130,6 @@ section.text.text--compact { row-gap: var(--space-lg); }
   margin: 0 0 var(--space-md);
   padding: 0;
   border: 0;
-  max-width: min(100%, 920px);
   margin-inline: auto;
 }
 
@@ -1169,8 +1142,7 @@ section.text.text--compact { row-gap: var(--space-lg); }
 /* tablet+ grid: 20% subjects / 80% texts & media */
 @media (min-width: 992px) {
   section.text {
-    grid-template-columns: 0.2fr 0.8fr;
-    /* 20 / 80 split */
+    grid-template-columns: minmax(0, 0.2fr) minmax(0, 0.8fr);
     column-gap: clamp(24px, 4vw, 56px);
     row-gap: var(--space-lg);
     align-items: start;
@@ -1219,6 +1191,10 @@ section.text.text--compact { row-gap: var(--space-lg); }
 /* Docs grid: 1 per row on phones, 2 per row on desktop; spans both columns via section.text rule */
 .gallery--docs { grid-template-columns: 1fr; }
 @media (min-width: 992px) { .gallery--docs { grid-template-columns: repeat(2, 1fr); } }
+
+/* Override for mobile browser GIFs gallery */
+.gallery--docs.gallery--mobile { grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 992px) { .gallery--docs.gallery--mobile { grid-template-columns: repeat(3, 1fr); } }
 
 /* Make sure images fill cells */
 .gallery img { display: block; width: 100%; height: auto; }

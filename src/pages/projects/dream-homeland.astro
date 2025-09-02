@@ -16,6 +16,11 @@ const {
   tools,
   language,
 } = project;
+
+const visualStills = Array.from(
+  { length: 6 },
+  (_, i) => `/projects/dream-homeland/demo${i + 1}.png`,
+);
 ---
 
 <DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
@@ -45,7 +50,7 @@ const {
   <!-- II. PROCESS -->
   <section class="text">
     <h6 class="section">II. PROCESS</h6>
-    
+
     <p class="subject">Design Priorities</p>
     <p class="text">
       - Develop a distinct visual language<br />
@@ -96,40 +101,15 @@ const {
     </div>
 
     <p class="subject">Visual Stills</p>
-    <section class="carousel" aria-label="Gallery">
-      <ol class="carousel__viewport">
-        <li id="carousel__dh_slide1" class="carousel__slide">
-          <img src="/projects/dream-homeland/demo1.png" alt="Visual still 1" />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__dh_slide5" class="carousel__prev"></a>
-          <a href="#carousel__dh_slide2" class="carousel__next"></a>
-        </li>
-        <li id="carousel__dh_slide2" class="carousel__slide">
-          <img src="/projects/dream-homeland/demo2.png" alt="Visual still 2" />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__dh_slide1" class="carousel__prev"></a>
-          <a href="#carousel__dh_slide3" class="carousel__next"></a>
-        </li>
-        <li id="carousel__dh_slide3" class="carousel__slide">
-          <img src="/projects/dream-homeland/demo3.png" alt="Visual still 3" />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__dh_slide2" class="carousel__prev"></a>
-          <a href="#carousel__dh_slide4" class="carousel__next"></a>
-        </li>
-        <li id="carousel__dh_slide4" class="carousel__slide">
-          <img src="/projects/dream-homeland/demo4.png" alt="Visual still 4" />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__dh_slide3" class="carousel__prev"></a>
-          <a href="#carousel__dh_slide5" class="carousel__next"></a>
-        </li>
-        <li id="carousel__dh_slide5" class="carousel__slide">
-          <img src="/projects/dream-homeland/demo5.png" alt="Visual still 5" />
-          <div class="carousel__snapper"></div>
-          <a href="#carousel__dh_slide4" class="carousel__prev"></a>
-          <a href="#carousel__dh_slide1" class="carousel__next"></a>
-        </li>
-      </ol>
-    </section>
+    <div class="gallery gallery--docs">
+      {
+        visualStills.map((src, i) => (
+          <figure class="detailImage">
+            <img src={src} alt={`Visual still ${i + 1}`} loading="lazy" />
+          </figure>
+        ))
+      }
+    </div>
   </section>
 
   <!-- V. REFLECTION -->
