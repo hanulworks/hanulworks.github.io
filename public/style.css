@@ -1083,9 +1083,6 @@ section.text {
   /* consistent vertical space between children */
 }
 
-/* Compact variant to tighten vertical rhythm for specific sections */
-section.text.text--compact { row-gap: var(--space-lg); }
-
 /* headings & copy */
 .section {
   margin: 0 0 var(--space-md);
