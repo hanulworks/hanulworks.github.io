@@ -91,7 +91,7 @@ export const projects: Project[] = [
     year: "2021",
     links: [
       { href: "/projects/the-net-works", label: "VIEW DETAILS", context: "summary" },
-      { href: "/projects/the-net-works/index.html", label: "EXPLORE PROJECT", external: true, context: "detail" }
+      { href: "/projects/the-net-works/resource.html", label: "EXPLORE PROJECT", external: true, context: "detail" }
     ],
     domains: ["Digital Ethnography", "Cybersecurity Studies", "Civic Technology", "Research Documentation"],
     tools: "Google Sheets, Looker Studio, Figma",
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     year: "2020",
     links: [
       { href: "/projects/cyb-org", label: "VIEW DETAILS", context: "summary" },
-      { href: "/projects/cyb-org/index.html", label: "EXPLORE PROJECT", external: true, context: "detail" }
+      { href: "/projects/cyb-org/diagram.html", label: "EXPLORE PROJECT", external: true, context: "detail" }
     ],
     domains: ["Media Theory", "Network Visualization", "Systems Mapping", "Information Architecture"],
     tools: "Visual Studio Code",
