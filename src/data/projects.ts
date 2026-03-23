@@ -25,7 +25,7 @@ export const projects: Project[] = [
       { href: "https://www.genesis.com/uk/en/configurator/build-your-genesis/electrified-gv70/3d/drivetrains?code=BBBBBB&packages=&acc=", label: "ELECTRIFIED GV70, UK", external: true, context: "summary" }
     ],
     domains: ["3D Visualization", "Interaction Design", "User Experience Design", "Product Strategy"],
-    image: "/projects/genesis/gv60.png",
+    image: "/commercial/build-your-genesis/gv60.png",
     imageAlt: "Genesis"
   },
   {
@@ -41,24 +41,35 @@ export const projects: Project[] = [
       { href: "https://ecv.hyundai.com/resources/assets/file/UNIVERSE-Fuel-Cell-Catalog-Spread-EN.pdf", label: "UNIVERSE Catalog", external: true, context: "summary" }
     ],
     domains: ["Web Design", "Visual Communication", "Brand Strategy", "Technical Writing"],
-    image: "/projects/hmc-ecv/homepage.png",
+    image: "/commercial/hyundai-campaigns/homepage.png",
     imageAlt: "Hyundai ECV"
+  },
+  {
+    slug: "media-smart-citizens",
+    title: "Media Smart Citizens",
+    synopsis: "Developed a comprehensive brand identity including logo, color palette, and visual guidelines, then designed functional presentation templates and website layouts for Media Smart Citizens",
+    year: "2021",
+    links: [{ href: "/projects/media-smart-citizens", label: "VIEW DETAILS", context: "summary" }],
+    domains: ["Brand Identity", "Visual Guidelines", "Presentation Design", "Web Layout"],
+    tools: "Adobe Illustrator, InDesign, Figma, Keynote",
+    image: "/commercial/media-smart-citizens/brand-white.png",
+    imageAlt: "Media Smart Citizens brand gradient",
   },
   {
     slug: "hanul-computer-interaction",
     title: "Hanul-Computer Interaction",
     synopsis: "A digital-physical interactive experience investigating movement-based interactivity, machine learning, and collaborative authorship between human and machine",
-    year: "2021-22",
+    year: "2022",
     links: [
       { href: "/projects/hanul-computer-interaction", label: "VIEW DETAILS", context: "summary" },
-      { href: "/projects/hanul-computer-interaction/web.html", label: "EXPLORE WEB VERSION", external: true, context: "detail" },
-      { href: "/projects/hanul-computer-interaction/mobile.html", label: "EXPLORE MOBILE VERSION", external: true, context: "detail" },
+      { href: "/studies/hanul-computer-interaction/web.html", label: "EXPLORE WEB VERSION", external: true, context: "detail" },
+      { href: "/studies/hanul-computer-interaction/mobile.html", label: "EXPLORE MOBILE VERSION", external: true, context: "detail" },
       { href: "https://parsons.edu/dt-2022/hanul-computer-interaction-hci/", label: "PARSONS DESIGN & TECHNOLOGY THESIS SHOW 2022", external: true, context: "detail" }
     ],
     domains: ["Human-Computer Interaction", "Real-Time Pose Estimation", "Interactive System Design", "Machine Learning"],
     tools: "P5.js , Ml5.js",
     language: "JavaScript, HTML, CSS",
-    image: "/projects/hanul-computer-interaction/prototype2.1.jpg",
+    image: "/studies/hanul-computer-interaction/prototype2.1.jpg",
     imageAlt: "Hanul-Computer Interaction"
   },
   {
@@ -69,7 +80,7 @@ export const projects: Project[] = [
     links: [{ href: "/projects/fulcrum-analytics", label: "VIEW DETAILS", context: "summary" }],
     domains: ["Data Visualization", "Information Design", "Visual Communication", "Content Strategy"],
     tools: "Google Sheets, Looker Studio, Adobe Illustrator, InDesign",
-    image: "/projects/fulcrum-analytics/Infographic1.png",
+    image: "/commercial/fulcrum-analytics/Infographic1.png",
     imageAlt: "Fulcrum Analytics Infographic"
   },
   {
@@ -81,7 +92,7 @@ export const projects: Project[] = [
     domains: ["Generative AI Design", "Fashion Technology", "Computational Creativity", "Machine Learning"],
     tools: "Google Collab, Adobe Illustrator, InDesign, Premiere Pro",
     language: "Python",
-    image: "/projects/bird-dress/thumbnail.JPEG",
+    image: "/studies/bird-dress/thumbnail.JPEG",
     imageAlt: "BirDress"
   },
   {
@@ -91,12 +102,12 @@ export const projects: Project[] = [
     year: "2021",
     links: [
       { href: "/projects/the-net-works", label: "VIEW DETAILS", context: "summary" },
-      { href: "/projects/the-net-works/resource.html", label: "EXPLORE PROJECT", external: true, context: "detail" }
+      { href: "/studies/the-net-works/resource.html", label: "EXPLORE PROJECT", external: true, context: "detail" }
     ],
     domains: ["Digital Ethnography", "Cybersecurity Studies", "Civic Technology", "Research Documentation"],
     tools: "Google Sheets, Looker Studio, Figma",
     language: "HTML, CSS, JavaScript",
-    image: "/projects/the-net-works/thumbnail.png",
+    image: "/studies/the-net-works/thumbnail.png",
     imageAlt: "The_Net_Works"
   },
   {
@@ -106,12 +117,12 @@ export const projects: Project[] = [
     year: "2020",
     links: [
       { href: "/projects/cyb-org", label: "VIEW DETAILS", context: "summary" },
-      { href: "/projects/cyb-org/diagram.html", label: "EXPLORE PROJECT", external: true, context: "detail" }
+      { href: "/studies/cyb-org/diagram.html", label: "EXPLORE PROJECT", external: true, context: "detail" }
     ],
     domains: ["Media Theory", "Network Visualization", "Systems Mapping", "Information Architecture"],
     tools: "Visual Studio Code",
     language: "JavaScript, HTML, CSS",
-    image: "/projects/cyb-org/cyb-org.png",
+    image: "/studies/cyb-org/cyb-org.png",
     imageAlt: "cyb-org"
   },
   {
@@ -123,7 +134,7 @@ export const projects: Project[] = [
     domains: ["Real-Time Visual Synthesis", "Audiovisual Performance", "Live Performance Tooling", "Creative Coding"],
     tools: "Max, Ableton Live",
     language: "C",
-    image: "/projects/solaris/demo1.gif",
+    image: "/studies/solaris/demo1.gif",
     imageAlt: "SOLARIS"
   },
   {
@@ -135,8 +146,19 @@ export const projects: Project[] = [
     domains: ["VR Design", "Learning Experience Design", "Mental Health Education", "Therapeutic Technologies"],
     tools: "Unity",
     language: "C#",
-    image: "/projects/vr-therapy-101/thumbnail.png",
+    image: "/studies/vr-therapy-101/thumbnail.png",
     imageAlt: "VR Therapy 101"
+  },
+  {
+    slug: "yr-no-hater",
+    title: "yr no hater",
+    synopsis: "An experimental web poem emphasizing low‑energy, high‑performance interaction to reframe digital text‑based art",
+    year: "2019",
+    links: [{ href: "/studies/yr-no-hater/index.html", label: "EXPLORE PROJECT", external: true, context: "summary" }],
+    domains: ["Digital Literature", "Interactive Web Art"],
+    language: "JavaScript, CSS, HTML",
+    image: "/studies/yr-no-hater/1.gif",
+    imageAlt: "yr no hater"
   },
   {
     slug: "dream-homeland",
@@ -147,7 +169,7 @@ export const projects: Project[] = [
     domains: ["Immersive Narrative", "Virtual Environment Design", "Experimental Media", "Spatial Computing"],
     tools: "Unity",
     language: "C#",
-    image: "/projects/dream-homeland/demo1.png",
+    image: "/studies/dream-homeland/demo1.png",
     imageAlt: "dream-homeland"
   }
 ];

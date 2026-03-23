@@ -1,0 +1,300 @@
+---
+/**
+ * Image-only gallery: whole images (contain), subtle hover, click = lightbox.
+ * Refined presentation: no card frames; click affordance preserved.
+ */
+interface Props {
+  slug: string;
+  seriesTitle: string;
+  leadImage?: string;
+  galleryImages: string[];
+}
+
+const { slug, seriesTitle, leadImage, galleryImages } = Astro.props;
+const rootId = `photo-gallery-${slug}`;
+---
+
+{
+  (leadImage || galleryImages.length > 0) && (
+    <div id={rootId} class="photo-gallery-root">
+      <div class="photo-gallery-body" aria-label={`${seriesTitle} photographs`}>
+        {leadImage && (
+          <figure class="photo-lead-frame">
+            <button
+              type="button"
+              class="photo-open"
+              data-lightbox-target
+              aria-label={`Enlarge: ${seriesTitle} photograph 1`}
+            >
+              <img
+                src={leadImage}
+                alt={`${seriesTitle} photograph 1`}
+                loading="eager"
+                decoding="async"
+              />
+              <span class="photo-open__hint" aria-hidden="true">
+                View larger
+              </span>
+            </button>
+          </figure>
+        )}
+
+        {galleryImages.length > 0 && (
+          <div class="photo-grid photo-grid--whole">
+            {galleryImages.map((src, i) => (
+              <figure class="photo-cell">
+                <button
+                  type="button"
+                  class="photo-open"
+                  data-lightbox-target
+                  aria-label={`Enlarge: ${seriesTitle} photograph ${i + 2}`}
+                >
+                  <img
+                    src={src}
+                    alt={`${seriesTitle} photograph ${i + 2}`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="photo-open__hint" aria-hidden="true">
+                    View larger
+                  </span>
+                </button>
+              </figure>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div
+        class="photo-lightbox"
+        data-lightbox
+        hidden
+        role="dialog"
+        aria-modal="true"
+        aria-label="Enlarged photograph"
+      >
+        <button
+          type="button"
+          class="photo-lightbox__backdrop"
+          data-lightbox-close
+          aria-label="Close enlarged image"
+        />
+        <div class="photo-lightbox__panel">
+          <img class="photo-lightbox__img" src="" alt="" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+<script is:inline define:vars={{ rootId }}>
+  (() => {
+    const root = document.getElementById(rootId);
+    if (!root) return;
+
+    const lightbox = root.querySelector("[data-lightbox]");
+    const lbImg = lightbox?.querySelector(".photo-lightbox__img");
+    const triggers = root.querySelectorAll("[data-lightbox-target]");
+    const closers = root.querySelectorAll("[data-lightbox-close]");
+
+    if (!lightbox || !lbImg) return;
+
+    const open = (src, alt) => {
+      lbImg.src = src;
+      lbImg.alt = alt || "";
+      lightbox.hidden = false;
+      document.body.classList.add("photo-lightbox-open");
+    };
+
+    const close = () => {
+      lightbox.hidden = true;
+      lbImg.removeAttribute("src");
+      lbImg.alt = "";
+      document.body.classList.remove("photo-lightbox-open");
+    };
+
+    triggers.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const img = btn.querySelector("img");
+        if (!img?.src) return;
+        open(img.currentSrc || img.src, img.alt || "");
+      });
+    });
+
+    closers.forEach((el) => el.addEventListener("click", () => close()));
+
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && !lightbox.hidden) close();
+    });
+  })();
+</script>
+
+<style>
+  /* Match detail pages: `section.text` uses margin-block: var(--section-gap) */
+  .photo-gallery-root {
+    margin-top: var(--section-gap);
+  }
+
+  .photo-gallery-body {
+    width: 100%;
+    margin: 0 0 var(--space-xl);
+  }
+
+  .photo-lead-frame {
+    margin: 0 0 clamp(20px, 3vw, 36px);
+    padding: 0;
+    border: 0;
+  }
+
+  /* On very wide viewports, cap the lead image like grid cells (same max height as gallery) */
+  @media (min-width: 1400px) {
+    .photo-lead-frame {
+      max-width: min(100%, 720px);
+      margin-inline: auto;
+    }
+
+    .photo-lead-frame .photo-open img {
+      max-height: min(72vh, 720px);
+    }
+  }
+
+  .photo-grid--whole {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+    gap: clamp(16px, 2.5vw, 32px);
+    align-items: start;
+  }
+
+  .photo-cell {
+    margin: 0;
+    min-width: 0;
+  }
+
+  .photo-open {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+    text-align: left;
+    border-radius: 0;
+    overflow: visible;
+    transition: opacity 200ms ease;
+  }
+
+  .photo-open:focus-visible {
+    outline: 2px solid var(--brand-ink);
+    outline-offset: 4px;
+  }
+
+  .photo-open:hover,
+  .photo-open:focus-visible {
+    opacity: 1;
+  }
+
+  .photo-open:hover img,
+  .photo-open:focus-visible img {
+    opacity: 0.94;
+  }
+
+  .photo-open__hint {
+    position: absolute;
+    left: 50%;
+    bottom: clamp(6px, 1.5vw, 12px);
+    transform: translateX(-50%) translateY(4px);
+    padding: 0.28rem 0.55rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    color: var(--brand-ink);
+    background: rgb(255 255 255 / 0.72);
+    backdrop-filter: blur(6px);
+    border-radius: 2px;
+    opacity: 0;
+    transition:
+      opacity 180ms ease,
+      transform 180ms ease;
+    z-index: 1;
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.06);
+  }
+
+  .photo-open:hover .photo-open__hint,
+  .photo-open:focus-visible .photo-open__hint {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .photo-open img {
+    position: relative;
+    z-index: 0;
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: min(88vh, 920px);
+    object-fit: contain;
+    object-position: center;
+    margin: 0 auto;
+    transition: opacity 200ms ease;
+  }
+
+  .photo-grid--whole .photo-open img {
+    max-height: min(72vh, 720px);
+  }
+
+  .photo-lightbox[hidden] {
+    display: none !important;
+  }
+
+  .photo-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+    padding: clamp(12px, 3vw, 32px);
+  }
+
+  .photo-lightbox__backdrop {
+    position: absolute;
+    inset: 0;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    background: rgb(0 0 0 / 0.88);
+    cursor: zoom-out;
+  }
+
+  .photo-lightbox__panel {
+    position: relative;
+    z-index: 1;
+    max-width: min(96vw, 1600px);
+    max-height: min(94dvh, 1200px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .photo-lightbox__img {
+    display: block;
+    max-width: 100%;
+    max-height: min(94dvh, 1200px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 20px 60px rgb(0 0 0 / 0.4);
+    pointer-events: none;
+  }
+</style>
+
+<style is:global>
+  body.photo-lightbox-open {
+    overflow: hidden;
+  }
+</style>

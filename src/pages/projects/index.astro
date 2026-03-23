@@ -1,24 +1,21 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import WorkRow from "../../components/WorkRow.astro";
-import projects from "../../data/projects";
 ---
 
-<BaseLayout title="Projects" description="Projects by Hanul Park">
+<BaseLayout title="Projects" description="Portfolio work by Hanul Park">
+  <Fragment slot="head">
+    <meta http-equiv="refresh" content="0;url=/commercial" />
+    <link rel="canonical" href="/commercial" />
+  </Fragment>
   <main id="content">
-    <section class="work-section" aria-label="Projects list">
-      {projects.map(p => (
-        <WorkRow
-          title={p.title}
-          synopsis={p.synopsis}
-          year={p.year}
-          links={p.links}
-          domains={p.domains}
-          image={p.image}
-          imageAlt={p.imageAlt}
-          slug={p.slug}
-        />
-      ))}
+    <section class="introduction" aria-label="Redirect">
+      <p class="text">
+        This listing has moved. Go to
+        <a class="work-link work-link--detail" href="/commercial">Commercial</a>,
+        <a class="work-link work-link--detail" href="/sketches">Sketches</a>,
+        <a class="work-link work-link--detail" href="/studies">Studies</a>, or
+        <a class="work-link work-link--detail" href="/photos">Photos</a>.
+      </p>
     </section>
   </main>
 </BaseLayout>

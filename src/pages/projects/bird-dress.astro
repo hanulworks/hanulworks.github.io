@@ -17,15 +17,15 @@ const {
   language,
 } = project;
 
-// Auto-collect & sort outputs from /public/projects/bird-dress
+// Auto-collect & sort outputs from /public/studies/bird-dress
 const sixHourEntries = Object.entries(
-  import.meta.glob("/public/projects/bird-dress/6hrs*.*", {
+  import.meta.glob("/public/studies/bird-dress/6hrs*.*", {
     eager: true,
     as: "url",
   }),
 );
 const nineHourEntries = Object.entries(
-  import.meta.glob("/public/projects/bird-dress/9hrs*.*", {
+  import.meta.glob("/public/studies/bird-dress/9hrs*.*", {
     eager: true,
     as: "url",
   }),
@@ -75,7 +75,7 @@ const nineHourImgs = nineHourEntries
     <p class="subject">DOMAINS</p>
     <figure class="detailImage">
       <img
-        src="/projects/bird-dress/Domains.png"
+        src="/studies/bird-dress/Domains.png"
         alt="Reference domains map for BirDress"
         loading="lazy"
       />
@@ -92,7 +92,7 @@ const nineHourImgs = nineHourEntries
 
     <figure class="detailImage">
       <img
-        src="/projects/bird-dress/Dataset_Birds.png"
+        src="/studies/bird-dress/Dataset_Birds.png"
         alt="Curated bird dataset montage"
         loading="lazy"
       />
@@ -144,17 +144,17 @@ const nineHourImgs = nineHourEntries
       aria-label="BirDress posters"
     >
       <img
-        src="/projects/bird-dress/poster_1.JPEG"
+        src="/studies/bird-dress/poster_1.JPEG"
         alt="BirDress poster 1"
         loading="lazy"
       />
       <img
-        src="/projects/bird-dress/poster_2.JPEG"
+        src="/studies/bird-dress/poster_2.JPEG"
         alt="BirDress poster 2"
         loading="lazy"
       />
       <img
-        src="/projects/bird-dress/poster_3.JPEG"
+        src="/studies/bird-dress/poster_3.JPEG"
         alt="BirDress poster 3"
         loading="lazy"
       />

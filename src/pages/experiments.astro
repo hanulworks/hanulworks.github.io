@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="Redirect" description="This page has moved">
+  <Fragment slot="head">
+    <meta http-equiv="refresh" content="0;url=/sketches" />
+    <link rel="canonical" href="/sketches" />
+  </Fragment>
+  <main id="content">
+    <section class="introduction" aria-label="Redirect">
+      <p class="text">
+        This listing has moved to
+        <a class="work-link work-link--detail" href="/sketches">Sketches</a>.
+      </p>
+    </section>
+  </main>
+</BaseLayout>

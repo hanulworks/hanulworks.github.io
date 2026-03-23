@@ -1,0 +1,15 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import WorkRow from "../../components/WorkRow.astro";
+import { getStudiesItems, workRowProps } from "../../data/workLists";
+---
+
+<BaseLayout title="Studies" description="Studies and research projects by Hanul Park">
+  <main id="content">
+    <section class="work-section" aria-label="Studies">
+      {getStudiesItems().map((item) => (
+        <WorkRow {...workRowProps(item)} />
+      ))}
+    </section>
+  </main>
+</BaseLayout>

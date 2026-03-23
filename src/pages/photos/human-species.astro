@@ -1,0 +1,50 @@
+---
+import DetailLayout from "../../layouts/DetailLayout.astro";
+import PhotoSeriesGallery from "../../components/PhotoSeriesGallery.astro";
+import { getPhotoBySlug } from "../../data/photos";
+import { sortGlobUrlsByNumericStem } from "../../utils/sortPhotoPaths";
+
+const project = getPhotoBySlug("human-species");
+if (!project) {
+  throw new Error("Photo series not found for 'human-species'");
+}
+
+const {
+  title,
+  synopsis,
+  year,
+  domains = [],
+  links = [],
+  tools,
+  language,
+} = project;
+
+const imageEntries = Object.entries(
+  import.meta.glob("/public/photos/human-species/*.JPG", {
+    eager: true,
+    as: "url",
+  }),
+) as [string, string][];
+
+const imageUrls = sortGlobUrlsByNumericStem(imageEntries);
+const leadImage = imageUrls[0];
+const galleryImages = imageUrls.slice(1);
+---
+
+<DetailLayout
+  {title}
+  {synopsis}
+  {year}
+  {domains}
+  {links}
+  {tools}
+  {language}
+  showSynopsisInHeader={false}
+>
+  <PhotoSeriesGallery
+    slug="human-species"
+    seriesTitle="Human Species"
+    leadImage={leadImage}
+    galleryImages={galleryImages}
+  />
+</DetailLayout>

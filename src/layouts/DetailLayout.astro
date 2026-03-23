@@ -10,6 +10,8 @@ export interface LinkItem {
 export interface DetailLayoutProps {
     title: string;
     synopsis?: string;
+    /** When false, synopsis is still used for page meta description but not shown in the header */
+    showSynopsisInHeader?: boolean;
     year?: string;
     links?: LinkItem[];
     domains?: string[];
@@ -22,6 +24,7 @@ export interface DetailLayoutProps {
 const {
     title,
     synopsis = "",
+    showSynopsisInHeader = true,
     year,
     links = [],
     domains = [],
@@ -40,7 +43,9 @@ const detailLinks = (links || []).filter((l) => l.context === "detail");
             <!-- Left column: reuse WorkRow meta stack -->
             <div class="work-meta">
                 <h3 id="detail-title" class="work-row__title">{title}</h3>
-                {synopsis && <p class="work-row__synopsis">{synopsis}</p>}
+                {showSynopsisInHeader && synopsis && (
+                    <p class="work-row__synopsis">{synopsis}</p>
+                )}
                 {year && <p class="work-row__year">{year}</p>}
                 {detailLinks.length > 0 && (
                     <ul class="work-row__links">

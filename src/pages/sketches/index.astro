@@ -1,24 +1,15 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import WorkRow from "../../components/WorkRow.astro";
-import sketches from "../../data/sketches";
+import sketchItems from "../../data/sketches";
+import { workRowProps } from "../../data/workLists";
 ---
 
-<BaseLayout title="Sketches" description="Sketches by Hanul Park">
+<BaseLayout title="Sketches" description="Interactive sketches and generative work by Hanul Park">
   <main id="content">
-    <section class="work-section" aria-label="Sketches list">
-      {sketches.map(s => (
-        <WorkRow
-          title={s.title}
-          synopsis={s.synopsis}
-          year={s.year}
-          links={s.links}
-          domains={s.domains}
-          image={s.image}
-          imageAlt={s.imageAlt}
-          tool={s.tool}
-          code={s.code}
-        />
+    <section class="work-section" aria-label="Sketches">
+      {sketchItems.map((s) => (
+        <WorkRow {...workRowProps(s)} />
       ))}
     </section>
   </main>
