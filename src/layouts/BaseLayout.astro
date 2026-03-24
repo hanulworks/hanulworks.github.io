@@ -1,6 +1,7 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import InteractiveNoiseBackground from "../components/InteractiveNoiseBackground.astro";
 
 // Layout props with safe defaults
 const { title, description, bodyClass = "" } = Astro.props;
@@ -41,6 +42,7 @@ const pageDescription = description ?? "Portfolio of Hanul Park";
         <slot name="head" />
     </head>
     <body class={bodyClass}>
+        <InteractiveNoiseBackground />
         <slot name="background" />
         <!-- Site chrome: primary nav order is defined in `data/siteNav.ts` -->
         <Header />

@@ -14,7 +14,7 @@ function setup() {
   canvas.style('z-index', '-1');
 
   noFill();
-  stroke(155, 212, 252);
+  stroke(255, 255, 255);
   noLoop();
   myTurtle = new Turtle();
 }

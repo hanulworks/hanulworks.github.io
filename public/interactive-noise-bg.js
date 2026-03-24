@@ -33,6 +33,8 @@
     uniform vec2 u_mouse;
     uniform vec2 u_resolution;
     uniform float u_reduceMotion;
+    uniform vec2 u_click;
+    uniform float u_click_t;
 
     float hash2(vec2 p) {
       return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
@@ -88,9 +90,12 @@
     void main() {
       vec2 frag = gl_FragCoord.xy;
       vec2 mousePx = u_mouse * u_resolution;
+      vec2 clickPx = u_click * u_resolution;
       vec2 toMouse = frag - mousePx;
+      vec2 toClick = frag - clickPx;
       /* Normalized distance — smaller radius = tighter mouse effect */
       float md = length(toMouse) / min(u_resolution.x, u_resolution.y);
+      float cd = length(toClick) / min(u_resolution.x, u_resolution.y);
 
       vec2 uv = v_uv;
       float t = u_time * (1.0 - u_reduceMotion * 0.92);
@@ -116,27 +121,35 @@
       float w2 = worley(uv * 22.0 - t * 0.016);
       float cells = mix(w, w2, 0.45);
 
-      float gray = mix(n0, n1, 0.2);
-      gray = mix(gray, cells, 0.32);
-      gray = pow(gray, 0.88);
+      float gray = mix(n0, n1, 0.22);
+      gray = mix(gray, cells, 0.4);
+      /* Emphasize shape contours while keeping bright palette */
+      gray = smoothstep(0.18, 0.95, gray);
+      gray = pow(gray, 0.82);
       gray = clamp(gray, 0.0, 1.0);
 
       /* Light-first: soft greys to white (texture should read clearly) */
-      float light = mix(0.80, 1.0, gray);
+      float light = mix(0.76, 1.0, gray);
       vec3 base = vec3(light);
 
       /* Mouse: modest radius, clearly visible color wash */
-      float glow = smoothstep(0.13, 0.0, md);
+      float glow = smoothstep(0.15, 0.0, md);
       float pulse = 0.75 + 0.25 * sin(t * 1.15 + gray * 7.0);
       vec3 chroma =
         0.68 +
         0.32 * cos(6.28318 * (gray * 0.9 + vec3(0.0, 0.33, 0.67)) + t * 0.32);
 
-      vec3 tint = mix(base, chroma, 0.4);
-      vec3 lit = mix(base, tint, glow * 0.42 * pulse);
-      lit += vec3(0.07, 0.18, 0.24) * glow * 0.14;
+      vec3 tint = mix(base, chroma, 0.5);
+      vec3 lit = mix(base, tint, glow * 0.58 * pulse);
+      lit += vec3(0.07, 0.18, 0.24) * glow * 0.22;
+
+      /* Click impact: quick solid burst circle (no hollow center) */
+      float clickLife = clamp(1.0 - (u_time - u_click_t) * 2.4, 0.0, 1.0);
+      float clickCircle = smoothstep(0.16, 0.0, cd);
+      vec3 clickColor = vec3(0.55, 0.78, 1.0);
+      lit += clickColor * clickCircle * 0.34 * clickLife;
       /* Keep overall bright; allow deeper light-greys for grain contrast */
-      lit = clamp(lit, 0.74, 1.0);
+      lit = clamp(lit, 0.72, 1.0);
 
       vec2 q = v_uv - 0.5;
       float vig = 1.0 - dot(q, q) * 0.22;
@@ -187,6 +200,8 @@
   const uMouse = gl.getUniformLocation(prog, "u_mouse");
   const uRes = gl.getUniformLocation(prog, "u_resolution");
   const uReduceMotion = gl.getUniformLocation(prog, "u_reduceMotion");
+  const uClick = gl.getUniformLocation(prog, "u_click");
+  const uClickT = gl.getUniformLocation(prog, "u_click_t");
 
   const reduceMotion =
     typeof window !== "undefined" &&
@@ -196,6 +211,8 @@
       : 0;
 
   let mouseNdc = { x: 0.5, y: 0.5 };
+  let clickNdc = { x: 0.5, y: 0.5 };
+  let clickTime = -1000;
   let raf = 0;
   let running = true;
   const start = performance.now() / 1000;
@@ -216,6 +233,12 @@
     mouseNdc.y = 1.0 - e.clientY / window.innerHeight;
   }
 
+  function onDown(e) {
+    clickNdc.x = e.clientX / window.innerWidth;
+    clickNdc.y = 1.0 - e.clientY / window.innerHeight;
+    clickTime = performance.now() / 1000 - start;
+  }
+
   function draw() {
     if (!running) return;
     const t = performance.now() / 1000 - start;
@@ -225,6 +248,8 @@
     gl.vertexAttribPointer(locPos, 2, gl.FLOAT, false, 0, 0);
     gl.uniform1f(uTime, t);
     gl.uniform2f(uMouse, mouseNdc.x, mouseNdc.y);
+    gl.uniform2f(uClick, clickNdc.x, clickNdc.y);
+    gl.uniform1f(uClickT, clickTime);
     gl.uniform2f(uRes, canvas.width, canvas.height);
     gl.uniform1f(uReduceMotion, reduceMotion);
     gl.drawArrays(gl.TRIANGLES, 0, 6);
@@ -234,6 +259,7 @@
   resize();
   window.addEventListener("resize", resize, { passive: true });
   window.addEventListener("pointermove", onMove, { passive: true });
+  window.addEventListener("pointerdown", onDown, { passive: true });
 
   draw();
 

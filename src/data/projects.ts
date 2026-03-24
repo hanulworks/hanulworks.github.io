@@ -160,7 +160,12 @@ export const projects: Project[] = [
     synopsis: "An experimental web poem emphasizing low‑energy, high‑performance interaction to reframe digital text‑based art",
     year: "2019",
     links: [{ href: "/studies/yr-no-hater/index.html", label: "EXPLORE PROJECT", external: true, context: "summary" }],
-    domains: ["Digital Literature", "Interactive Web Art"],
+    domains: [
+      "Digital Literature",
+      "Interactive Web Art",
+      "Poetic Interface",
+      "Performance Web Design",
+    ],
     language: "JavaScript, CSS, HTML",
     image: "/studies/yr-no-hater/1.gif",
     imageAlt: "yr no hater"

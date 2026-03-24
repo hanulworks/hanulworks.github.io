@@ -3,13 +3,13 @@
    ========================================================= */
 @import url('https://rsms.me/inter/inter.css');
 
-/* ----- Home: interactive WebGL noise behind content (see InteractiveNoiseBackground) ----- */
-body.home {
+/* ----- Interactive WebGL noise behind all pages (see InteractiveNoiseBackground) ----- */
+body {
   background-image: none;
   background-color: transparent;
 }
 
-body.home .noise-bg-canvas {
+.noise-bg-canvas {
   position: fixed;
   inset: 0;
   width: 100%;
@@ -19,9 +19,9 @@ body.home .noise-bg-canvas {
   z-index: 0;
 }
 
-body.home .site-header,
-body.home .site-footer,
-body.home main#content {
+.site-header,
+.site-footer,
+main#content {
   position: relative;
   z-index: 1;
 }
@@ -70,13 +70,13 @@ body.home main#content {
   /* Sections & cards */
   --section-gap: clamp(48px, 8vw, 96px);
   --card-padding: clamp(1rem, 2vw, 1.5rem);
-  --color-card-surface: rgba(255, 255, 255, 0.65);
+  --color-card-surface: rgba(255, 255, 255, 0.44);
   --radius-card: 12px;
   --shadow-card: 0 6px 24px rgba(0, 0, 0, 0.05);
 
   /* Navigation chrome */
   --width-desktop-nav-rail: 240px;
-  --font-size-nav: clamp(12px, 4vw, 14px);
+  --font-size-nav: clamp(14px, 4.4vw, 18px);
   --size-nav-toggle-hit-area: 28px;
   --height-nav-toggle-bar: 1.5px;
 
@@ -291,6 +291,30 @@ u a {
   z-index: 1000;
 }
 
+/* Brand anchor pinned on the far-left; project links remain on right nav */
+.brand-left {
+  position: fixed;
+  top: var(--space-sm);
+  left: var(--space-sm);
+  z-index: 2001;
+  display: inline-block;
+  padding: 6px 0;
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: var(--font-size-nav);
+  line-height: 1.2;
+  font-weight: 500;
+  background: transparent;
+}
+
+.brand-left:hover,
+.brand-left:focus,
+.brand-left:visited {
+  text-decoration: none;
+  color: var(--color-text);
+  background: transparent;
+}
+
 /* ===== Mobile (default) ===== */
 
 /* Top bar (anchor for toggle) */
@@ -395,6 +419,12 @@ u a {
   pointer-events: none;
 }
 
+/* Keep nav controls reliably interactive above animated background */
+.site-nav,
+.site-nav * {
+  pointer-events: auto;
+}
+
 /* Hide the unstyled overlay button on mobile so the small rounded pill does not appear */
 .site-nav .nav-overlay {
   display: none;
@@ -407,34 +437,41 @@ u a {
 
 .site-nav__inner {
   position: fixed;
-  top: calc(var(--space-sm) + 56px);
-  right: var(--space-sm);
-  bottom: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   box-sizing: border-box;
-  /* Fit labels like “sketches”; grow vertically instead of a fixed square */
-  /* smaller panel width to reduce empty space on the right */
-  width: min(160px, calc(100vw - 2 * var(--space-sm)));
-  min-width: 0;
-  height: auto;
-  max-height: min(85vh, 420px);
-  padding: clamp(16px, 4vw, 28px);
-  padding-top: clamp(40px, 8vw, 48px);
-  padding-right: clamp(22px, 7vw, 30px);
-  background: var(--color-surface);
+  width: 50vw;
+  min-width: 50vw;
+  max-width: 50vw;
+  height: 100vh;
+  max-height: 100vh;
+  padding: clamp(20px, 4vw, 32px);
+  /* Match project card translucency and add refined glass depth */
+  background: color-mix(in srgb, var(--color-card-surface) 92%, transparent);
   color: var(--color-text);
-  border-radius: 16px 0 0 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
+  border: 1px solid color-mix(in srgb, var(--color-text) 10%, transparent);
+  /* Slightly sculpted “cool” shape: softened corners with a sharper top-right edge */
+  border-radius: 0;
+  box-shadow:
+    0 18px 38px rgba(0, 0, 0, 0.14),
+    0 2px 10px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(12px) saturate(1.05);
+  -webkit-backdrop-filter: blur(12px) saturate(1.05);
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   transform: translateX(calc(100% + var(--space-sm)));
-  transition: transform .3s ease;
-  row-gap: 6px;
+  opacity: 0;
+  filter: blur(6px);
+  transition: transform .32s cubic-bezier(.22, .61, .36, 1), opacity .22s ease, filter .28s ease;
+  row-gap: 0;
 }
 
 /* Open state */
@@ -444,13 +481,8 @@ u a {
 
 .site-nav.open .site-nav__inner {
   transform: translateX(0);
-}
-
-/* Keep brand + links inside the panel on narrow screens */
-.site-nav__inner > .brand-large {
-  width: 100%;
-  min-width: 0;
-  flex-shrink: 0;
+  opacity: 1;
+  filter: blur(0);
 }
 
 /* List & links */
@@ -460,8 +492,8 @@ u a {
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
+  align-items: center;
+  gap: 0;
   width: 100%;
   min-width: 0;
 }
@@ -469,21 +501,43 @@ u a {
 .nav-list li {
   margin: 0;
   max-width: 100%;
+  text-align: center;
 }
 
-.brand-large,
 .nav-list a {
   display: block;
   color: var(--color-text);
   text-decoration: none;
-  font-weight: 400;
+  font-weight: 500;
   font-size: var(--font-size-nav);
   line-height: 1.25;
-  padding-block: 2px;
-  text-align: left;
+  padding: 6px 0;
+  min-height: 30px;
+  text-align: center;
   max-width: 100%;
   overflow-wrap: anywhere;
   word-break: break-word;
+  touch-action: manipulation;
+}
+
+/* Menu items: remove bottom text spacing while keeping a small top offset */
+.nav-list a {
+  padding-top: 6px;
+  padding-bottom: 4px;
+}
+
+/* Keep nav text clean (global link underline rules should not apply here) */
+.site-nav a,
+.site-nav a:visited,
+.site-nav a:hover,
+.site-nav a:focus {
+  text-decoration: none;
+}
+
+/* Restore link-like hover/focus tint for menu items */
+.site-nav .nav-list a:hover,
+.site-nav .nav-list a:focus {
+  background-color: var(--color-link-focus-background);
 }
 
 /* Close (X) */
@@ -491,14 +545,16 @@ u a {
   position: absolute;
   top: var(--space-sm);
   right: var(--space-sm);
-  display: inline-flex;
+  display: none;
   align-items: center;
   justify-content: center;
-  width: var(--size-nav-toggle-hit-area);
-  height: var(--size-nav-toggle-hit-area);
-  background: transparent;
-  border: 0;
+  width: 36px;
+  height: 36px;
+  background: color-mix(in srgb, var(--color-card-surface) 92%, white 8%);
+  border: 1px solid color-mix(in srgb, var(--color-text) 18%, transparent);
+  border-radius: 999px;
   cursor: pointer;
+  z-index: 3;
 }
 
 .menu-close::before,
@@ -516,6 +572,11 @@ u a {
 
 .menu-close::after {
   transform: rotate(-45deg);
+}
+
+/* Show X only while the small-screen menu is open */
+.site-nav.open .menu-close {
+  display: inline-flex;
 }
 
 /* Prevent body scroll when open */
@@ -559,28 +620,25 @@ body.nav-open {
     background: transparent;
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     align-items: flex-end;
     text-align: right;
     padding: var(--space-md) var(--space-md) 56px;
     gap: var(--rail-gap);
     border-radius: 0;
     box-shadow: none;
+    border: 0;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    opacity: 1;
+    filter: none;
     overflow-x: hidden;
   }
 
-  .site-nav__inner > .brand-large {
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
-
-  .site-nav__inner>a.brand-large,
   .site-nav__inner .nav-list a {
     font-size: var(--font-size-nav);
     line-height: 1.2;
-    font-weight: 400;
+  font-weight: 500;
     color: var(--color-text);
     text-decoration: none;
     padding: 2px 0;
@@ -589,11 +647,20 @@ body.nav-open {
     word-break: break-word;
   }
 
+  .site-nav__inner .nav-list a {
+    padding-top: 4px;
+    padding-bottom: 2px;
+  }
+
   .nav-list {
     align-items: flex-end;
     gap: var(--rail-gap);
     width: 100%;
     min-width: 0;
+  }
+
+  .site-nav__inner .nav-list {
+    gap: 0;
   }
 
   .nav-list li {
@@ -884,6 +951,14 @@ body.nav-open {
   gap: var(--space-xl);
 }
 
+/* On smaller screens, keep first project card clear of fixed left/right top controls.
+   Match this top clearance to inter-card spacing for visual rhythm. */
+@media (max-width: 991.98px) {
+  .work-section {
+    margin-top: calc(var(--space-xl) + 16px);
+  }
+}
+
 /* Card layout */
 .work-row {
   display: grid;
@@ -990,7 +1065,7 @@ body.nav-open {
   line-height: 1;
   padding: .3em .7em;
   border-radius: 999px;
-  background: rgb(234, 234, 234);
+  background: rgb(220, 224, 230);
   color: var(--color-text);
   font-weight: 500;
   font-size: var(--text-sm);

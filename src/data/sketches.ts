@@ -29,7 +29,12 @@ export const newHailSketch: Sketch = {
       context: "summary",
     },
   ],
-  domains: ["Computational Geometry", "Physics-Based Simulation"],
+  domains: [
+    "Computational Geometry",
+    "Physics-Based Simulation",
+    "Generative Systems",
+    "Interactive 3D",
+  ],
   tools: "Three.js",
   language: "JavaScript, HTML, CSS",
   image: "/sketches/new-hail/1.gif",
