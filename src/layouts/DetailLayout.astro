@@ -1,19 +1,14 @@
 ---
 import BaseLayout from "./BaseLayout.astro";
+import type { WorkLink } from "../types/workItem";
 
-export interface LinkItem {
-    href: string;
-    label: string;
-    external?: boolean;
-    context?: "summary" | "detail";
-}
 export interface DetailLayoutProps {
     title: string;
     synopsis?: string;
     /** When false, synopsis is still used for page meta description but not shown in the header */
     showSynopsisInHeader?: boolean;
     year?: string;
-    links?: LinkItem[];
+    links?: WorkLink[];
     domains?: string[];
     image?: string;
     imageAlt?: string;
@@ -49,15 +44,15 @@ const detailLinks = (links || []).filter((l) => l.context === "detail");
                 {year && <p class="work-row__year">{year}</p>}
                 {detailLinks.length > 0 && (
                     <ul class="work-row__links">
-                        {detailLinks.map((l) => (
+                        {detailLinks.map((link) => (
                             <li>
                                 <a
-                                    class={`work-link ${l.external ? "work-link--external" : "work-link--detail"}`}
-                                    href={l.href}
-                                    target={l.external ? "_blank" : undefined}
-                                    rel={l.external ? "noopener noreferrer" : undefined}
+                                    class={`work-link ${link.external ? "work-link--external" : "work-link--detail"}`}
+                                    href={link.href}
+                                    target={link.external ? "_blank" : undefined}
+                                    rel={link.external ? "noopener noreferrer" : undefined}
                                 >
-                                    {l.label}
+                                    {link.label}
                                 </a>
                             </li>
                         ))}

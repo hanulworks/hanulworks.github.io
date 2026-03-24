@@ -1,17 +1,12 @@
-/** Photography series listed on /photos — same shape as projects for WorkRow + DetailLayout */
-export type PhotoLinkItem = {
-  href: string;
-  label: string;
-  external?: boolean;
-  context?: "summary" | "detail";
-};
+import type { WorkLink, WorkRowProps } from "../types/workItem";
 
+/** Photography series listed on /photos — same shape as projects for WorkRow + DetailLayout */
 export type PhotoSeries = {
   slug: string;
   title: string;
   synopsis: string;
   year: string;
-  links: PhotoLinkItem[];
+  links: WorkLink[];
   domains: string[];
   tools?: string;
   language?: string;
@@ -19,7 +14,19 @@ export type PhotoSeries = {
   imageAlt?: string;
 };
 
+/** Display order on /photos (last item in `SITE_NAV_LINKS`) */
 export const photoSeries: PhotoSeries[] = [
+  {
+    slug: "santa-fe",
+    title: "Santa Fe",
+    synopsis:
+      "A digital photo series about youth and friendship in motion, capturing hand-in-hand moments across Santa Fe.",
+    year: "2017",
+    links: [{ href: "/photos/santa-fe", label: "VIEW DETAILS", context: "summary" }],
+    domains: ["Digital Photography", "Portrait", "Snapshot"],
+    image: "/photos/santa-fe/1.JPG",
+    imageAlt: "Santa Fe photography series thumbnail",
+  },
   {
     slug: "human-species",
     title: "Human Species",
@@ -59,8 +66,8 @@ export const photoSeries: PhotoSeries[] = [
     links: [
       { href: "/photos/south-koreans", label: "VIEW DETAILS", context: "summary" },
     ],
-    domains: ["Analog Photography", "Street Photography", "Portrait"],
-    image: "/photos/south-koreans/1.JPEG",
+    domains: ["Analog Photography", "Portrait", "Snapshot"],
+    image: "/photos/south-koreans/5.JPEG",
     imageAlt: "South Koreans photography series thumbnail",
   },
   {
@@ -78,7 +85,22 @@ export const photoSeries: PhotoSeries[] = [
   },
 ];
 
-export const getPhotoBySlug = (slug: string) =>
-  photoSeries.find((p) => p.slug === slug) ?? null;
+/** Map a photo series to `<WorkRow />` props (same contract as `toWorkRowProps` for projects) */
+export function toWorkRowPropsFromPhotoSeries(
+  series: PhotoSeries,
+): WorkRowProps {
+  return {
+    title: series.title,
+    synopsis: series.synopsis,
+    year: series.year,
+    links: series.links,
+    domains: series.domains,
+    image: series.image,
+    imageAlt: series.imageAlt ?? "",
+  };
+}
+
+export const getPhotoSeriesBySlug = (slug: string) =>
+  photoSeries.find((series) => series.slug === slug) ?? null;
 
 export default photoSeries;

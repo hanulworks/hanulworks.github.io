@@ -1,50 +1,62 @@
-document.addEventListener("mousemove", (e) => {
-  const x = e.clientX / window.innerWidth;
-  const y = e.clientY / window.innerHeight;
+document.addEventListener("mousemove", (event) => {
+  const pointerX = event.clientX / window.innerWidth;
+  const pointerY = event.clientY / window.innerHeight;
 
-  const topLeft = [0, 255, 100];   // Green
-  const topRight = [0, 120, 255];   // Blue
-  const bottomLeft = [255, 80, 80];   // Red
-  const bottomRight = [255, 150, 0];   // Orange
+  const rgbTopLeft = [0, 255, 100];
+  const rgbTopRight = [0, 120, 255];
+  const rgbBottomLeft = [255, 80, 80];
+  const rgbBottomRight = [255, 150, 0];
 
-  const top = topLeft.map((c, i) => Math.round(c + (topRight[i] - c) * x));
-  const bottom = bottomLeft.map((c, i) => Math.round(c + (bottomRight[i] - c) * x));
-  const blended = top.map((c, i) => Math.round(c + (bottom[i] - c) * y));
+  const topEdgeRgb = rgbTopLeft.map((channel, index) =>
+    Math.round(channel + (rgbTopRight[index] - channel) * pointerX),
+  );
+  const bottomEdgeRgb = rgbBottomLeft.map((channel, index) =>
+    Math.round(channel + (rgbBottomRight[index] - channel) * pointerX),
+  );
+  const blendedRgb = topEdgeRgb.map((channel, index) =>
+    Math.round(channel + (bottomEdgeRgb[index] - channel) * pointerY),
+  );
 
-  const rgbColor = `rgb(${blended.join(",")})`;
-  document.querySelectorAll('.colorful').forEach(el => {
-    el.style.color = rgbColor;
+  const cursorFollowColor = `rgb(${blendedRgb.join(",")})`;
+  document.querySelectorAll(".colorful").forEach((element) => {
+    element.style.color = cursorFollowColor;
   });
 });
 
-// New carousel auto-advance
+// Carousel auto-advance (homepage / any `.carousel` block)
 (() => {
-  const root = document.querySelector('.carousel'); // adjust if multiple carousels exist
-  const vp = root?.querySelector('.carousel__viewport');
-  if (!vp) return;
+  const carouselRoot = document.querySelector(".carousel");
+  const scrollViewport = carouselRoot?.querySelector(".carousel__viewport");
+  if (!scrollViewport) return;
 
-  // Respect accessibility
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  const slides = Array.from(vp.children);
-  let i = 0, timer;
-  const intervalMs = 4000;
+  const slides = Array.from(scrollViewport.children);
+  let activeSlideIndex = 0;
+  let advanceTimerId;
 
-  const start = () => {
-    stop();
-    timer = setInterval(() => {
-      i = (i + 1) % slides.length;
-      const targetLeft = slides[i].offsetLeft;
-      vp.scrollTo({ left: targetLeft, behavior: 'smooth' });
-    }, intervalMs);
+  const autoAdvanceIntervalMs = 4000;
+
+  const stopAutoAdvance = () => {
+    if (advanceTimerId) clearInterval(advanceTimerId);
   };
-  const stop = () => timer && clearInterval(timer);
 
-  // pause on hover/focus, resume on leave/blur
-  vp.addEventListener('mouseenter', stop);
-  vp.addEventListener('focusin', stop);
-  vp.addEventListener('mouseleave', start);
-  vp.addEventListener('focusout', start);
+  const startAutoAdvance = () => {
+    stopAutoAdvance();
+    advanceTimerId = setInterval(() => {
+      activeSlideIndex = (activeSlideIndex + 1) % slides.length;
+      const targetScrollLeft = slides[activeSlideIndex].offsetLeft;
+      scrollViewport.scrollTo({
+        left: targetScrollLeft,
+        behavior: "smooth",
+      });
+    }, autoAdvanceIntervalMs);
+  };
 
-  start();
+  scrollViewport.addEventListener("mouseenter", stopAutoAdvance);
+  scrollViewport.addEventListener("focusin", stopAutoAdvance);
+  scrollViewport.addEventListener("mouseleave", startAutoAdvance);
+  scrollViewport.addEventListener("focusout", startAutoAdvance);
+
+  startAutoAdvance();
 })();

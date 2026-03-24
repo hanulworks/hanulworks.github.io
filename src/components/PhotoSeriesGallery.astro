@@ -12,57 +12,35 @@ interface Props {
 
 const { slug, seriesTitle, leadImage, galleryImages } = Astro.props;
 const rootId = `photo-gallery-${slug}`;
+const allImages = leadImage ? [leadImage, ...galleryImages] : galleryImages;
 ---
 
 {
-  (leadImage || galleryImages.length > 0) && (
+  (allImages.length > 0) && (
     <div id={rootId} class="photo-gallery-root">
       <div class="photo-gallery-body" aria-label={`${seriesTitle} photographs`}>
-        {leadImage && (
-          <figure class="photo-lead-frame">
-            <button
-              type="button"
-              class="photo-open"
-              data-lightbox-target
-              aria-label={`Enlarge: ${seriesTitle} photograph 1`}
-            >
-              <img
-                src={leadImage}
-                alt={`${seriesTitle} photograph 1`}
-                loading="eager"
-                decoding="async"
-              />
-              <span class="photo-open__hint" aria-hidden="true">
-                View larger
-              </span>
-            </button>
-          </figure>
-        )}
-
-        {galleryImages.length > 0 && (
-          <div class="photo-grid photo-grid--whole">
-            {galleryImages.map((src, i) => (
-              <figure class="photo-cell">
-                <button
-                  type="button"
-                  class="photo-open"
-                  data-lightbox-target
-                  aria-label={`Enlarge: ${seriesTitle} photograph ${i + 2}`}
-                >
-                  <img
-                    src={src}
-                    alt={`${seriesTitle} photograph ${i + 2}`}
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <span class="photo-open__hint" aria-hidden="true">
-                    View larger
-                  </span>
-                </button>
-              </figure>
-            ))}
-          </div>
-        )}
+        <div class="photo-grid photo-grid--whole">
+          {allImages.map((src, i) => (
+            <figure class="photo-cell">
+              <button
+                type="button"
+                class="photo-open"
+                data-lightbox-target
+                aria-label={`Enlarge: ${seriesTitle} photograph ${i + 1}`}
+              >
+                <img
+                  src={src}
+                  alt={`${seriesTitle} photograph ${i + 1}`}
+                  loading={leadImage && i === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                />
+                <span class="photo-open__hint" aria-hidden="true">
+                  View larger
+                </span>
+              </button>
+            </figure>
+          ))}
+        </div>
       </div>
 
       <div
@@ -130,7 +108,10 @@ const rootId = `photo-gallery-${slug}`;
 </script>
 
 <style>
-  /* Match detail pages: `section.text` uses margin-block: var(--section-gap) */
+  /*
+   * Breakpoints align with /style.css header comment (768 / 1400 / 1600).
+   * Grid gap uses global --photo-grid-gap.
+   */
   .photo-gallery-root {
     margin-top: var(--section-gap);
   }
@@ -160,9 +141,23 @@ const rootId = `photo-gallery-${slug}`;
 
   .photo-grid--whole {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
-    gap: clamp(16px, 2.5vw, 32px);
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: var(--photo-grid-gap, clamp(16px, 2.5vw, 32px));
     align-items: start;
+  }
+
+  /* Cap photo rows at 3 columns for consistent rhythm on wide screens */
+  @media (min-width: 768px) {
+    .photo-grid--whole {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  /* Keep 2-column layout until very wide screens */
+  @media (min-width: 1600px) {
+    .photo-grid--whole {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
 
   .photo-cell {
@@ -186,7 +181,7 @@ const rootId = `photo-gallery-${slug}`;
   }
 
   .photo-open:focus-visible {
-    outline: 2px solid var(--brand-ink);
+    outline: 2px solid var(--color-text);
     outline-offset: 4px;
   }
 
@@ -210,7 +205,7 @@ const rootId = `photo-gallery-${slug}`;
     font-weight: 500;
     letter-spacing: 0.04em;
     text-transform: none;
-    color: var(--brand-ink);
+    color: var(--color-text);
     background: rgb(255 255 255 / 0.72);
     backdrop-filter: blur(6px);
     border-radius: 2px;

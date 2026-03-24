@@ -13,7 +13,10 @@ const pageDescription = description ?? "Portfolio of Hanul Park";
     <head>
         <!-- Meta -->
         <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
         <!-- Page metadata -->
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
@@ -38,6 +41,8 @@ const pageDescription = description ?? "Portfolio of Hanul Park";
         <slot name="head" />
     </head>
     <body class={bodyClass}>
+        <slot name="background" />
+        <!-- Site chrome: primary nav order is defined in `data/siteNav.ts` -->
         <Header />
         <!-- Each page should include its own <main id="content"> -->
         <slot />

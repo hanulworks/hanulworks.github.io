@@ -1,10 +1,11 @@
-export type LinkItem = { href: string; label: string; external?: boolean; context?: "summary" | "detail" };
+import type { WorkLink } from "../types/workItem";
+
 export type Project = {
   slug: string;
   title: string;
   synopsis: string;
   year: string;
-  links: LinkItem[];
+  links: WorkLink[];
   domains: string[];
   tools?: string;
   language?: string;
@@ -12,6 +13,10 @@ export type Project = {
   imageAlt?: string;
 }
 
+/**
+ * Order matches site sections: commercial → published → remaining studies
+ * (see `workLists.ts` slug arrays and `SITE_NAV_LINKS` in `siteNav.ts`).
+ */
 export const projects: Project[] = [
   {
     slug: "build-your-genesis",
@@ -45,11 +50,22 @@ export const projects: Project[] = [
     imageAlt: "Hyundai ECV"
   },
   {
+    slug: "fulcrum-analytics",
+    title: "Fulcrum Analytics",
+    synopsis: "Creation of campaign report infographics and a year-end holiday graphic card to support data-driven storytelling at Fulcrum Analytics",
+    year: "2021",
+    links: [{ href: "/commercial/fulcrum-analytics", label: "VIEW DETAILS", context: "summary" }],
+    domains: ["Data Visualization", "Information Design", "Visual Communication", "Content Strategy"],
+    tools: "Google Sheets, Looker Studio, Adobe Illustrator, InDesign",
+    image: "/commercial/fulcrum-analytics/Infographic1.png",
+    imageAlt: "Fulcrum Analytics Infographic"
+  },
+  {
     slug: "media-smart-citizens",
     title: "Media Smart Citizens",
     synopsis: "Developed a comprehensive brand identity including logo, color palette, and visual guidelines, then designed functional presentation templates and website layouts for Media Smart Citizens",
     year: "2021",
-    links: [{ href: "/projects/media-smart-citizens", label: "VIEW DETAILS", context: "summary" }],
+    links: [{ href: "/commercial/media-smart-citizens", label: "VIEW DETAILS", context: "summary" }],
     domains: ["Brand Identity", "Visual Guidelines", "Presentation Design", "Web Layout"],
     tools: "Adobe Illustrator, InDesign, Figma, Keynote",
     image: "/commercial/media-smart-citizens/brand-white.png",
@@ -61,7 +77,7 @@ export const projects: Project[] = [
     synopsis: "A digital-physical interactive experience investigating movement-based interactivity, machine learning, and collaborative authorship between human and machine",
     year: "2022",
     links: [
-      { href: "/projects/hanul-computer-interaction", label: "VIEW DETAILS", context: "summary" },
+      { href: "/published/hanul-computer-interaction", label: "VIEW DETAILS", context: "summary" },
       { href: "/studies/hanul-computer-interaction/web.html", label: "EXPLORE WEB VERSION", external: true, context: "detail" },
       { href: "/studies/hanul-computer-interaction/mobile.html", label: "EXPLORE MOBILE VERSION", external: true, context: "detail" },
       { href: "https://parsons.edu/dt-2022/hanul-computer-interaction-hci/", label: "PARSONS DESIGN & TECHNOLOGY THESIS SHOW 2022", external: true, context: "detail" }
@@ -73,35 +89,12 @@ export const projects: Project[] = [
     imageAlt: "Hanul-Computer Interaction"
   },
   {
-    slug: "fulcrum-analytics",
-    title: "Fulcrum Analytics",
-    synopsis: "Creation of campaign report infographics and a year-end holiday graphic card to support data-driven storytelling at Fulcrum Analytics",
-    year: "2021",
-    links: [{ href: "/projects/fulcrum-analytics", label: "VIEW DETAILS", context: "summary" }],
-    domains: ["Data Visualization", "Information Design", "Visual Communication", "Content Strategy"],
-    tools: "Google Sheets, Looker Studio, Adobe Illustrator, InDesign",
-    image: "/commercial/fulcrum-analytics/Infographic1.png",
-    imageAlt: "Fulcrum Analytics Infographic"
-  },
-  {
-    slug: "bird-dress",
-    title: "BirDress",
-    synopsis: "Exploration of contemporary fashion design through StyleGAN, utilizing curated datasets of birds and dresses for generative modeling",
-    year: "2021",
-    links: [{ href: "/projects/bird-dress", label: "VIEW DETAILS", context: "summary" }],
-    domains: ["Generative AI Design", "Fashion Technology", "Computational Creativity", "Machine Learning"],
-    tools: "Google Collab, Adobe Illustrator, InDesign, Premiere Pro",
-    language: "Python",
-    image: "/studies/bird-dress/thumbnail.JPEG",
-    imageAlt: "BirDress"
-  },
-  {
     slug: "the-net-works",
     title: "The_Net_Works",
     synopsis: "Digital ethnographic resource analyzing the infrastructures of sexual cybercrime through the ‘Nth Room’ case study",
     year: "2021",
     links: [
-      { href: "/projects/the-net-works", label: "VIEW DETAILS", context: "summary" },
+      { href: "/published/the-net-works", label: "VIEW DETAILS", context: "summary" },
       { href: "/studies/the-net-works/resource.html", label: "EXPLORE PROJECT", external: true, context: "detail" }
     ],
     domains: ["Digital Ethnography", "Cybersecurity Studies", "Civic Technology", "Research Documentation"],
@@ -111,12 +104,24 @@ export const projects: Project[] = [
     imageAlt: "The_Net_Works"
   },
   {
+    slug: "bird-dress",
+    title: "BirDress",
+    synopsis: "Exploration of contemporary fashion design through StyleGAN, utilizing curated datasets of birds and dresses for generative modeling",
+    year: "2021",
+    links: [{ href: "/studies/bird-dress", label: "VIEW DETAILS", context: "summary" }],
+    domains: ["Generative AI Design", "Fashion Technology", "Computational Creativity", "Machine Learning"],
+    tools: "Google Collab, Adobe Illustrator, InDesign, Premiere Pro",
+    language: "Python",
+    image: "/studies/bird-dress/thumbnail.JPEG",
+    imageAlt: "BirDress"
+  },
+  {
     slug: "cyb-org",
     title: "cyb-org",
     synopsis: "Interactive diagram mapping ‘Experience, Network, Information’ through media theory, based on Motoko Kusanagi from ‘Ghost in the Shell’",
     year: "2020",
     links: [
-      { href: "/projects/cyb-org", label: "VIEW DETAILS", context: "summary" },
+      { href: "/studies/cyb-org", label: "VIEW DETAILS", context: "summary" },
       { href: "/studies/cyb-org/diagram.html", label: "EXPLORE PROJECT", external: true, context: "detail" }
     ],
     domains: ["Media Theory", "Network Visualization", "Systems Mapping", "Information Architecture"],
@@ -130,7 +135,7 @@ export const projects: Project[] = [
     title: "SOLARIS",
     synopsis: "Real-time VJing tool developed in Max for Live, integrating sound-driven visual synthesis for live performance",
     year: "2020",
-    links: [{ href: "/projects/solaris", label: "VIEW DETAILS", context: "summary" }],
+    links: [{ href: "/studies/solaris", label: "VIEW DETAILS", context: "summary" }],
     domains: ["Real-Time Visual Synthesis", "Audiovisual Performance", "Live Performance Tooling", "Creative Coding"],
     tools: "Max, Ableton Live",
     language: "C",
@@ -142,7 +147,7 @@ export const projects: Project[] = [
     title: "VR Therapy 101",
     synopsis: "Prototype and proposal for a VR group therapy course aimed at enhancing mental health education in higher education contexts",
     year: "2020",
-    links: [{ href: "/projects/vr-therapy-101", label: "VIEW DETAILS", context: "summary" }],
+    links: [{ href: "/studies/vr-therapy-101", label: "VIEW DETAILS", context: "summary" }],
     domains: ["VR Design", "Learning Experience Design", "Mental Health Education", "Therapeutic Technologies"],
     tools: "Unity",
     language: "C#",
@@ -165,7 +170,7 @@ export const projects: Project[] = [
     title: "dream-homeland",
     synopsis: "3D interactive environment blending memories, dreams, and experimental moving images to explore immersive narrative",
     year: "2019",
-    links: [{ href: "/projects/dream-homeland", label: "VIEW DETAILS", context: "summary" }],
+    links: [{ href: "/studies/dream-homeland", label: "VIEW DETAILS", context: "summary" }],
     domains: ["Immersive Narrative", "Virtual Environment Design", "Experimental Media", "Spatial Computing"],
     tools: "Unity",
     language: "C#",

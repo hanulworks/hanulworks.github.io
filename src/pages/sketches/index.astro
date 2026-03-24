@@ -2,14 +2,14 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import WorkRow from "../../components/WorkRow.astro";
 import sketchItems from "../../data/sketches";
-import { workRowProps } from "../../data/workLists";
+import { toWorkRowProps } from "../../data/workLists";
 ---
 
 <BaseLayout title="Sketches" description="Interactive sketches and generative work by Hanul Park">
   <main id="content">
     <section class="work-section" aria-label="Sketches">
-      {sketchItems.map((s) => (
-        <WorkRow {...workRowProps(s)} />
+      {sketchItems.map((sketch) => (
+        <WorkRow {...toWorkRowProps(sketch)} />
       ))}
     </section>
   </main>

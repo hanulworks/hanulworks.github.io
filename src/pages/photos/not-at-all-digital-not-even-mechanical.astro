@@ -1,11 +1,11 @@
 ---
 import DetailLayout from "../../layouts/DetailLayout.astro";
 import PhotoSeriesGallery from "../../components/PhotoSeriesGallery.astro";
-import { getPhotoBySlug } from "../../data/photos";
-import { sortGlobUrlsByNumericStem } from "../../utils/sortPhotoPaths";
+import { getPhotoSeriesBySlug } from "../../data/photos";
+import { sortGlobUrlsByNumericStem } from "../../utils/sortGlobUrlsByNumericStem";
 
-const project = getPhotoBySlug("not-at-all-digital-not-even-mechanical");
-if (!project) {
+const series = getPhotoSeriesBySlug("not-at-all-digital-not-even-mechanical");
+if (!series) {
   throw new Error(
     "Photo series not found for 'not-at-all-digital-not-even-mechanical'",
   );
@@ -19,7 +19,7 @@ const {
   links = [],
   tools,
   language,
-} = project;
+} = series;
 
 const imageEntries = Object.entries(
   import.meta.glob("/public/photos/not-at-all-digital/*.JPEG", {

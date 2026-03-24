@@ -1,0 +1,80 @@
+---
+import DetailLayout from "../../layouts/DetailLayout.astro";
+import { getProjectBySlug } from "../../data/projects";
+
+const project = getProjectBySlug("fulcrum-analytics");
+if (!project) {
+  throw new Error("Project data not found for 'fulcrum-analytics'");
+}
+
+const {
+  title,
+  synopsis,
+  year,
+  domains = [],
+  links = [],
+  tools,
+  language,
+} = project;
+---
+
+<DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
+  <section class="text">
+    <h6 class="section">I. CAMPAIGN REPORT INFOGRAPHICS</h6>
+
+    <p class="subject">CONTEXT</p>
+    <p class="text">
+      Fulcrum Analytics needed campaign reporting artifacts that could be read
+      quickly by cross-functional stakeholders while preserving metric accuracy.
+      The work focused on converting raw performance data into clear narrative
+      visuals for recurring client communication.
+    </p>
+    <p class="subject">1. THESIS</p>
+    <figure class="detailImage">
+      <img
+        src="/commercial/fulcrum-analytics/Infographic1.png"
+        alt="Campaign infographic panel 1"
+        loading="lazy"
+      />
+    </figure>
+    <p class="subject">2. PROBLEM</p>
+    <figure class="detailImage">
+      <img
+        src="/commercial/fulcrum-analytics/Infographic2.png"
+        alt="Campaign infographic panel 2"
+        loading="lazy"
+      />
+    </figure>
+    <p class="subject">3. SOLUTION</p>
+      <figure class="detailImage">
+      <img
+        src="/commercial/fulcrum-analytics/Infographic3.png"
+        alt="Campaign infographic panel 3"
+        loading="lazy"
+      />
+    </figure>
+  </section>
+
+  <section class="text">
+    <h6 class="section">II. YEAR-END HOLIDAY CARD</h6>
+
+    <p class="subject">STORYLINE</p>
+    <p class="text">
+      <strong>"Fulcrum's Data-Driven, Meaningful Outputs"</strong><br /><br />
+      The card follows a simple narrative about creating meaningful outputs and
+      capturing the feeling of anticipation during the holiday season. A
+      desktop computer surrounded by snowy trees playfully reflects Fulcrum's
+      continuous work through year-end. A person running analyses is connected
+      to the computer through systems hanging on holiday lights, symbolizing
+      Fulcrum's data-driven approach.
+    </p>
+    <p class="subject">FINAL OUTPUT</p>
+    <figure class="detailImage">
+      <img
+        src="/commercial/fulcrum-analytics/Holiday.png"
+        alt="Fulcrum Analytics holiday card"
+        loading="lazy"
+      />
+    </figure>
+  </section>
+</DetailLayout>

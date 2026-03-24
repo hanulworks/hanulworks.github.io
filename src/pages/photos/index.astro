@@ -1,22 +1,14 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import WorkRow from "../../components/WorkRow.astro";
-import photoSeries from "../../data/photos";
+import photoSeries, { toWorkRowPropsFromPhotoSeries } from "../../data/photos";
 ---
 
 <BaseLayout title="Photos" description="Photography series by Hanul Park">
   <main id="content">
     <section class="work-section" aria-label="Photography series list">
-      {photoSeries.map((p) => (
-        <WorkRow
-          title={p.title}
-          synopsis={p.synopsis}
-          year={p.year}
-          links={p.links}
-          domains={p.domains}
-          image={p.image}
-          imageAlt={p.imageAlt}
-        />
+      {photoSeries.map((series) => (
+        <WorkRow {...toWorkRowPropsFromPhotoSeries(series)} />
       ))}
     </section>
   </main>

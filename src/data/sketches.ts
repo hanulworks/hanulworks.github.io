@@ -1,16 +1,12 @@
-export type LinkContext = "summary" | "detail";
-export type LinkItem = {
-  href: string;
-  label: string;
-  external?: boolean;
-  context?: LinkContext;
-};
+/** Sketches index order follows primary nav: … → sketches → photos (`siteNav.ts`). */
+import type { WorkLink } from "../types/workItem";
+
 export type Sketch = {
   slug: string;
   title: string;
   synopsis?: string;
   year?: string;
-  links?: LinkItem[];
+  links?: WorkLink[];
   domains?: string[];
   tools?: string;
   language?: string;

@@ -1,20 +1,6 @@
 ---
-export interface LinkItem {
-  href: string;
-  label: string;
-  context?: "summary" | "detail";
-  external?: boolean;
-}
-export interface WorkRowProps {
-  title: string;
-  synopsis?: string;
-  year?: string;
-  links?: LinkItem[];
-  domains?: string[];
+import type { WorkRowProps } from "../types/workItem";
 
-  image?: string;
-  imageAlt?: string;
-}
 const {
   title,
   synopsis = "",
@@ -35,25 +21,29 @@ const summaryLinks = (links || []).filter((l) => l.context !== "detail");
     {
       summaryLinks.length > 0 && (
         <ul class="work-row__links">
-          {summaryLinks.map((l) => (
+          {summaryLinks.map((link) => (
             <li>
               {(() => {
                 const isExternal =
-                  (typeof l.external === "boolean" && l.external) ||
-                  (typeof l.href === "string" && (l.href.startsWith("http://") || l.href.startsWith("https://")));
+                  (typeof link.external === "boolean" && link.external) ||
+                  (typeof link.href === "string" &&
+                    (link.href.startsWith("http://") || link.href.startsWith("https://")));
                 const isDetail =
                   !isExternal ||
-                  (typeof l.label === "string" && l.label.toUpperCase() === "VIEW DETAILS");
-                const cls = `work-link ${isDetail ? "work-link--detail" : "work-link--external"}`;
+                  (typeof link.label === "string" &&
+                    link.label.toUpperCase() === "VIEW DETAILS");
+                const linkClass = `work-link ${isDetail ? "work-link--detail" : "work-link--external"}`;
                 return (
                   <a
-                    href={l.href}
-                    class={cls}
+                    href={link.href}
+                    class={linkClass}
                     target={isDetail ? undefined : "_blank"}
                     rel={isDetail ? undefined : "noopener noreferrer"}
-                    aria-label={isDetail ? l.label : `${l.label} (opens in new tab)`}
+                    aria-label={
+                      isDetail ? link.label : `${link.label} (opens in new tab)`
+                    }
                   >
-                    {l.label}
+                    {link.label}
                   </a>
                 );
               })()}

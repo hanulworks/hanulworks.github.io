@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import WorkRow from "../../components/WorkRow.astro";
+import { getPublishedProjects, toWorkRowProps } from "../../data/workLists";
+---
+
+<BaseLayout
+  title="Published"
+  description="Selected work published and showcased online and in academic contexts by Hanul Park"
+>
+  <main id="content">
+    <section class="work-section" aria-label="Published projects">
+      {getPublishedProjects().map((project) => (
+        <WorkRow {...toWorkRowProps(project)} />
+      ))}
+    </section>
+  </main>
+</BaseLayout>

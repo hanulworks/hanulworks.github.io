@@ -1,3 +1,7 @@
+---
+import { SITE_NAV_LINKS } from "../data/siteNav";
+---
+
 <header id="header" class="site-header" role="banner">
   <!-- Mobile topbar (hidden >=768px) -->
   <div class="topbar" aria-hidden="true">
@@ -40,10 +44,11 @@
       <a class="brand-large" href="/">hanul</a>
 
       <ul class="nav-list" role="list">
-        <li><a href="/commercial">commercial</a></li>
-        <li><a href="/studies">studies</a></li>
-        <li><a href="/sketches">sketches</a></li>
-        <li><a href="/photos">photos</a></li>
+        {SITE_NAV_LINKS.map((item) => (
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>
+        ))}
       </ul>
 
       <button class="menu-close" aria-label="Close menu" data-menu-close></button>
