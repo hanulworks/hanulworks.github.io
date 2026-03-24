@@ -16,7 +16,7 @@ const studiesBeforeNewHail: Project[] = [
     slug: "bird-dress",
     title: "BirDress",
     synopsis:
-      "Exploration of contemporary fashion design through StyleGAN, utilizing curated datasets of birds and dresses for generative modeling",
+      "Exploration of contemporary fashion design through generative adversarial modeling on curated datasets of birds and dresses",
     year: "2021",
     links: [{ href: "/studies/bird-dress", label: "VIEW DETAILS", context: "summary" }],
     domains: ["Generative AI Design", "Fashion Technology", "Computational Creativity", "Machine Learning"],
@@ -73,7 +73,7 @@ export const newHailSketch: Sketch = {
   slug: "new-hail",
   title: "NEW HAIL",
   synopsis:
-    "Random 3D geometry with simple physics rules. Built in three.js for the thesis studies list.",
+    "Randomized three-dimensional geometry in the browser under simple physics constraints, running as a continuous generative loop",
   year: "2019",
   links: [
     {
@@ -83,7 +83,12 @@ export const newHailSketch: Sketch = {
       context: "summary",
     },
   ],
-  domains: ["Generative Systems", "Interactive 3D"],
+  domains: [
+    "Generative Systems",
+    "Interactive 3D",
+    "Physics Simulation",
+    "Creative Coding",
+  ],
   tools: "Three.js",
   language: "JavaScript, HTML, CSS",
   image: "/sketches/new-hail/1.gif",
