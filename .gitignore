@@ -1,4 +1,6 @@
 node_modules/
 dist/
-.DS_Store
+.astro/
+.tmp_py/
+.cursor/
 .DS_Store

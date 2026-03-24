@@ -1,53 +1,39 @@
-/** Sketches index order follows primary nav: … → sketches → photos (`siteNav.ts`). */
-import type { WorkLink } from "../types/workItem";
+import type { Sketch } from "../types/sketch";
 
-export type Sketch = {
-  slug: string;
-  title: string;
-  synopsis?: string;
-  year?: string;
-  links?: WorkLink[];
-  domains?: string[];
-  tools?: string;
-  language?: string;
-  image?: string;
-  imageAlt?: string;
-};
+export type { Sketch };
 
-/** Shown on /studies index only (assets under /sketches/new-hail) */
-export const newHailSketch: Sketch = {
-  slug: "new-hail",
-  title: "NEW HAIL",
-  synopsis:
-    "Randomized 3D geometric forms animated with computational physics principles, visualizing generative geometry in motion",
-  year: "2019",
-  links: [
-    {
-      href: "/sketches/new-hail/",
-      label: "EXPLORE PROJECT",
-      external: true,
-      context: "summary",
-    },
-  ],
-  domains: [
-    "Computational Geometry",
-    "Physics-Based Simulation",
-    "Generative Systems",
-    "Interactive 3D",
-  ],
-  tools: "Three.js",
-  language: "JavaScript, HTML, CSS",
-  image: "/sketches/new-hail/1.gif",
-  imageAlt: "NEW HAIL",
-};
-
-/** /sketches listing — interactive sketches (assets under /sketches/…); NEW HAIL is listed on /studies */
 export const sketchItems: Sketch[] = [
+  {
+    slug: "bio-glyph",
+    title: "Bio-Glyph",
+    synopsis:
+      "Generative marks in TouchDesigner that branch like living script between typography, organic motion, and the suggestion of cellular form.",
+    year: "2022",
+    links: [],
+    domains: ["Procedural Typography", "Organic Systems"],
+    tools: "TouchDesigner",
+    language: "HTML, CSS",
+    image: "/sketches/bio-glyph/1.gif",
+    imageAlt: "Bio-Glyph",
+  },
+  {
+    slug: "swamp",
+    title: "Swamp",
+    synopsis:
+      "Layered fluid motion and drifting particles in muted greens and browns that evoke humid air, submerged light, and slow water.",
+    year: "2022",
+    links: [],
+    domains: ["Particle Systems", "Fluid Motion"],
+    tools: "TouchDesigner",
+    language: "HTML, CSS",
+    image: "/sketches/swamp/1.gif",
+    imageAlt: "Swamp",
+  },
   {
     slug: "pixel-tunnels",
     title: "Pixel Tunnels",
     synopsis:
-      "An optical study of depth and motion, simulating infinite tunnel perspectives through generative effects",
+      "An endlessly receding pixel tunnel whose depth and motion loop in TouchDesigner as a study in perspectival space.",
     year: "2022",
     links: [],
     domains: ["Generative Systems", "Procedural Visualization"],
@@ -57,23 +43,23 @@ export const sketchItems: Sketch[] = [
     imageAlt: "Pixel Tunnels",
   },
   {
-    slug: "particle-clouds",
-    title: "Particle Clouds",
+    slug: "particle-waves",
+    title: "Particle Waves",
     synopsis:
-      "Dynamic particle systems forming and dissolving in three-dimensional space, exploring interactive spatial transformation",
+      "Three-dimensional particle masses that cohere and dissolve in continuous drift as a study in mass and motion.",
     year: "2022",
     links: [],
     domains: ["Generative Systems", "3D Spatial Visualization"],
     tools: "TouchDesigner",
     language: "HTML, CSS",
-    image: "/sketches/particle-clouds/1.gif",
-    imageAlt: "Particle Clouds",
+    image: "/sketches/particle-waves/1.gif",
+    imageAlt: "Particle Waves",
   },
   {
     slug: "cherry-blossom",
     title: "Cherry Blossom",
     synopsis:
-      "Recursive generative illustration inspired by turtle graphics, producing floral structures with algorithmic precision",
+      "Recursive turtle paths that accumulate into floral, branching forms from a single generative rule.",
     year: "2021",
     links: [
       {
@@ -93,7 +79,7 @@ export const sketchItems: Sketch[] = [
     slug: "chaos",
     title: "Chaos",
     synopsis:
-      "Procedural recursion experiment using turtle graphics to visualize chaotic systems and emergent complexity",
+      "Turtle-based recursion driven past stability into dense, chaotic drawing while the underlying rules remain elementary.",
     year: "2021",
     links: [
       {
@@ -113,7 +99,7 @@ export const sketchItems: Sketch[] = [
     slug: "spiral",
     title: "Spiral",
     synopsis:
-      "Algorithmic spiral generation through recursive turtle graphics, exploring mathematical growth patterns",
+      "Recursive turtle instructions that unfurl into spirals, making incremental mathematical growth visible as drawn line.",
     year: "2021",
     links: [
       {
@@ -133,7 +119,7 @@ export const sketchItems: Sketch[] = [
     slug: "winter-tree",
     title: "Winter Tree",
     synopsis:
-      "Recursive branching system coded with turtle graphics, modeling natural tree structures in winter form",
+      "Bare winter trees modeled through recursive branching in turtle code, with structure pared to season and silhouette.",
     year: "2021",
     links: [
       {
@@ -153,7 +139,7 @@ export const sketchItems: Sketch[] = [
     slug: "neon-pen",
     title: "Neon Pen",
     synopsis:
-      "An interactive drawing tool simulating multi‑color, pressure‑sensitive strokes with responsive feedback",
+      "A browser drawing surface in neon with pressure-sensitive stroke behavior implemented in Paper.js.",
     year: "2021",
     links: [
       {
@@ -163,7 +149,7 @@ export const sketchItems: Sketch[] = [
         context: "summary",
       },
     ],
-    domains: ["Human–Computer Interaction", "Creative Coding"],
+    domains: ["Human Computer Interaction", "Creative Coding"],
     tools: "Paper.js",
     language: "JavaScript, HTML, CSS",
     image: "/sketches/neon-pen/1.gif",
@@ -173,7 +159,7 @@ export const sketchItems: Sketch[] = [
     slug: "butterfly2046",
     title: "Butterfly2046",
     synopsis:
-      "A generative portrait inspired by the film *2046*, procedurally rendering butterfly forms with cinematic coloration",
+      "Procedural butterflies and color fields indebted to Wong Kar-wai's 2046, ornamental and quietly melancholic.",
     year: "2021",
     links: [
       {
@@ -193,7 +179,7 @@ export const sketchItems: Sketch[] = [
     slug: "bee-swarm",
     title: "Bee Swarm",
     synopsis:
-      "An interactive generative simulation visualizing swarm intelligence and emergent behavior through bees’ collective motion",
+      "Many autonomous agents with simple steering rules aggregating into swarm behavior on a single P5 canvas.",
     year: "2021",
     links: [
       {

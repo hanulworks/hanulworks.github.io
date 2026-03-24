@@ -9,6 +9,7 @@ const {
   domains = [],
   image,
   imageAlt = "",
+  imageFetchPriority,
 } = Astro.props as WorkRowProps;
 const summaryLinks = (links || []).filter((l) => l.context !== "detail");
 ---
@@ -54,19 +55,27 @@ const summaryLinks = (links || []).filter((l) => l.context !== "detail");
     }
   </div>
   {
+    image && (
+      <figure class="work-row__image">
+        <img
+          src={image}
+          alt={imageAlt}
+          loading="lazy"
+          decoding="async"
+          {...(imageFetchPriority
+            ? { fetchpriority: imageFetchPriority }
+            : {})}
+        />
+      </figure>
+    )
+  }
+  {
     domains.length > 0 && (
       <div class="work-row__domains">
         {domains.map((t) => (
           <span class="chip">{t}</span>
         ))}
       </div>
-    )
-  }
-  {
-    image && (
-      <figure class="work-row__image">
-        <img src={image} alt={imageAlt} loading="lazy" decoding="async" />
-      </figure>
     )
   }
 </article>

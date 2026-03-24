@@ -22,11 +22,15 @@ function setup() {
 function draw() {
 
   background(245, 251, 255, 1);
+  /* Larger tree on wider viewports; scales in parallel with width */
+  var w = Math.max(windowWidth, 400);
+  var t = constrain((Math.min(w, 1920) - 400) / (1920 - 400), 0, 1);
+  var scale = 1 + t * 0.82;
   myTurtle.penUp();
   myTurtle.moveTo(windowWidth / 2, windowHeight);
   myTurtle.turnTo(-80);
   myTurtle.penDown();
-  drawBranch(100);
+  drawBranch(90 * scale);
 
 }
 

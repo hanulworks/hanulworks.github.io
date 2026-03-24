@@ -1,7 +1,3 @@
-/**
- * Sort Vite `import.meta.glob` entries (e.g. `/public/photos/foo/3.JPEG`)
- * by numeric filename stem so gallery order matches shot order.
- */
 export function sortGlobUrlsByNumericStem(
   entries: [string, string][],
 ): string[] {

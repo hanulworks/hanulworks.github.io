@@ -33,7 +33,8 @@ const detailLinks = (links || []).filter((l) => l.context === "detail");
 ---
 
 <BaseLayout {title} description={synopsis}>
-    <main id="content" class="detail-surface">
+    <main id="content" class="detail-page">
+        <div class="card card--square">
         <header aria-labelledby="detail-title" class="work-row detail-header">
             <!-- Left column: reuse WorkRow meta stack -->
             <div class="work-meta">
@@ -79,5 +80,6 @@ const detailLinks = (links || []).filter((l) => l.context === "detail");
             </div>
         </header>
         <slot />
+        </div>
     </main>
 </BaseLayout>
