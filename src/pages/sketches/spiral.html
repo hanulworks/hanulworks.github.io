@@ -1,83 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Spiral</title>
-  <!-- Icon -->
-  <link rel="icon" href="../h.png" type="image/png" sizes="16x16">
-  <style>
-    html,
-    body {
-      padding: 0;
-      margin: 0;
-      min-height: 100%;
-      cursor: pointer;
-    }
-  </style>
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.3.0/lib/p5.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
-  <script language="javascript" type="text/javascript" src="/sketches/turtle.js"></script>
-  <script>
-    // require https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js
-    // require /turtles/turtle/turtle.js
-
-    var myTurtle;
-
-    function setup() {
-      createCanvas(windowWidth, windowHeight);
-      noFill();
-      stroke(255);
-      background(0);
-      noLoop();
-
-      myTurtle = new Turtle();
-
-      // Click / tap anywhere to reload and regenerate random graphics
-      document.addEventListener(
-        "click",
-        function () {
-          window.location.reload();
-        },
-        { capture: true }
-      );
-    }
-
-    function draw() {
-      colorMode(HSB, 360, 100, 100);
-      stroke(random(360), random(55, 95), random(75, 100));
-      strokeWeight(random(0.4, 1.6));
-
-      myTurtle.penUp();
-      myTurtle.moveTo(windowWidth / 2, windowHeight / 2);
-      myTurtle.penDown();
-
-      var armCount = floor(random(85, 115));
-      for (var i = 0; i < armCount; i++) {
-        myTurtle.moveForward(i / 10);
-        myTurtle.turnLeft(1 + random(-0.35, 0.35));
-        drawLeaf();
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spiral</title>
+    <!-- Icon -->
+    <link rel="icon" href="../h.png" type="image/png" sizes="16x16" />
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+        min-height: 100%;
+        cursor: pointer;
       }
-    }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.3.0/lib/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+    <script
+      language="javascript"
+      type="text/javascript"
+      src="/sketches/turtle.js"
+    ></script>
+    <script>
+      // require https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.1.9/p5.js
+      // require /turtles/turtle/turtle.js
 
-    function drawLeaf() {
-      myTurtle.pushState();
+      var myTurtle;
 
-      var leafSteps = floor(random(85, 115));
-      for (var j = 0; j < leafSteps; j++) {
-        myTurtle.moveForward(j * random(0.85, 1.15));
-        myTurtle.turnLeft(10 + random(-2.5, 2.5));
+      function setup() {
+        createCanvas(windowWidth, windowHeight);
+        noFill();
+        stroke(255);
+        background(0);
+        noLoop();
+
+        myTurtle = new Turtle();
+
+        // Click / tap anywhere to reload and regenerate random graphics
+        document.addEventListener(
+          "click",
+          function () {
+            window.location.reload();
+          },
+          { capture: true },
+        );
       }
 
-      myTurtle.popState();
-    }
-  </script>
-</head>
+      function draw() {
+        colorMode(HSB, 360, 100, 100);
+        stroke(random(360), random(55, 95), random(75, 100));
+        strokeWeight(random(0.4, 1.6));
 
-<body>
-  <main>
-  </main>
-</body>
+        myTurtle.penUp();
+        myTurtle.moveTo(windowWidth / 2, windowHeight / 2);
+        myTurtle.penDown();
 
+        var armCount = floor(random(85, 115));
+        for (var i = 0; i < armCount; i++) {
+          myTurtle.moveForward(i / 10);
+          myTurtle.turnLeft(1 + random(-0.35, 0.35));
+          drawLeaf();
+        }
+      }
+
+      function drawLeaf() {
+        myTurtle.pushState();
+
+        var leafSteps = floor(random(85, 115));
+        for (var j = 0; j < leafSteps; j++) {
+          myTurtle.moveForward(j * random(0.85, 1.15));
+          myTurtle.turnLeft(10 + random(-2.5, 2.5));
+        }
+
+        myTurtle.popState();
+      }
+    </script>
+  </head>
+
+  <body>
+    <main></main>
+  </body>
 </html>

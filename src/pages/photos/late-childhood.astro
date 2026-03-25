@@ -9,20 +9,13 @@ if (!series) {
   throw new Error("Photo series not found for 'late-childhood'");
 }
 
-const {
-  title,
-  synopsis,
-  year,
-  domains = [],
-  links = [],
-  tools,
-  language,
-} = series;
+const { title, synopsis, year, domains = [], links = [], tools, language } = series;
 
 const imageEntries = Object.entries(
   import.meta.glob("/public/photos/late-childhood/*.JPEG", {
     eager: true,
-    as: "url",
+    query: "?url",
+    import: "default",
   }),
 ) as [string, string][];
 

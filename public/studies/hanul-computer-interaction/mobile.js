@@ -68,12 +68,7 @@ function modelReady() {
 }
 
 function mousePressed() {
-  if (
-    mouseX > 0 &&
-    mouseX < windowWidth &&
-    mouseY > 0 &&
-    mouseY < windowHeight
-  ) {
+  if (mouseX > 0 && mouseX < windowWidth && mouseY > 0 && mouseY < windowHeight) {
     let fs = fullscreen();
     fullscreen(!fs);
     // background(random(0, 255), random(0, 255), random(0, 255));
@@ -173,13 +168,13 @@ function drawSkeleton() {
         if (dist(0, 0, aa, bb) > 100) continue;
         strokeWeight(1);
         // stroke(random(0, 255), random(0, 255), random(0, 255), random(0, 10));
-        stroke(random(200, 255), random(200, 255), random(200, 255), random(0,5));
+        stroke(random(200, 255), random(200, 255), random(200, 255), random(0, 5));
         // ellipse(partA.position.x + aa, partB.position.y + bb, 50, 50);
         line(
           partA.position.x + aa,
           partA.position.y + bb,
           partB.position.x + aa,
-          partB.position.y + bb
+          partB.position.y + bb,
         );
       }
     }

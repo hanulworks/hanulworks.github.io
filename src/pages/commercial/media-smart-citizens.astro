@@ -7,20 +7,12 @@ if (!project) {
   throw new Error("Project data not found for 'media-smart-citizens'");
 }
 
-const {
-  title,
-  synopsis,
-  year,
-  domains = [],
-  links = [],
-  tools,
-  language,
-} = project;
+const { title, synopsis, year, domains = [], links = [], tools, language } = project;
 
 const mediaEntries = Object.entries(
   import.meta.glob(
     "/public/commercial/media-smart-citizens/*.{png,jpg,jpeg,JPG,JPEG,webp,gif}",
-    { eager: true, as: "url" },
+    { eager: true, query: "?url", import: "default" },
   ),
 ) as [string, string][];
 
@@ -92,66 +84,71 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     <h6 class="section">I. BRAND IDENTITY SYSTEM</h6>
     <p class="subject">SCOPE</p>
     <p class="text">
-      Established the primary brand mark and the core abbreviated and wordmark
-      forms so the initiative reads clearly at full scale and in supporting
-      applications.
+      Established the primary brand mark and the core abbreviated and wordmark forms so
+      the initiative reads clearly at full scale and in supporting applications.
     </p>
 
     <p class="subject">PRIMARY LOGO</p>
-    {primaryLogo ? (
-      <figure class="detailImage msc-primary-logo">
-        <img
-          class="msc-image msc-image--primary"
-          src={primaryLogo.url}
-          alt={`${title} complete logo`}
-          loading="eager"
-        />
-      </figure>
-    ) : (
-      <figure class="detailImage detailImage--placeholder">
-        <div class="asset-placeholder">Add logo.png as the complete logo.</div>
-      </figure>
-    )}
+    {
+      primaryLogo ? (
+        <figure class="detailImage msc-primary-logo">
+          <img
+            class="msc-image msc-image--primary"
+            src={primaryLogo.url}
+            alt={`${title} complete logo`}
+            loading="eager"
+          />
+        </figure>
+      ) : (
+        <figure class="detailImage detailImage--placeholder">
+          <div class="asset-placeholder">Add logo.png as the complete logo.</div>
+        </figure>
+      )
+    }
 
     <p class="subject">LOCKUPS</p>
     <p class="text">
-      Approved secondary marks sit below the primary logo: a monogram for
-      compact contexts and a dedicated wordmark for horizontal lockups.
+      Approved secondary marks sit below the primary logo: a monogram for compact
+      contexts and a dedicated wordmark for horizontal lockups.
     </p>
 
     <div class="msc-mark-pair">
-      {initialsMark ? (
-        <div class="msc-mark-block">
-          <figure class="detailImage msc-cell msc-cell--mark">
-            <img
-              class="msc-image msc-image--mark"
-              src={initialsMark.url}
-              alt={`${title} monogram mark`}
-              loading="lazy"
-            />
-          </figure>
-          <p class="text msc-mark-copy">
-            Monogram mark for tight spaces, social avatars, and moments where a
-            short glyph reads faster than the full name.
-          </p>
-        </div>
-      ) : null}
-      {nameMark ? (
-        <div class="msc-mark-block">
-          <figure class="detailImage msc-cell msc-cell--mark">
-            <img
-              class="msc-image msc-image--mark"
-              src={nameMark.url}
-              alt={`${title} wordmark`}
-              loading="lazy"
-            />
-          </figure>
-          <p class="text msc-mark-copy">
-            Wordmark for headlines, horizontal layouts, and anywhere the full
-            initiative name should carry the voice of the brand.
-          </p>
-        </div>
-      ) : null}
+      {
+        initialsMark ? (
+          <div class="msc-mark-block">
+            <figure class="detailImage msc-cell msc-cell--mark">
+              <img
+                class="msc-image msc-image--mark"
+                src={initialsMark.url}
+                alt={`${title} monogram mark`}
+                loading="lazy"
+              />
+            </figure>
+            <p class="text msc-mark-copy">
+              Monogram mark for tight spaces, social avatars, and moments where a short
+              glyph reads faster than the full name.
+            </p>
+          </div>
+        ) : null
+      }
+      {
+        nameMark ? (
+          <div class="msc-mark-block">
+            <figure class="detailImage msc-cell msc-cell--mark">
+              <img
+                class="msc-image msc-image--mark"
+                src={nameMark.url}
+                alt={`${title} wordmark`}
+                loading="lazy"
+              />
+            </figure>
+            <p class="text msc-mark-copy">
+              Wordmark for headlines, horizontal layouts, and anywhere the full
+              initiative name should carry the voice of the brand.
+            </p>
+          </div>
+        ) : null
+      }
     </div>
   </section>
 
@@ -159,75 +156,81 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     <h6 class="section">II. BRAND GUIDELINES</h6>
     <p class="subject">SCOPE</p>
     <p class="text">
-      Documented typography, color and gradient behavior, and approved lockup
-      variations so teams can implement the system without drifting off brand.
+      Documented typography, color and gradient behavior, and approved lockup variations
+      so teams can implement the system without drifting off brand.
     </p>
 
     <p class="subject">TYPOGRAPHY</p>
-    {guidelineTypography.length > 0 ? (
-      <div class="msc-grid msc-grid--guidelines" role="list">
-        {guidelineTypography.map((item) => (
-          <figure class="detailImage msc-cell" role="listitem">
-            <img
-              class="msc-image"
-              src={item.url}
-              alt={`${title} typography sample`}
-              loading="lazy"
-            />
-            <figcaption class="msc-caption">Primary typeface in use</figcaption>
-          </figure>
-        ))}
-      </div>
-    ) : (
-      <figure class="detailImage detailImage--placeholder">
-        <div class="asset-placeholder">Add typography guideline assets.</div>
-      </figure>
-    )}
+    {
+      guidelineTypography.length > 0 ? (
+        <div class="msc-grid msc-grid--guidelines" role="list">
+          {guidelineTypography.map((item) => (
+            <figure class="detailImage msc-cell" role="listitem">
+              <img
+                class="msc-image"
+                src={item.url}
+                alt={`${title} typography sample`}
+                loading="lazy"
+              />
+              <figcaption class="msc-caption">Primary typeface in use</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <figure class="detailImage detailImage--placeholder">
+          <div class="asset-placeholder">Add typography guideline assets.</div>
+        </figure>
+      )
+    }
     <p class="text msc-after-grid">
-      Town type treatment sets the editorial voice for titles and display lines
-      across deck and web surfaces.
+      Town type treatment sets the editorial voice for titles and display lines across
+      deck and web surfaces.
     </p>
 
     <p class="subject">GRADIENT AND COLOR PALETTE</p>
-    {guidelineGradient ? (
-      <figure class="detailImage msc-cell msc-gradient-figure">
-        <img
-          class="msc-image msc-image--gradient"
-          src={guidelineGradient.url}
-          alt={`${title} brand gradient and palette`}
-          loading="lazy"
-        />
-      </figure>
-    ) : (
-      <figure class="detailImage detailImage--placeholder">
-        <div class="asset-placeholder">Add gradient.png for palette guidance.</div>
-      </figure>
-    )}
+    {
+      guidelineGradient ? (
+        <figure class="detailImage msc-cell msc-gradient-figure">
+          <img
+            class="msc-image msc-image--gradient"
+            src={guidelineGradient.url}
+            alt={`${title} brand gradient and palette`}
+            loading="lazy"
+          />
+        </figure>
+      ) : (
+        <figure class="detailImage detailImage--placeholder">
+          <div class="asset-placeholder">Add gradient.png for palette guidance.</div>
+        </figure>
+      )
+    }
     <p class="text msc-after-grid">
-      The gradient anchors the palette and signals motion and depth; paired
-      neutrals and accent hues support UI, print, and presentation layers.
+      The gradient anchors the palette and signals motion and depth; paired neutrals and
+      accent hues support UI, print, and presentation layers.
     </p>
 
     <p class="subject">LOCKUP VARIATIONS</p>
-    {guidelineLockups.length > 0 ? (
-      <div class="msc-grid msc-grid--logos" role="list">
-        {guidelineLockups.map((item) => (
-          <figure class="detailImage msc-cell" role="listitem">
-            <img
-              class={item.isWhiteMark ? "msc-image msc-image--dark-bg" : "msc-image"}
-              src={item.url}
-              alt={`${title} lockup variation`}
-              loading="lazy"
-            />
-            <figcaption class="msc-caption">Approved variation</figcaption>
-          </figure>
-        ))}
-      </div>
-    ) : (
-      <figure class="detailImage detailImage--placeholder">
-        <div class="asset-placeholder">Add lockup variation assets.</div>
-      </figure>
-    )}
+    {
+      guidelineLockups.length > 0 ? (
+        <div class="msc-grid msc-grid--logos" role="list">
+          {guidelineLockups.map((item) => (
+            <figure class="detailImage msc-cell" role="listitem">
+              <img
+                class={item.isWhiteMark ? "msc-image msc-image--dark-bg" : "msc-image"}
+                src={item.url}
+                alt={`${title} lockup variation`}
+                loading="lazy"
+              />
+              <figcaption class="msc-caption">Approved variation</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <figure class="detailImage detailImage--placeholder">
+          <div class="asset-placeholder">Add lockup variation assets.</div>
+        </figure>
+      )
+    }
     <p class="text msc-after-grid">
       Light and dark treatments keep the mark legible on neutral, tinted, and
       photographic backgrounds.
@@ -238,83 +241,101 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     <h6 class="section">III. SLIDE DECK SYSTEM</h6>
     <p class="subject">SCOPE</p>
     <p class="text">
-      Created a deck framework for structured storytelling, balancing narrative
-      clarity with reusable layouts for stakeholder communication.
+      Created a deck framework for structured storytelling, balancing narrative clarity
+      with reusable layouts for stakeholder communication.
     </p>
     <p class="subject">KEY OUTPUTS</p>
-    {slideDeckItems.length > 0 ? (
-      <div class="msc-grid" role="list" aria-label="Media Smart Citizens slide deck assets">
-        {slideDeckItems.map((item) => (
-          <figure class="detailImage msc-cell" role="listitem">
-            <img
-              class={item.isWhiteMark ? "msc-image msc-image--dark-bg" : "msc-image"}
-              src={item.url}
-              alt={`${title} slide ${item.stem}`}
-              loading="lazy"
-            />
-            <figcaption class="msc-caption">{item.stem}</figcaption>
-          </figure>
-        ))}
-      </div>
-    ) : (
-      <figure class="detailImage detailImage--placeholder">
-        <div class="asset-placeholder">Add slide deck assets to this section.</div>
-      </figure>
-    )}
+    {
+      slideDeckItems.length > 0 ? (
+        <div
+          class="msc-grid"
+          role="list"
+          aria-label="Media Smart Citizens slide deck assets"
+        >
+          {slideDeckItems.map((item) => (
+            <figure class="detailImage msc-cell" role="listitem">
+              <img
+                class={item.isWhiteMark ? "msc-image msc-image--dark-bg" : "msc-image"}
+                src={item.url}
+                alt={`${title} slide ${item.stem}`}
+                loading="lazy"
+              />
+              <figcaption class="msc-caption">{item.stem}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <figure class="detailImage detailImage--placeholder">
+          <div class="asset-placeholder">Add slide deck assets to this section.</div>
+        </figure>
+      )
+    }
   </section>
 
   <section class="text">
     <h6 class="section">IV. WEBSITE UX REFINEMENT</h6>
     <p class="subject">SCOPE</p>
     <p class="text">
-      Extended the identity into website layout studies with clearer visual
-      hierarchy, improved scanning patterns, and better page-level composition.
+      Extended the identity into website layout studies with clearer visual hierarchy,
+      improved scanning patterns, and better page-level composition.
     </p>
     <p class="subject">KEY OUTPUTS</p>
-    {webLayoutItems.length > 0 ? (
-      <div class="msc-grid" role="list" aria-label="Media Smart Citizens website layout assets">
-        {webLayoutItems.map((item) => (
-          <figure class="detailImage msc-cell" role="listitem">
-            <img
-              class={item.isWhiteMark ? "msc-image msc-image--dark-bg" : "msc-image"}
-              src={item.url}
-              alt={`${title} layout ${item.stem}`}
-              loading="lazy"
-            />
-            <figcaption class="msc-caption">{item.stem}</figcaption>
-          </figure>
-        ))}
-      </div>
-    ) : (
-      <figure class="detailImage detailImage--placeholder">
-        <div class="asset-placeholder">Add website UX assets to this section.</div>
-      </figure>
-    )}
+    {
+      webLayoutItems.length > 0 ? (
+        <div
+          class="msc-grid"
+          role="list"
+          aria-label="Media Smart Citizens website layout assets"
+        >
+          {webLayoutItems.map((item) => (
+            <figure class="detailImage msc-cell" role="listitem">
+              <img
+                class={item.isWhiteMark ? "msc-image msc-image--dark-bg" : "msc-image"}
+                src={item.url}
+                alt={`${title} layout ${item.stem}`}
+                loading="lazy"
+              />
+              <figcaption class="msc-caption">{item.stem}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <figure class="detailImage detailImage--placeholder">
+          <div class="asset-placeholder">Add website UX assets to this section.</div>
+        </figure>
+      )
+    }
   </section>
 
-  {uncategorizedItems.length > 0 && (
-    <section class="text">
-      <h6 class="section">V. ADDITIONAL ASSETS</h6>
-      <p class="subject">SUPPORTING MATERIALS</p>
-      <p class="text">
-        Files not assigned to the sections above are listed here so nothing is
-        omitted from the case study.
-      </p>
-      <div class="msc-grid" role="list" aria-label="Additional Media Smart Citizens assets">
-        {uncategorizedItems.map((item) => (
-          <figure class="detailImage msc-cell" role="listitem">
-            <img
-              class={item.isWhiteMark ? "msc-image msc-image--dark-bg" : "msc-image"}
-              src={item.url}
-              alt={`${title} ${item.stem}`}
-              loading="lazy"
-            />
-            <figcaption class="msc-caption">{item.stem}</figcaption>
-          </figure>
-        ))}
-      </div>
-    </section>
-  )}
+  {
+    uncategorizedItems.length > 0 && (
+      <section class="text">
+        <h6 class="section">V. ADDITIONAL ASSETS</h6>
+        <p class="subject">SUPPORTING MATERIALS</p>
+        <p class="text">
+          Files not assigned to the sections above are listed here so nothing is omitted
+          from the case study.
+        </p>
+        <div
+          class="msc-grid"
+          role="list"
+          aria-label="Additional Media Smart Citizens assets"
+        >
+          {uncategorizedItems.map((item) => (
+            <figure class="detailImage msc-cell" role="listitem">
+              <img
+                class={item.isWhiteMark ? "msc-image msc-image--dark-bg" : "msc-image"}
+                src={item.url}
+                alt={`${title} ${item.stem}`}
+                loading="lazy"
+              />
+              <figcaption class="msc-caption">{item.stem}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    )
+  }
 </DetailLayout>
 
 <style>

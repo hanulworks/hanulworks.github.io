@@ -7,9 +7,11 @@ import photoSeries, { toWorkRowPropsFromPhotoSeries } from "../../data/photos";
 <BaseLayout title="Photos" description="Photography series by Hanul Park">
   <main id="content">
     <section class="work-section" aria-label="Photography series list">
-      {photoSeries.map((series) => (
-        <WorkRow {...toWorkRowPropsFromPhotoSeries(series)} />
-      ))}
+      {
+        photoSeries.map((series) => (
+          <WorkRow {...toWorkRowPropsFromPhotoSeries(series)} />
+        ))
+      }
     </section>
   </main>
 </BaseLayout>

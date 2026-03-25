@@ -3,83 +3,91 @@ import BaseLayout from "./BaseLayout.astro";
 import type { WorkLink } from "../types/workItem";
 
 export interface DetailLayoutProps {
-    title: string;
-    synopsis?: string;
-    /** When false, synopsis is still used for page meta description but not shown in the header */
-    showSynopsisInHeader?: boolean;
-    year?: string;
-    links?: WorkLink[];
-    domains?: string[];
-    image?: string;
-    imageAlt?: string;
-    tools?: string;
-    language?: string;
+  title: string;
+  synopsis?: string;
+  /** When false, synopsis is still used for page meta description but not shown in the header */
+  showSynopsisInHeader?: boolean;
+  year?: string;
+  links?: WorkLink[];
+  domains?: string[];
+  image?: string;
+  imageAlt?: string;
+  tools?: string;
+  language?: string;
 }
 
 const {
-    title,
-    synopsis = "",
-    showSynopsisInHeader = true,
-    year,
-    links = [],
-    domains = [],
-    image,
-    imageAlt = "",
-    tools = "",
-    language = "",
+  title,
+  synopsis = "",
+  showSynopsisInHeader = true,
+  year,
+  links = [],
+  domains = [],
+  image,
+  imageAlt = "",
+  tools = "",
+  language = "",
 } = Astro.props as DetailLayoutProps;
 
 const detailLinks = (links || []).filter((l) => l.context === "detail");
 ---
 
 <BaseLayout {title} description={synopsis}>
-    <main id="content" class="detail-page">
-        <div class="card card--square">
-        <header aria-labelledby="detail-title" class="work-row detail-header">
-            <!-- Left column: reuse WorkRow meta stack -->
-            <div class="work-meta">
-                <h3 id="detail-title" class="work-row__title">{title}</h3>
-                {showSynopsisInHeader && synopsis && (
-                    <p class="work-row__synopsis">{synopsis}</p>
-                )}
-                {year && <p class="work-row__year">{year}</p>}
-                {detailLinks.length > 0 && (
-                    <ul class="work-row__links">
-                        {detailLinks.map((link) => (
-                            <li>
-                                <a
-                                    class={`work-link ${link.external ? "work-link--external" : "work-link--detail"}`}
-                                    href={link.href}
-                                    target={link.external ? "_blank" : undefined}
-                                    rel={link.external ? "noopener noreferrer" : undefined}
-                                >
-                                    {link.label}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
-
-            <!-- Right column: domains + tools/language in one wrapper for divider -->
-            <div class="detail-right">
-                {domains.length > 0 && (
-                    <div class="work-row__domains">
-                        {domains.map((t) => (
-                            <span class="chip">{t}</span>
-                        ))}
-                    </div>
-                )}
-
-                {(tools || language) && (
-                    <div class="work-links-and-meta">
-                        {tools && <p class="text">Tools | {tools}</p>}
-                        {language && <p class="text">Language | {language}</p>}
-                    </div>
-                )}
-            </div>
-        </header>
-        <slot />
+  <main id="content" class="detail-page">
+    <div class="card card--square">
+      <header aria-labelledby="detail-title" class="work-row detail-header">
+        <!-- Left column: reuse WorkRow meta stack -->
+        <div class="work-meta">
+          <h3 id="detail-title" class="work-row__title">{title}</h3>
+          {
+            showSynopsisInHeader && synopsis && (
+              <p class="work-row__synopsis">{synopsis}</p>
+            )
+          }
+          {year && <p class="work-row__year">{year}</p>}
+          {
+            detailLinks.length > 0 && (
+              <ul class="work-row__links">
+                {detailLinks.map((link) => (
+                  <li>
+                    <a
+                      class={`work-link ${link.external ? "work-link--external" : "work-link--detail"}`}
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener noreferrer" : undefined}
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )
+          }
         </div>
-    </main>
+
+        <!-- Right column: domains + tools/language in one wrapper for divider -->
+        <div class="detail-right">
+          {
+            domains.length > 0 && (
+              <div class="work-row__domains">
+                {domains.map((t) => (
+                  <span class="chip">{t}</span>
+                ))}
+              </div>
+            )
+          }
+
+          {
+            (tools || language) && (
+              <div class="work-links-and-meta">
+                {tools && <p class="text">Tools | {tools}</p>}
+                {language && <p class="text">Language | {language}</p>}
+              </div>
+            )
+          }
+        </div>
+      </header>
+      <slot />
+    </div>
+  </main>
 </BaseLayout>

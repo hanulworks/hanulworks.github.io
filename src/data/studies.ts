@@ -19,7 +19,12 @@ const studiesBeforeNewHail: Project[] = [
       "Exploration of contemporary fashion design through generative adversarial modeling on curated datasets of birds and dresses",
     year: "2021",
     links: [{ href: "/studies/bird-dress", label: "VIEW DETAILS", context: "summary" }],
-    domains: ["Generative AI Design", "Fashion Technology", "Computational Creativity", "Machine Learning"],
+    domains: [
+      "Generative AI Design",
+      "Fashion Technology",
+      "Computational Creativity",
+      "Machine Learning",
+    ],
     tools: "Google Collab, Adobe Illustrator, InDesign, Premiere Pro",
     language: "Python",
     image: "/studies/bird-dress/thumbnail.JPEG",
@@ -33,9 +38,19 @@ const studiesBeforeNewHail: Project[] = [
     year: "2020",
     links: [
       { href: "/studies/cyb-org", label: "VIEW DETAILS", context: "summary" },
-      { href: "/studies/cyb-org/diagram.html", label: "EXPLORE PROJECT", external: true, context: "detail" },
+      {
+        href: "/studies/cyb-org/diagram.html",
+        label: "EXPLORE PROJECT",
+        external: true,
+        context: "detail",
+      },
     ],
-    domains: ["Media Theory", "Network Visualization", "Systems Mapping", "Information Architecture"],
+    domains: [
+      "Media Theory",
+      "Network Visualization",
+      "Systems Mapping",
+      "Information Architecture",
+    ],
     tools: "Visual Studio Code",
     language: "JavaScript, HTML, CSS",
     image: "/studies/cyb-org/cyb-org.png",
@@ -48,7 +63,12 @@ const studiesBeforeNewHail: Project[] = [
       "Real-time VJing tool developed in Max for Live, integrating sound-driven visual synthesis for live performance",
     year: "2020",
     links: [{ href: "/studies/solaris", label: "VIEW DETAILS", context: "summary" }],
-    domains: ["Real-Time Visual Synthesis", "Audiovisual Performance", "Live Performance Tooling", "Creative Coding"],
+    domains: [
+      "Real-Time Visual Synthesis",
+      "Audiovisual Performance",
+      "Live Performance Tooling",
+      "Creative Coding",
+    ],
     tools: "Max, Ableton Live",
     language: "C",
     image: "/studies/solaris/demo1.gif",
@@ -60,8 +80,15 @@ const studiesBeforeNewHail: Project[] = [
     synopsis:
       "Prototype and proposal for a VR group therapy course aimed at enhancing mental health education in higher education contexts",
     year: "2020",
-    links: [{ href: "/studies/vr-therapy-101", label: "VIEW DETAILS", context: "summary" }],
-    domains: ["VR Design", "Learning Experience Design", "Mental Health Education", "Therapeutic Technologies"],
+    links: [
+      { href: "/studies/vr-therapy-101", label: "VIEW DETAILS", context: "summary" },
+    ],
+    domains: [
+      "VR Design",
+      "Learning Experience Design",
+      "Mental Health Education",
+      "Therapeutic Technologies",
+    ],
     tools: "Unity",
     language: "C#",
     image: "/studies/vr-therapy-101/thumbnail.png",
@@ -102,7 +129,14 @@ const studiesAfterNewHail: Project[] = [
     synopsis:
       "An experimental web poem emphasizing low‑energy, high‑performance interaction to reframe digital text‑based art",
     year: "2019",
-    links: [{ href: "/studies/yr-no-hater/index.html", label: "EXPLORE PROJECT", external: true, context: "summary" }],
+    links: [
+      {
+        href: "/studies/yr-no-hater/index.html",
+        label: "EXPLORE PROJECT",
+        external: true,
+        context: "summary",
+      },
+    ],
     domains: [
       "Digital Literature",
       "Interactive Web Art",
@@ -119,8 +153,15 @@ const studiesAfterNewHail: Project[] = [
     synopsis:
       "3D interactive environment blending memories, dreams, and experimental moving images to explore immersive narrative",
     year: "2019",
-    links: [{ href: "/studies/dream-homeland", label: "VIEW DETAILS", context: "summary" }],
-    domains: ["Immersive Narrative", "Virtual Environment Design", "Experimental Media", "Spatial Computing"],
+    links: [
+      { href: "/studies/dream-homeland", label: "VIEW DETAILS", context: "summary" },
+    ],
+    domains: [
+      "Immersive Narrative",
+      "Virtual Environment Design",
+      "Experimental Media",
+      "Spatial Computing",
+    ],
     tools: "Unity",
     language: "C#",
     image: "/studies/dream-homeland/demo1.png",

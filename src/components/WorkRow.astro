@@ -28,7 +28,8 @@ const summaryLinks = (links || []).filter((l) => l.context !== "detail");
                 const isExternal =
                   (typeof link.external === "boolean" && link.external) ||
                   (typeof link.href === "string" &&
-                    (link.href.startsWith("http://") || link.href.startsWith("https://")));
+                    (link.href.startsWith("http://") ||
+                      link.href.startsWith("https://")));
                 const isDetail =
                   !isExternal ||
                   (typeof link.label === "string" &&
@@ -62,9 +63,7 @@ const summaryLinks = (links || []).filter((l) => l.context !== "detail");
           alt={imageAlt}
           loading="lazy"
           decoding="async"
-          {...(imageFetchPriority
-            ? { fetchpriority: imageFetchPriority }
-            : {})}
+          {...(imageFetchPriority ? { fetchpriority: imageFetchPriority } : {})}
         />
       </figure>
     )

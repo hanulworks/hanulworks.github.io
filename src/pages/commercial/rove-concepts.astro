@@ -1,0 +1,99 @@
+---
+import DetailLayout from "../../layouts/DetailLayout.astro";
+import { getProjectBySlug } from "../../data/site";
+
+const project = getProjectBySlug("rove-concepts");
+if (!project) {
+  throw new Error("Project data not found for 'rove-concepts'");
+}
+
+const { title, synopsis, year, domains = [], links = [], tools, language } = project;
+---
+
+<DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
+  <section class="text">
+    <h6 class="section">I. STRATEGIC SCOPE</h6>
+    <p class="subject">ENVISIONING THE DIGITAL FLAGSHIP</p>
+    <p class="text">
+      A scoped consulting engagement focused on structural clarity and customer journey
+      optimization, translating brand vision into a high-conversion experience
+      architecture for the product team.
+    </p>
+  </section>
+
+  <section class="text">
+    <h6 class="section">II. ARCHITECTURAL ROADMAP</h6>
+    <p class="subject">MILESTONES</p>
+    <figure class="detailImage detailImage--full-bleed">
+      <img
+        src="/commercial/rove-concepts/milestones.png"
+        alt="Milestones"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+    <p class="subject">CUSTOMER JOURNEY</p>
+    <figure class="detailImage">
+      <img
+        src="/commercial/rove-concepts/journey.png"
+        alt="Customer journey"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+  </section>
+
+  <section class="text">
+    <h6 class="section">III. EXPERIENCE ARCHITECTURE</h6>
+    <p class="subject">COLLABORATION</p>
+    <figure class="detailImage">
+      <img
+        src="/commercial/rove-concepts/teams.png"
+        alt="Collaboration"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+    <p class="subject">FRAMEWORK</p>
+    <figure class="detailImage">
+      <img
+        src="/commercial/rove-concepts/tools.png"
+        alt="Framework"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+  </section>
+
+  <section class="text">
+    <h6 class="section">IV. MARKET INTELLIGENCE</h6>
+    <p class="subject">PRODUCT DESIRABILITY</p>
+    <figure class="detailImage">
+      <img
+        src="/commercial/rove-concepts/style.png"
+        alt="Product desirability"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+    <p class="subject">AESTHETIC INSPIRATION</p>
+    <figure class="detailImage">
+      <img
+        src="/commercial/rove-concepts/inspiration.png"
+        alt="Aesthetic inspiration"
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+  </section>
+
+  <section class="text">
+    <h6 class="section">V. DELIVERABLE</h6>
+    <figure class="detailImage detailImage--full-bleed detailImage--pdf">
+      <iframe
+        src="/commercial/rove-concepts/consulting.pdf#view=FitH"
+        title="Rove Concepts consulting deliverable (PDF)"
+        loading="lazy"></iframe>
+    </figure>
+  </section>
+</DetailLayout>

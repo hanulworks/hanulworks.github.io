@@ -7,9 +7,11 @@ import { getCommercialProjects, toWorkRowProps } from "../../data/site";
 <BaseLayout title="Commercial" description="Commercial work by Hanul Park">
   <main id="content">
     <section class="work-section" aria-label="Commercial projects">
-      {getCommercialProjects().map((project) => (
-        <WorkRow {...toWorkRowProps(project)} />
-      ))}
+      {
+        getCommercialProjects().map((project) => (
+          <WorkRow {...toWorkRowProps(project)} />
+        ))
+      }
     </section>
   </main>
 </BaseLayout>

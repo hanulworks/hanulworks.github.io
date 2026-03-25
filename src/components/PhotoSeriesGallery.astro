@@ -16,7 +16,7 @@ const allImages = leadImage ? [leadImage, ...galleryImages] : galleryImages;
 ---
 
 {
-  (allImages.length > 0) && (
+  allImages.length > 0 && (
     <div id={rootId} class="photo-gallery-root">
       <div class="photo-gallery-body" aria-label={`${seriesTitle} photographs`}>
         <div class="photo-grid photo-grid--whole">

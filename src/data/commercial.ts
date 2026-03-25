@@ -2,6 +2,25 @@ import type { Project } from "../types/project";
 
 export const commercialProjects: Project[] = [
   {
+    slug: "rove-concepts",
+    title: "Rove Concepts",
+    synopsis:
+      "Strategic e-commerce consulting for a North American luxury furniture brand, elevating the digital flagship through experience architecture",
+    year: "2025",
+    links: [
+      { href: "/commercial/rove-concepts", label: "VIEW DETAILS", context: "summary" },
+    ],
+    domains: [
+      "Customer Journey",
+      "Experience Architecture",
+      "Luxury Digital Flagship",
+      "Conversion Optimization",
+    ],
+    tools: "Figma",
+    image: "/commercial/rove-concepts/reference.png",
+    imageAlt: "Rove Concepts product desirability",
+  },
+  {
     slug: "build-your-genesis",
     title: "Build Your Genesis",
     synopsis:
@@ -80,7 +99,12 @@ export const commercialProjects: Project[] = [
         context: "summary",
       },
     ],
-    domains: ["Web Design", "Visual Communication", "Brand Strategy", "Technical Writing"],
+    domains: [
+      "Web Design",
+      "Visual Communication",
+      "Brand Strategy",
+      "Technical Writing",
+    ],
     image: "/commercial/hyundai-campaigns/homepage.png",
     imageAlt: "Hyundai ECV",
   },
@@ -88,10 +112,21 @@ export const commercialProjects: Project[] = [
     slug: "fulcrum-analytics",
     title: "Fulcrum Analytics",
     synopsis:
-      "Creation of campaign report infographics and a year-end holiday graphic card to support data-driven storytelling at Fulcrum Analytics",
+      "Creation of campaign report infographics and a year-end holiday graphic card to support data-driven storytelling",
     year: "2021",
-    links: [{ href: "/commercial/fulcrum-analytics", label: "VIEW DETAILS", context: "summary" }],
-    domains: ["Data Visualization", "Information Design", "Visual Communication", "Content Strategy"],
+    links: [
+      {
+        href: "/commercial/fulcrum-analytics",
+        label: "VIEW DETAILS",
+        context: "summary",
+      },
+    ],
+    domains: [
+      "Data Visualization",
+      "Information Design",
+      "Visual Communication",
+      "Content Strategy",
+    ],
     tools: "Google Sheets, Looker Studio, Adobe Illustrator, InDesign",
     image: "/commercial/fulcrum-analytics/Infographic1.png",
     imageAlt: "Fulcrum Analytics Infographic",
@@ -100,10 +135,21 @@ export const commercialProjects: Project[] = [
     slug: "media-smart-citizens",
     title: "Media Smart Citizens",
     synopsis:
-      "Developed a comprehensive brand identity including logo, color palette, and visual guidelines, then designed functional presentation templates and website layouts for Media Smart Citizens",
+      "A holistic brand transformation and digital design system, unifying core visual identity with functional assets and intuitive web layouts",
     year: "2021",
-    links: [{ href: "/commercial/media-smart-citizens", label: "VIEW DETAILS", context: "summary" }],
-    domains: ["Brand Identity", "Visual Guidelines", "Presentation Design", "Web Layout"],
+    links: [
+      {
+        href: "/commercial/media-smart-citizens",
+        label: "VIEW DETAILS",
+        context: "summary",
+      },
+    ],
+    domains: [
+      "Brand Identity",
+      "Visual Guidelines",
+      "Presentation Design",
+      "Web Layout",
+    ],
     tools: "Adobe Illustrator, InDesign, Figma, Keynote",
     image: "/commercial/media-smart-citizens/brand-white.png",
     imageAlt: "Media Smart Citizens brand gradient",

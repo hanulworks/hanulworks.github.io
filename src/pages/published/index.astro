@@ -10,9 +10,11 @@ import { getPublishedProjects, toWorkRowProps } from "../../data/site";
 >
   <main id="content">
     <section class="work-section" aria-label="Published projects">
-      {getPublishedProjects().map((project) => (
-        <WorkRow {...toWorkRowProps(project)} />
-      ))}
+      {
+        getPublishedProjects().map((project) => (
+          <WorkRow {...toWorkRowProps(project)} />
+        ))
+      }
     </section>
   </main>
 </BaseLayout>

@@ -7,9 +7,7 @@ import { getStudiesItems, toWorkRowProps } from "../../data/site";
 <BaseLayout title="Studies" description="Studies and research projects by Hanul Park">
   <main id="content">
     <section class="work-section" aria-label="Studies">
-      {getStudiesItems().map((studyItem) => (
-        <WorkRow {...toWorkRowProps(studyItem)} />
-      ))}
+      {getStudiesItems().map((studyItem) => <WorkRow {...toWorkRowProps(studyItem)} />)}
     </section>
   </main>
 </BaseLayout>

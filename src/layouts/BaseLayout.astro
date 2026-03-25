@@ -11,45 +11,42 @@ const pageDescription = description ?? "Portfolio of Hanul Park";
 
 <!doctype html>
 <html lang="en">
-    <head>
-        <!-- Meta -->
-        <meta charset="utf-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1, viewport-fit=cover"
-        />
-        <!-- Page metadata -->
-        <title>{pageTitle}</title>
-        <meta name="description" content={pageDescription} />
-        <!-- Favicon (served from /public) -->
-        <link
-            rel="icon"
-            href="/favicons/h.png"
-            type="image/png"
-            sizes="16x16"
-        />
-        <!-- Global CSS: libraries first, then site styles -->
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        />
-        <link rel="stylesheet" href="/style.css" />
-        <!-- Per‑page head injections -->
-        <slot name="head" />
-    </head>
-    <body class={bodyClass}>
-        <InteractiveNoiseBackground />
-        <slot name="background" />
-        <!-- Site chrome: primary nav order is defined in `data/site.ts` -->
-        <Header />
-        <!-- Each page should include its own <main id="content"> -->
-        <slot />
-        <Footer />
-        <!-- Global site script (keep minimal) -->
-        <script is:inline src="/scripts.js" defer></script>
-    </body>
+  <head>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <link rel="preconnect" href="https://rsms.me" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <!-- Page metadata -->
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <!-- Favicon (served from /public) -->
+    <link rel="icon" href="/favicons/h.png" type="image/png" sizes="16x16" />
+    <!-- Global CSS: libraries first, then site styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/style.css" />
+    <!-- Per‑page head injections -->
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <InteractiveNoiseBackground />
+    <slot name="background" />
+    <!-- Site chrome: primary nav order is defined in `data/site.ts` -->
+    <Header />
+    <!-- Each page should include its own <main id="content"> -->
+    <slot />
+    <Footer />
+    <!-- Global site script (keep minimal) -->
+    <script is:inline src="/scripts.js" defer></script>
+  </body>
 </html>

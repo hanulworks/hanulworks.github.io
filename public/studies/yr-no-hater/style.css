@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: "Avenir";
-  src: url("Avenir.ttc")format("ttc");
+  src: url("Avenir.ttc") format("ttc");
 }
 
 body {
@@ -32,7 +32,7 @@ a:hover {
   color: darkred;
 }
 
-@media only screen and (min-width:401px) {
+@media only screen and (min-width: 401px) {
   .text {
     margin: 2vw 0 2vw 0;
     font-size: 16px;
@@ -40,8 +40,7 @@ a:hover {
   }
 }
 
-@media only screen and (max-width:400px) {
-
+@media only screen and (max-width: 400px) {
   .text {
     margin: 10vw;
     padding-left: 0px;

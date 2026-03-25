@@ -69,12 +69,7 @@ function modelReady() {
 }
 
 function mousePressed() {
-  if (
-    mouseX > 0 &&
-    mouseX < windowWidth &&
-    mouseY > 0 &&
-    mouseY < windowHeight
-  ) {
+  if (mouseX > 0 && mouseX < windowWidth && mouseY > 0 && mouseY < windowHeight) {
     let fs = fullscreen();
     fullscreen(!fs);
   }
@@ -149,10 +144,7 @@ function morphing_circle(x, y) {
     for (let i = 0; i < 60; i++) {
       let angle = map(i - 30, -30, 30, 0, 2 * PI) + PI;
       let radius2 = radius1 + map(data[abs(i - 30)], 0, 175, 10, 175);
-      vertex(
-        sin(angle) * radius2 + centerX - 50,
-        cos(angle) * radius2 + centerY
-      );
+      vertex(sin(angle) * radius2 + centerX - 50, cos(angle) * radius2 + centerY);
     }
     endShape(CLOSE);
   }
@@ -188,12 +180,7 @@ function drawSkeleton() {
       let partB = skeleton[j][1];
       stroke(random(0, 255), random(0, 255), random(0, 255));
       strokeWeight(10);
-      line(
-        partA.position.x,
-        partA.position.y,
-        partB.position.x,
-        partB.position.y
-      );
+      line(partA.position.x, partA.position.y, partB.position.x, partB.position.y);
     }
   }
 }

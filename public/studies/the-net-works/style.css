@@ -36,7 +36,10 @@ h3 {
   font-family: "WorkSans-Regular", sans-serif;
   font-size: 1.4rem;
   line-height: 42px;
-  text-shadow: black 0 0 10px, black 0 0 10px, black 0 0 2rem;
+  text-shadow:
+    black 0 0 10px,
+    black 0 0 10px,
+    black 0 0 2rem;
   padding: 24%;
 }
 
@@ -46,7 +49,10 @@ p {
   font-family: "WorkSans-Medium", sans-serif;
   font-size: 1.2rem;
   line-height: 28px;
-  text-shadow: white 0 0 5px, white 0 0 10px, white 0 0 0.2rem;
+  text-shadow:
+    white 0 0 5px,
+    white 0 0 10px,
+    white 0 0 0.2rem;
   padding: 24%;
 }
 
@@ -74,7 +80,10 @@ a:visited {
   top: 10px;
   color: black;
   font-family: "WorkSans-Bold", sans-serif;
-  text-shadow: white 0 0 5px, white 0 0 10px, white 0 0 0.2rem;
+  text-shadow:
+    white 0 0 5px,
+    white 0 0 10px,
+    white 0 0 0.2rem;
 }
 
 .question {
@@ -84,7 +93,10 @@ a:visited {
   color: black;
   font-family: "WorkSans-Light", sans-serif;
   font-size: 5rem;
-  text-shadow: black 0 0 10px, black 0 0 5px, black 0 0 5px;
+  text-shadow:
+    black 0 0 10px,
+    black 0 0 5px,
+    black 0 0 5px;
   padding: 5rem;
   border: 0;
   margin: 10rem 5rem 10rem 5rem;
@@ -98,7 +110,10 @@ a:visited {
   color: black;
   font-family: "WorkSans-Regular", sans-serif;
   font-size: 15px;
-  text-shadow: grey 0 0 5px, white 0 0 10px, white 0 0 0.2rem;
+  text-shadow:
+    grey 0 0 5px,
+    white 0 0 10px,
+    white 0 0 0.2rem;
   margin: 300px 0 300px 300px;
 }
 

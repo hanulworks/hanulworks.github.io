@@ -6,15 +6,15 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@astrojs/partytown": "^2.1.4",
-    "@astrojs/react": "^4.3.0",
-    "@types/react": "^19.1.9",
-    "@types/react-dom": "^19.1.7",
-    "astro": "^5.12.8",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "astro": "^5.12.8"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }

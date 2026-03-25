@@ -7,27 +7,21 @@ if (!project) {
   throw new Error("Project data not found for 'bird-dress'");
 }
 
-const {
-  title,
-  synopsis,
-  year,
-  domains = [],
-  links = [],
-  tools,
-  language,
-} = project;
+const { title, synopsis, year, domains = [], links = [], tools, language } = project;
 
 // Auto-collect & sort outputs from /public/studies/bird-dress
 const sixHourEntries = Object.entries(
   import.meta.glob("/public/studies/bird-dress/6hrs*.*", {
     eager: true,
-    as: "url",
+    query: "?url",
+    import: "default",
   }),
 );
 const nineHourEntries = Object.entries(
   import.meta.glob("/public/studies/bird-dress/9hrs*.*", {
     eager: true,
-    as: "url",
+    query: "?url",
+    import: "default",
   }),
 );
 
@@ -47,25 +41,24 @@ const nineHourImgs = nineHourEntries
 
     <p class="subject">OVERVIEW</p>
     <p class="text">
-      BirDress is an exploratory project that uses StyleGAN to draw visual
-      parallels between organic avian forms and contemporary haute couture. It
-      investigates how machine learning can translate structural and textural
-      cues from nature into fashion-adjacent imagery.
+      BirDress is an exploratory project that uses StyleGAN to draw visual parallels
+      between organic avian forms and contemporary haute couture. It investigates how
+      machine learning can translate structural and textural cues from nature into
+      fashion-adjacent imagery.
     </p>
 
     <p class="subject">MOTIVATION</p>
     <p class="text">
-      The project asks how organic life forms might inform design language.
-      While an ecological focus on extinct species was considered, limited
-      imagery shifted the emphasis toward visual experimentation and dataset
-      curation.
+      The project asks how organic life forms might inform design language. While an
+      ecological focus on extinct species was considered, limited imagery shifted the
+      emphasis toward visual experimentation and dataset curation.
     </p>
 
     <p class="subject">APPROACH</p>
     <p class="text">
-      Training was performed with curated bird and fashion image sets. To
-      stabilize outputs, datasets were preprocessed for axial alignment so
-      aspect ratios and orientations corresponded before StyleGAN training.
+      Training was performed with curated bird and fashion image sets. To stabilize
+      outputs, datasets were preprocessed for axial alignment so aspect ratios and
+      orientations corresponded before StyleGAN training.
     </p>
   </section>
 
@@ -83,11 +76,11 @@ const nineHourImgs = nineHourEntries
 
     <p class="subject">DATASETS</p>
     <p class="text">
-      <strong>Bird imagery:</strong> Caltech-UCSD Birds 200 (CUB-200-2011) refined
-      to 83 curated images across visually distinctive species.
+      <strong>Bird imagery:</strong> Caltech-UCSD Birds 200 (CUB-200-2011) refined to 83 curated
+      images across visually distinctive species.
       <br /><br />
-      <strong>Fashion imagery:</strong> 400 images collected from Iris van Herpen’s
-      haute couture collections for their kinetic, organic qualities.
+      <strong>Fashion imagery:</strong> 400 images collected from Iris van Herpen’s haute
+      couture collections for their kinetic, organic qualities.
     </p>
 
     <figure class="detailImage">
@@ -100,10 +93,10 @@ const nineHourImgs = nineHourEntries
 
     <p class="subject">MODEL TRAINING</p>
     <p class="text">
-      Early runs with single-domain data under-performed. Preprocessing both
-      datasets to align orientation and crop yielded more coherent hybrid
-      outputs, indicating visual structure and alignment can matter more than
-      dataset size at short training horizons.
+      Early runs with single-domain data under-performed. Preprocessing both datasets to
+      align orientation and crop yielded more coherent hybrid outputs, indicating visual
+      structure and alignment can matter more than dataset size at short training
+      horizons.
     </p>
   </section>
 
@@ -139,10 +132,7 @@ const nineHourImgs = nineHourEntries
 
   <section class="text">
     <h6 class="section">IV. POSTERS</h6>
-    <div
-      class="gallery gallery--docs gallery--full"
-      aria-label="BirDress posters"
-    >
+    <div class="gallery gallery--docs gallery--full" aria-label="BirDress posters">
       <img
         src="/studies/bird-dress/poster_1.JPEG"
         alt="BirDress poster 1"
@@ -175,14 +165,14 @@ const nineHourImgs = nineHourEntries
     <h6 class="section">VI. INSIGHTS</h6>
     <p class="subject">TECHNICAL</p>
     <p class="text">
-      Visual structure and axial alignment impacted short-horizon training more
-      than raw dataset size.
+      Visual structure and axial alignment impacted short-horizon training more than raw
+      dataset size.
     </p>
 
     <p class="subject">CONCEPTUAL</p>
     <p class="text">
-      Intentional curation enables StyleGAN to generate compelling abstractions
-      that merge fashion and nature imagery.
+      Intentional curation enables StyleGAN to generate compelling abstractions that
+      merge fashion and nature imagery.
     </p>
   </section>
 </DetailLayout>

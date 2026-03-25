@@ -11,18 +11,20 @@ import sketchItems from "../../data/sketches";
 >
   <main id="content">
     <section class="work-section" aria-label="Sketches">
-      {sketchItems.map((sketch) => (
-        <WorkRow
-          title={sketch.title}
-          synopsis={sketch.synopsis ?? ""}
-          year={sketch.year}
-          links={sketch.links ?? []}
-          domains={sketch.domains ?? []}
-          image={sketch.image}
-          imageAlt={sketch.imageAlt ?? ""}
-          imageFetchPriority="low"
-        />
-      ))}
+      {
+        sketchItems.map((sketch) => (
+          <WorkRow
+            title={sketch.title}
+            synopsis={sketch.synopsis ?? ""}
+            year={sketch.year}
+            links={sketch.links ?? []}
+            domains={sketch.domains ?? []}
+            image={sketch.image}
+            imageAlt={sketch.imageAlt ?? ""}
+            imageFetchPriority="low"
+          />
+        ))
+      }
     </section>
   </main>
 </BaseLayout>

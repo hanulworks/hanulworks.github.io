@@ -76,7 +76,7 @@ Turtle.prototype.pushState = function () {
     x: this.x,
     y: this.y,
     bearingRadians: this.bearingRadians,
-    isPenDown: this.isPenDown
+    isPenDown: this.isPenDown,
   });
 };
 
@@ -84,7 +84,7 @@ Turtle.prototype.pushState = function () {
 Turtle.prototype.popState = function () {
   if (this._stateStack.length === 0) {
     console.error(
-      "Turtle: No states left on stack. Make sure your calls to .pushState and .popState are balanced."
+      "Turtle: No states left on stack. Make sure your calls to .pushState and .popState are balanced.",
     );
     return;
   }

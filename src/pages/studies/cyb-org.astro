@@ -7,44 +7,30 @@ if (!project) {
   throw new Error("Project data not found for 'cyb-org'");
 }
 
-const {
-  title,
-  synopsis,
-  year,
-  domains = [],
-  links = [],
-  tools,
-  language,
-} = project;
+const { title, synopsis, year, domains = [], links = [], tools, language } = project;
 ---
 
 <DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
-  
   <section class="text">
     <h6 class="section">I. RESEARCH FRAMEWORK</h6>
     <p class="subject">CONCEPTUAL FOUNDATIONS</p>
     <p class="text">
-      The project begins with three foundational keywords: Experience, Network,
-      and Information. Through critical synthesis, these themes converge into
-      the broader concept of the Cyborg as a figure of entanglement between the
-      human and the technological.
+      The project begins with three foundational keywords: Experience, Network, and
+      Information. Through critical synthesis, these themes converge into the broader
+      concept of the Cyborg as a figure of entanglement between the human and the
+      technological.
     </p>
 
     <p class="subject">SUBJECT OF ANALYSIS</p>
     <p class="text">
-      To ground the theoretical exploration, I analyzed Motoko Kusanagi, the
-      cybernetic protagonist of <em>Ghost in the Shell</em>, as a cultural
-      artifact situated at the nexus of human experience, data systems, and
-      networked embodiment.
+      To ground the theoretical exploration, I analyzed Motoko Kusanagi, the cybernetic
+      protagonist of <em>Ghost in the Shell</em>, as a cultural artifact situated at the
+      nexus of human experience, data systems, and networked embodiment.
     </p>
   </section>
 
   <div class="detailImage">
-    <img
-      src="/studies/cyb-org/cyb-org.png"
-      alt="cyb-org diagram"
-      loading="lazy"
-    />
+    <img src="/studies/cyb-org/cyb-org.png" alt="cyb-org diagram" loading="lazy" />
   </div>
 
   <section class="text">
@@ -54,9 +40,11 @@ const {
     <p class="text">
       <a
         class="work-link work-link--external"
-        href="/studies/cyb-org/Cyborg Analysis.pdf" 
+        href="/studies/cyb-org/Cyborg Analysis.pdf"
         target="_blank"
-        rel="noopener noreferrer">Cyborg, an ultimate connection between Experience, Network, and Information: A Case Study Analysis of Motoko Kusanagi</a
+        rel="noopener noreferrer"
+        >Cyborg, an ultimate connection between Experience, Network, and Information: A
+        Case Study Analysis of Motoko Kusanagi</a
       >
     </p>
 
@@ -64,9 +52,10 @@ const {
     <p class="text">
       <a
         class="work-link work-link--external"
-        href="/studies/cyb-org/Kusanagi Spec Sheet.pdf" 
+        href="/studies/cyb-org/Kusanagi Spec Sheet.pdf"
         target="_blank"
-        rel="noopener noreferrer">Making of a Cyborg: a Case Study of Motoko Kusanagi in Ghost in the Shell</a
+        rel="noopener noreferrer"
+        >Making of a Cyborg: a Case Study of Motoko Kusanagi in Ghost in the Shell</a
       >
     </p>
   </section>
@@ -108,16 +97,15 @@ const {
     <h6 class="section">IV. INTERFACE SYSTEM</h6>
     <p class="subject">DIAGRAM STRUCTURE</p>
     <p class="text">
-      The final deliverable is a multi-interactive diagram built with
-      Cytoscape.js. It enables real-time, user-driven exploration of
-      relationships among conceptual nodes.
+      The final deliverable is a multi-interactive diagram built with Cytoscape.js. It
+      enables real-time, user-driven exploration of relationships among conceptual
+      nodes.
     </p>
 
     <p class="subject">DESIGN LOGIC</p>
     <p class="text">
-      The interface invites users to navigate overlapping ideas through
-      modifiable clusters, foregrounding end-user agency in shaping knowledge
-      structures.
+      The interface invites users to navigate overlapping ideas through modifiable
+      clusters, foregrounding end-user agency in shaping knowledge structures.
     </p>
   </section>
 

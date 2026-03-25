@@ -71,9 +71,7 @@ export const photoSeries: PhotoSeries[] = [
   },
 ];
 
-export function toWorkRowPropsFromPhotoSeries(
-  series: PhotoSeries,
-): WorkRowProps {
+export function toWorkRowPropsFromPhotoSeries(series: PhotoSeries): WorkRowProps {
   return {
     title: series.title,
     synopsis: series.synopsis,

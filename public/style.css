@@ -1,7 +1,7 @@
 /* =========================================================
    0) IMPORTS & GLOBAL VARIABLES
    ========================================================= */
-@import url('https://rsms.me/inter/inter.css');
+@import url("https://rsms.me/inter/inter.css");
 
 /* ----- Interactive WebGL noise behind all pages (see InteractiveNoiseBackground) ----- */
 body {
@@ -39,14 +39,24 @@ main#content {
 
 :root {
   /* Palette */
-  --color-page-background: #F8FBFD;
-  --color-surface: #FFFFFF;
-  --color-text: #1A1C1E;
-  --color-text-muted: #44474F;
-  --color-accent: #2F87A6;
-  --color-accent-muted: #DDF3FA;
-  --color-selection-highlight: #D6F4E6;
-  --color-link-focus-background: #FFE6DE;
+  --color-page-background: #f8fbfd;
+  /* Mobile flyout: white, lightly translucent; pairs with backdrop-filter on panel */
+  --color-nav-panel-surface: rgba(255, 255, 255, 0.88);
+  --color-surface: #ffffff;
+  --color-text: #1a1c1e;
+  --color-text-muted: #44474f;
+  --color-accent: #2f87a6;
+  --color-accent-muted: #ddf3fa;
+  --color-selection-highlight: #d6f4e6;
+  --color-link-focus-background: #ffe6de;
+
+  /* Scrollbars — solid white */
+  --scrollbar-size: 9px;
+  --scrollbar-radius: 999px;
+  --scrollbar-track: #ffffff;
+  --scrollbar-thumb: #ffffff;
+  --scrollbar-thumb-hover: #ffffff;
+  --scrollbar-thumb-active: #ffffff;
 
   /* Body cube-grid background (light grey lines) */
   --color-background-cube-grid-strong: rgba(242, 244, 246, 0.7);
@@ -60,9 +70,9 @@ main#content {
   --space-xl: clamp(32px, 4vw, 56px);
 
   /* Fluid type scale */
-  --text-xs: clamp(0.68rem, 0.60rem + 0.40vw, 0.78rem);
+  --text-xs: clamp(0.68rem, 0.6rem + 0.4vw, 0.78rem);
   --text-sm: clamp(0.78rem, 0.64rem + 0.55vw, 0.92rem);
-  --text-md: clamp(0.90rem, 0.70rem + 0.70vw, 1.05rem);
+  --text-md: clamp(0.9rem, 0.7rem + 0.7vw, 1.05rem);
   --text-lg: clamp(1.05rem, 0.85rem + 0.85vw, 1.25rem);
   --display-sm: clamp(1.25rem, 3vw, 2.25rem);
   --display-lg: clamp(2.25rem, 6vw, 3.25rem);
@@ -103,7 +113,7 @@ main#content {
    1) BASE / RESET / UTILITIES
    ========================================================= */
 html {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
 }
 
@@ -115,7 +125,7 @@ html {
 
 @supports (font-variation-settings: normal) {
   html {
-    font-family: 'Inter var', sans-serif;
+    font-family: "Inter var", sans-serif;
   }
 }
 
@@ -142,14 +152,56 @@ body {
   background-color: var(--color-page-background);
   color: var(--color-text);
   background-image:
-    linear-gradient(30deg, var(--color-background-cube-grid-strong) 12%, transparent 12.5%, transparent 87%, var(--color-background-cube-grid-strong) 87.5%),
-    linear-gradient(150deg, var(--color-background-cube-grid-strong) 12%, transparent 12.5%, transparent 87%, var(--color-background-cube-grid-strong) 87.5%),
-    linear-gradient(30deg, var(--color-background-cube-grid-strong) 12%, transparent 12.5%, transparent 87%, var(--color-background-cube-grid-strong) 87.5%),
-    linear-gradient(150deg, var(--color-background-cube-grid-strong) 12%, transparent 12.5%, transparent 87%, var(--color-background-cube-grid-strong) 87.5%),
-    linear-gradient(60deg, var(--color-background-cube-grid-muted) 25%, transparent 25.5%, transparent 75%, var(--color-background-cube-grid-muted) 75%),
-    linear-gradient(60deg, var(--color-background-cube-grid-muted) 25%, transparent 25.5%, transparent 75%, var(--color-background-cube-grid-muted) 75%);
+    linear-gradient(
+      30deg,
+      var(--color-background-cube-grid-strong) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      var(--color-background-cube-grid-strong) 87.5%
+    ),
+    linear-gradient(
+      150deg,
+      var(--color-background-cube-grid-strong) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      var(--color-background-cube-grid-strong) 87.5%
+    ),
+    linear-gradient(
+      30deg,
+      var(--color-background-cube-grid-strong) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      var(--color-background-cube-grid-strong) 87.5%
+    ),
+    linear-gradient(
+      150deg,
+      var(--color-background-cube-grid-strong) 12%,
+      transparent 12.5%,
+      transparent 87%,
+      var(--color-background-cube-grid-strong) 87.5%
+    ),
+    linear-gradient(
+      60deg,
+      var(--color-background-cube-grid-muted) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      var(--color-background-cube-grid-muted) 75%
+    ),
+    linear-gradient(
+      60deg,
+      var(--color-background-cube-grid-muted) 25%,
+      transparent 25.5%,
+      transparent 75%,
+      var(--color-background-cube-grid-muted) 75%
+    );
   background-size: 80px 140px;
-  background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+  background-position:
+    0 0,
+    0 0,
+    40px 70px,
+    40px 70px,
+    0 0,
+    40px 70px;
 }
 
 /* Detail pages use a plain surface background */
@@ -163,7 +215,6 @@ main#content {
 }
 
 @media (min-width: 992px) {
-
   /* Wider gutters for very large viewports */
   main#content {
     margin-inline: clamp(120px, 10vw, 240px);
@@ -172,9 +223,7 @@ main#content {
      * nav label (second item): rail inset + first link row + gap to second link text.
      * First link: padding-top 4px + line (1.2× nav font) + padding-bottom 2px; second: +4px to text.
      */
-    padding-top: calc(
-      var(--space-md) + 4px + (1.2 * var(--font-size-nav)) + 2px + 4px
-    );
+    padding-top: calc(var(--space-md) + 4px + (1.2 * var(--font-size-nav)) + 2px + 4px);
     padding-bottom: var(--padding-page-block);
   }
 
@@ -196,31 +245,42 @@ p:first-child {
 }
 
 body :is(p, h1, h2, h3, h4, h5, h6, a, li, span, .text, .synopsis, .domain, .subject) {
-  transition: color .25s ease, background-color .25s ease, opacity .25s ease;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    opacity 0.25s ease;
 }
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--color-accent-muted) transparent;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
 }
 
 *::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
 }
 
 *::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--scrollbar-track);
+  border-radius: var(--scrollbar-radius);
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--color-accent-muted);
-  border: 2px solid var(--color-surface);
-  border-radius: 999px;
+  background-color: var(--scrollbar-thumb);
+  border: 2px solid #ffffff;
+  border-radius: var(--scrollbar-radius);
+  box-shadow: none;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: var(--color-accent);
+  background-color: var(--scrollbar-thumb-hover);
+  box-shadow: none;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: var(--scrollbar-thumb-active);
+  box-shadow: none;
 }
 
 /* Prevent text copying / selection */
@@ -240,7 +300,6 @@ body * {
   background: transparent;
   color: inherit;
 }
-
 
 /* GLOBAL CARD (utility) */
 .card {
@@ -283,7 +342,9 @@ a:focus {
   color: var(--color-text);
   text-decoration: underline dotted;
   text-underline-offset: 2px;
-  transition: background-color .25s ease, color .25s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
   outline: 0;
 }
 
@@ -363,15 +424,17 @@ u a {
 
 /* Menu Cube Icon (Header) */
 .menu-icon {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .15));
-  transition: filter .25s ease;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  transition: filter 0.25s ease;
 }
 
 .menu-icon .face-top,
 .menu-icon .face-left,
 .menu-icon .face-right {
   opacity: 1;
-  transition: fill .25s, opacity .25s;
+  transition:
+    fill 0.25s,
+    opacity 0.25s;
 }
 
 .menu-icon .face-top {
@@ -386,26 +449,26 @@ u a {
   fill: #757575;
 }
 
-/* Hover/focus tint using brand accent scale */
+/* Hover/focus: three grey‑blue faces (light / mid / deep), aligned with cool shell + accent */
 .menu-toggle:hover .menu-icon,
 .menu-toggle:focus .menu-icon {
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, .15));
+  filter: drop-shadow(0 2px 6px rgba(47, 135, 166, 0.22));
 }
 
 .menu-toggle:hover .menu-icon .face-top,
 .menu-toggle:focus .menu-icon .face-top {
-  fill: #e0e0e0;
+  fill: #e3eef3;
 }
 
 .menu-toggle:hover .menu-icon .face-left,
 .menu-toggle:focus .menu-icon .face-left {
-  fill: #bdbdbd;
+  fill: #9bbfcf;
   opacity: 1;
 }
 
 .menu-toggle:hover .menu-icon .face-right,
 .menu-toggle:focus .menu-icon .face-right {
-  fill: #757575;
+  fill: #5a8aa3;
 }
 
 /* Off‑canvas container & panel */
@@ -427,15 +490,29 @@ u a {
   pointer-events: auto;
 }
 
-/* Hide the unstyled overlay button on mobile so the small rounded pill does not appear */
+/* Full-screen scrim behind the flyout; taps close the menu (see Header script data-menu-close) */
 .site-nav .nav-overlay {
   display: none;
-  /* prevent default browser button from showing */
   border: 0;
   padding: 0;
+  margin: 0;
   background: transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 
+@media (max-width: 991.98px) {
+  .site-nav.open .nav-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    min-height: 100dvh;
+    cursor: pointer;
+    background: rgba(26, 28, 30, 0.06);
+  }
+}
 
 .site-nav__inner {
   position: fixed;
@@ -455,7 +532,9 @@ u a {
   height: 100vh;
   max-height: 100vh;
   padding: clamp(20px, 4vw, 32px);
-  background: var(--color-card-surface);
+  background: var(--color-nav-panel-surface);
+  -webkit-backdrop-filter: blur(14px) saturate(1.05);
+  backdrop-filter: blur(14px) saturate(1.05);
   color: var(--color-text);
   border: 1px solid rgba(26, 28, 30, 0.08);
   border-radius: 0;
@@ -466,7 +545,10 @@ u a {
   transform: translateX(calc(100% + var(--space-sm)));
   opacity: 0;
   filter: blur(6px);
-  transition: transform .32s cubic-bezier(.22, .61, .36, 1), opacity .22s ease, filter .28s ease;
+  transition:
+    transform 0.32s cubic-bezier(0.22, 0.61, 0.36, 1),
+    opacity 0.22s ease,
+    filter 0.28s ease;
   row-gap: 0;
 }
 
@@ -554,7 +636,7 @@ u a {
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: var(--color-card-surface);
+  background: var(--color-nav-panel-surface);
   border: 0;
   border-radius: 999px;
   cursor: pointer;
@@ -722,11 +804,11 @@ body.nav-open {
 }
 
 /* Stacked spacing between adjacent sections/cards */
-.media-section+.disclosure-section,
-.disclosure-section+.media-section,
-.media-card+.disclosure-section,
-.disclosure-section+.media-card,
-.media-section+.media-section {
+.media-section + .disclosure-section,
+.disclosure-section + .media-section,
+.media-card + .disclosure-section,
+.disclosure-section + .media-card,
+.media-section + .media-section {
   margin-top: var(--section-gap);
 }
 
@@ -768,7 +850,7 @@ body.nav-open {
 .section-title {
   margin: 0 0 var(--space-sm);
   font-size: var(--text-xs);
-  letter-spacing: .15em;
+  letter-spacing: 0.15em;
   font-weight: 600;
   text-transform: uppercase;
   color: var(--color-accent);
@@ -806,7 +888,6 @@ body.nav-open {
 
 /* Desktop layouts */
 @media (min-width: 992px) {
-
   /* Base 2-col */
   .media-card {
     grid-template-columns: 1fr 1fr;
@@ -872,7 +953,10 @@ body.nav-open {
   text-align: center;
   font-weight: 300;
   font-size: var(--text-disclosure-summary);
-  transition: background-color .25s ease, color .25s ease, font-weight .25s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    font-weight 0.25s ease;
 }
 
 /* States */
@@ -890,10 +974,10 @@ body.nav-open {
 /* Open content */
 .disclosure-section .disclosure[open] .disclosure-content {
   margin-top: var(--space-xs);
-  padding-top: .25rem;
+  padding-top: 0.25rem;
 }
 
-.disclosure-section .disclosure-content> :first-child {
+.disclosure-section .disclosure-content > :first-child {
   margin-top: 0;
 }
 
@@ -928,7 +1012,7 @@ body.nav-open {
 .footer-icons {
   display: flex;
   align-items: center;
-  gap: .75rem;
+  gap: 0.75rem;
 }
 
 .footer-icons a {
@@ -1090,7 +1174,7 @@ body.nav-open {
 
 .work-row__domains .chip {
   line-height: 1;
-  padding: .3em .7em;
+  padding: 0.3em 0.7em;
   border-radius: 999px;
   background: #ffffff;
   color: var(--color-text);
@@ -1133,7 +1217,7 @@ body.page-sketches .work-row {
       "meta domains";
   }
 
-  .work-row>* {
+  .work-row > * {
     min-width: 0;
   }
 }
@@ -1225,7 +1309,7 @@ body.page-sketches .work-row {
 
 /* place carousels in the 70% column on tablet+ detail sections */
 @media (min-width: 992px) {
-  section.text>.carousel {
+  section.text > .carousel {
     grid-column: 2;
     width: 100%;
     row-gap: var(--space-lg);
@@ -1356,6 +1440,29 @@ section.text {
   height: auto;
 }
 
+.detailImage--pdf iframe {
+  display: block;
+  width: 100%;
+  min-height: min(80vh, 880px);
+  border: 1px solid rgba(26, 28, 30, 0.1);
+}
+
+/* Full-width PDF embed on case-study pages (e.g. Rove deliverable) */
+.detailImage--full-bleed.detailImage--pdf iframe {
+  min-height: min(88vh, 960px);
+}
+
+/* Detail case-study hero: span both grid columns for maximum width */
+.detailImage--full-bleed {
+  width: 100%;
+  max-width: 100%;
+}
+
+.detailImage--full-bleed img {
+  width: 100%;
+  height: auto;
+}
+
 /* tablet+ grid: 20% subjects / 80% texts & media */
 @media (min-width: 992px) {
   section.text {
@@ -1365,25 +1472,30 @@ section.text {
     align-items: start;
   }
 
-  section.text>.section {
+  section.text > .section {
     grid-column: 1 / -1;
   }
 
-  section.text>.subject {
+  section.text > .subject {
     grid-column: 1;
   }
 
   /* Place common right‑column content */
   section.text > .text,
-  section.text > .detailImage,
+  section.text > .detailImage:not(.detailImage--full-bleed),
   section.text > .gallery:not(.gallery--full):not(.gallery--docs),
-  section.text > .embed { grid-column: 2; }
+  section.text > .embed {
+    grid-column: 2;
+  }
+  section.text > .detailImage.detailImage--full-bleed,
   section.text > .gallery.gallery--full,
-  section.text > .gallery.gallery--docs { grid-column: 1 / -1; }
+  section.text > .gallery.gallery--docs {
+    grid-column: 1 / -1;
+  }
 }
 
 /* allow non-media content in the right column when reused by DetailLayout */
-.work-row__image> :not(img) {
+.work-row__image > :not(img) {
   margin-top: var(--space-sm);
 }
 
@@ -1432,8 +1544,26 @@ section.text {
   }
 }
 
+/*
+ * Documentation GIF grids (e.g. The Net Works): at most 2 columns so assets stay legible.
+ * Higher specificity overrides .gallery (incl. 3-col @768) and avoids .gallery--full (6-col @1200).
+ */
+.gallery.gallery--docs.gallery--docs-pair {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 767.98px) {
+  .gallery.gallery--docs.gallery--docs-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Make sure images fill cells */
-.gallery img { display: block; width: 100%; height: auto; }
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 /* Place common right‑column content on desktop; full-width galleries span both columns */
 /* (rules above replaced/merged with main desktop rules for section.text) */
