@@ -1,9 +1,10 @@
+import type { ListingEntry } from "../types/listing-entry";
 import type { Sketch } from "../types/sketch";
-import type { WorkRowProps } from "../types/workItem";
+import type { WorkRowProps } from "../types/work-row";
 import type { Project } from "../types/project";
 import { commercialProjects } from "./commercial";
 import { publishedProjects } from "./published";
-import { studiesProjects, newHailSketch, studiesSlugs } from "./studies";
+import { studiesProjects, studiesListingEntries } from "./studies";
 import { slugify } from "../utils/slugify";
 
 export const SITE_NAV_LINKS = [
@@ -38,22 +39,19 @@ export function getPublishedProjects(): Project[] {
   return publishedProjects;
 }
 
-export function getStudiesItems(): Array<Project | Sketch> {
-  return studiesSlugs.map((slug) => {
-    if (slug === "new-hail") return newHailSketch;
-    const project = getProjectBySlug(slug);
-    if (!project) throw new Error(`Missing project for studies: ${slug}`);
-    return project;
-  });
+/** Ordered entries for the studies index (single source of truth in `studies.ts`). */
+export function getStudiesListing(): Array<Project | Sketch> {
+  return studiesListingEntries;
 }
 
-export function toWorkRowProps(item: Project | Sketch): WorkRowProps {
+/** Maps listing metadata (project, photo series, etc.) to the work card props. */
+export function toWorkRowProps(item: ListingEntry | Sketch): WorkRowProps {
   return {
     title: item.title,
-    synopsis: item.synopsis ?? "",
+    description: item.description ?? "",
     year: item.year,
     links: item.links ?? [],
-    domains: item.domains ?? [],
+    tags: item.tags ?? [],
     image: item.image,
     imageAlt: item.imageAlt ?? "",
   };

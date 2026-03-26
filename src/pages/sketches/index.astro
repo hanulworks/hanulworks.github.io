@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import WorkRow from "../../components/WorkRow.astro";
-import sketchItems from "../../data/sketches";
+import sketchCatalog from "../../data/sketches";
 ---
 
 <BaseLayout
@@ -12,13 +12,13 @@ import sketchItems from "../../data/sketches";
   <main id="content">
     <section class="work-section" aria-label="Sketches">
       {
-        sketchItems.map((sketch) => (
+        sketchCatalog.map((sketch) => (
           <WorkRow
             title={sketch.title}
-            synopsis={sketch.synopsis ?? ""}
+            description={sketch.description ?? ""}
             year={sketch.year}
             links={sketch.links ?? []}
-            domains={sketch.domains ?? []}
+            tags={sketch.tags ?? []}
             image={sketch.image}
             imageAlt={sketch.imageAlt ?? ""}
             imageFetchPriority="low"

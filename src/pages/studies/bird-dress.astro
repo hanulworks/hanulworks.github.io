@@ -1,13 +1,13 @@
 ---
 import DetailLayout from "../../layouts/DetailLayout.astro";
-import { getProjectBySlug } from "../../data/site";
+import { getProjectBySlug } from "../../data/site-data";
 
 const project = getProjectBySlug("bird-dress");
 if (!project) {
   throw new Error("Project data not found for 'bird-dress'");
 }
 
-const { title, synopsis, year, domains = [], links = [], tools, language } = project;
+const { title, description, year, tags = [], links = [], tools, language } = project;
 
 // Auto-collect & sort outputs from /public/studies/bird-dress
 const sixHourEntries = Object.entries(
@@ -35,7 +35,7 @@ const nineHourImgs = nineHourEntries
   .map(([, url]) => url as string);
 ---
 
-<DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
+<DetailLayout {title} {description} {year} {tags} {links} {tools} {language}>
   <section class="text">
     <h6 class="section">I. CONCEPT</h6>
 

@@ -1,13 +1,13 @@
 ---
 import DetailLayout from "../../layouts/DetailLayout.astro";
-import { getProjectBySlug } from "../../data/site";
+import { getProjectBySlug } from "../../data/site-data";
 
 const project = getProjectBySlug("media-smart-citizens");
 if (!project) {
   throw new Error("Project data not found for 'media-smart-citizens'");
 }
 
-const { title, synopsis, year, domains = [], links = [], tools, language } = project;
+const { title, description, year, tags = [], links = [], tools, language } = project;
 
 const mediaEntries = Object.entries(
   import.meta.glob(
@@ -79,7 +79,7 @@ const usedUrls = new Set<string>([
 const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
 ---
 
-<DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
+<DetailLayout {title} {description} {year} {tags} {links} {tools} {language}>
   <section class="text">
     <h6 class="section">I. BRAND IDENTITY SYSTEM</h6>
     <p class="subject">SCOPE</p>

@@ -2,15 +2,15 @@ import type { Sketch } from "../types/sketch";
 
 export type { Sketch };
 
-export const sketchItems: Sketch[] = [
+export const sketchCatalog: Sketch[] = [
   {
     slug: "bio-glyph",
     title: "Bio-Glyph",
-    synopsis:
+    description:
       "Generative marks in a real-time compositing patch that branch and bleed like living tissue, with organic motion, color drift, and rhythm",
     year: "2022",
     links: [],
-    domains: ["Organic Systems", "Generative Art"],
+    tags: ["Organic Systems", "Generative Art"],
     tools: "TouchDesigner",
     language: "HTML, CSS",
     image: "/sketches/bio-glyph/1.gif",
@@ -19,11 +19,11 @@ export const sketchItems: Sketch[] = [
   {
     slug: "swamp",
     title: "Swamp",
-    synopsis:
+    description:
       "Layered fluid motion and drifting particles in muted greens and browns that evoke humid air, submerged light, and slow water",
     year: "2022",
     links: [],
-    domains: ["Particle Systems", "Fluid Motion"],
+    tags: ["Particle Systems", "Fluid Motion"],
     tools: "TouchDesigner",
     language: "HTML, CSS",
     image: "/sketches/swamp/1.gif",
@@ -32,11 +32,11 @@ export const sketchItems: Sketch[] = [
   {
     slug: "particle-waves",
     title: "Particle Waves",
-    synopsis:
+    description:
       "Three-dimensional particle masses that cohere and dissolve in continuous drift as a study in mass and motion",
     year: "2022",
     links: [],
-    domains: ["Generative Systems", "3D Spatial Visualization"],
+    tags: ["Generative Systems", "3D Spatial Visualization"],
     tools: "TouchDesigner",
     language: "HTML, CSS",
     image: "/sketches/particle-waves/1.gif",
@@ -45,11 +45,11 @@ export const sketchItems: Sketch[] = [
   {
     slug: "pixel-tunnels",
     title: "Pixel Tunnels",
-    synopsis:
+    description:
       "An endlessly receding pixel tunnel whose depth and motion loop as a study in perspectival space",
     year: "2022",
     links: [],
-    domains: ["Generative Systems", "Procedural Visualization"],
+    tags: ["Generative Systems", "Procedural Visualization"],
     tools: "TouchDesigner",
     language: "HTML, CSS",
     image: "/sketches/pixel-tunnels/1.gif",
@@ -58,7 +58,7 @@ export const sketchItems: Sketch[] = [
   {
     slug: "cherry-blossom",
     title: "Cherry Blossom",
-    synopsis:
+    description:
       "Recursive turtle-graphics paths that accumulate into floral, branching forms from a single generative rule",
     year: "2021",
     links: [
@@ -66,10 +66,10 @@ export const sketchItems: Sketch[] = [
         href: "/sketches/cherry-blossom/",
         label: "EXPLORE PROJECT",
         external: true,
-        context: "summary",
+        surface: "listing",
       },
     ],
-    domains: ["Algorithmic Illustration", "Generative Art"],
+    tags: ["Algorithmic Illustration", "Generative Art"],
     tools: "Turtle.js",
     language: "JavaScript, HTML, CSS",
     image: "/sketches/cherry-blossom/1.png",
@@ -78,7 +78,7 @@ export const sketchItems: Sketch[] = [
   {
     slug: "chaos",
     title: "Chaos",
-    synopsis:
+    description:
       "Recursion in turtle graphics driven past stability into dense, chaotic drawing while the underlying rules remain elementary",
     year: "2021",
     links: [
@@ -86,10 +86,10 @@ export const sketchItems: Sketch[] = [
         href: "/sketches/chaos/",
         label: "EXPLORE PROJECT",
         external: true,
-        context: "summary",
+        surface: "listing",
       },
     ],
-    domains: ["Complex Systems", "Generative Visualization"],
+    tags: ["Complex Systems", "Generative Visualization"],
     tools: "Turtle.js",
     language: "JavaScript, HTML, CSS",
     image: "/sketches/chaos/1.png",
@@ -98,7 +98,7 @@ export const sketchItems: Sketch[] = [
   {
     slug: "spiral",
     title: "Spiral",
-    synopsis:
+    description:
       "Recursive turtle-graphics instructions that unfurl into spirals, making incremental mathematical growth visible as drawn line",
     year: "2021",
     links: [
@@ -106,10 +106,10 @@ export const sketchItems: Sketch[] = [
         href: "/sketches/spiral/",
         label: "EXPLORE PROJECT",
         external: true,
-        context: "summary",
+        surface: "listing",
       },
     ],
-    domains: ["Mathematical Systems", "Generative Art"],
+    tags: ["Mathematical Systems", "Generative Art"],
     tools: "Turtle.js",
     language: "JavaScript, HTML, CSS",
     image: "/sketches/spiral/1.png",
@@ -118,7 +118,7 @@ export const sketchItems: Sketch[] = [
   {
     slug: "winter-tree",
     title: "Winter Tree",
-    synopsis:
+    description:
       "Bare winter trees modeled through recursive branching in turtle graphics, with structure pared to season and silhouette",
     year: "2021",
     links: [
@@ -126,10 +126,10 @@ export const sketchItems: Sketch[] = [
         href: "/sketches/winter-tree/",
         label: "EXPLORE PROJECT",
         external: true,
-        context: "summary",
+        surface: "listing",
       },
     ],
-    domains: ["Procedural Modeling", "Computational Botany"],
+    tags: ["Procedural Modeling", "Computational Botany"],
     tools: "Turtle.js",
     language: "JavaScript, HTML, CSS",
     image: "/sketches/winter-tree/1.png",
@@ -138,7 +138,7 @@ export const sketchItems: Sketch[] = [
   {
     slug: "neon-pen",
     title: "Neon Pen",
-    synopsis:
+    description:
       "A browser drawing surface in neon with pressure-sensitive stroke behavior",
     year: "2021",
     links: [
@@ -146,10 +146,10 @@ export const sketchItems: Sketch[] = [
         href: "/sketches/neon-pen/",
         label: "EXPLORE PROJECT",
         external: true,
-        context: "summary",
+        surface: "listing",
       },
     ],
-    domains: ["Human Computer Interaction", "Creative Coding"],
+    tags: ["Human Computer Interaction", "Creative Coding"],
     tools: "Paper.js",
     language: "JavaScript, HTML, CSS",
     image: "/sketches/neon-pen/1.gif",
@@ -158,7 +158,7 @@ export const sketchItems: Sketch[] = [
   {
     slug: "butterfly2046",
     title: "Butterfly2046",
-    synopsis:
+    description:
       "Procedural butterflies and color fields indebted to Wong Kar-wai's 2046, ornamental and quietly melancholic",
     year: "2021",
     links: [
@@ -166,10 +166,10 @@ export const sketchItems: Sketch[] = [
         href: "/sketches/butterfly2046/",
         label: "EXPLORE PROJECT",
         external: true,
-        context: "summary",
+        surface: "listing",
       },
     ],
-    domains: ["Generative Illustration", "Algorithmic Systems"],
+    tags: ["Generative Illustration", "Algorithmic Systems"],
     tools: "P5.js",
     language: "JavaScript, HTML, CSS",
     image: "/sketches/butterfly2046/1.gif",
@@ -178,7 +178,7 @@ export const sketchItems: Sketch[] = [
   {
     slug: "bee-swarm",
     title: "Bee Swarm",
-    synopsis:
+    description:
       "Many autonomous agents with simple steering rules aggregating into swarm behavior on a single canvas",
     year: "2021",
     links: [
@@ -186,10 +186,10 @@ export const sketchItems: Sketch[] = [
         href: "/sketches/bee-swarm/",
         label: "EXPLORE PROJECT",
         external: true,
-        context: "summary",
+        surface: "listing",
       },
     ],
-    domains: ["Swarm Intelligence", "Generative Systems"],
+    tags: ["Swarm Intelligence", "Generative Systems"],
     tools: "P5.js",
     language: "JavaScript, HTML, CSS",
     image: "/sketches/bee-swarm/1.gif",
@@ -197,4 +197,4 @@ export const sketchItems: Sketch[] = [
   },
 ];
 
-export default sketchItems;
+export default sketchCatalog;

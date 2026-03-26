@@ -1,18 +1,20 @@
-export type WorkLinkContext = "summary" | "detail";
+/** Where a link is shown: on listing cards, on the detail page only, or both. */
+export type WorkLinkSurface = "listing" | "detailOnly";
 
 export type WorkLink = {
   href: string;
   label: string;
   external?: boolean;
-  context?: WorkLinkContext;
+  /** `listing`: index cards (and usually the detail header). `detailOnly`: detail page header only. */
+  surface?: WorkLinkSurface;
 };
 
 export type WorkRowProps = {
   title: string;
-  synopsis?: string;
+  description?: string;
   year?: string;
   links?: WorkLink[];
-  domains?: string[];
+  tags?: string[];
   image?: string;
   imageAlt?: string;
   /** Hint for long index pages with heavy media (e.g. GIFs). */

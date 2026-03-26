@@ -1,28 +1,28 @@
 ---
-import type { WorkRowProps } from "../types/workItem";
+import type { WorkRowProps } from "../types/work-row";
 
 const {
   title,
-  synopsis = "",
+  description = "",
   year,
   links = [],
-  domains = [],
+  tags = [],
   image,
   imageAlt = "",
   imageFetchPriority,
 } = Astro.props as WorkRowProps;
-const summaryLinks = (links || []).filter((l) => l.context !== "detail");
+const listingLinks = (links || []).filter((l) => l.surface !== "detailOnly");
 ---
 
 <article class="work-row card">
   <div class="work-meta">
     <h3 class="work-row__title colorful">{title}</h3>
-    {synopsis && <p class="work-row__synopsis">{synopsis}</p>}
+    {description && <p class="work-row__description">{description}</p>}
     {year && <span class="work-row__year">{year}</span>}
     {
-      summaryLinks.length > 0 && (
+      listingLinks.length > 0 && (
         <ul class="work-row__links">
-          {summaryLinks.map((link) => (
+          {listingLinks.map((link) => (
             <li>
               {(() => {
                 const isExternal =
@@ -30,19 +30,19 @@ const summaryLinks = (links || []).filter((l) => l.context !== "detail");
                   (typeof link.href === "string" &&
                     (link.href.startsWith("http://") ||
                       link.href.startsWith("https://")));
-                const isDetail =
+                const isInternal =
                   !isExternal ||
                   (typeof link.label === "string" &&
                     link.label.toUpperCase() === "VIEW DETAILS");
-                const linkClass = `work-link ${isDetail ? "work-link--detail" : "work-link--external"}`;
+                const linkClass = `work-link ${isInternal ? "work-link--internal" : "work-link--external"}`;
                 return (
                   <a
                     href={link.href}
                     class={linkClass}
-                    target={isDetail ? undefined : "_blank"}
-                    rel={isDetail ? undefined : "noopener noreferrer"}
+                    target={isInternal ? undefined : "_blank"}
+                    rel={isInternal ? undefined : "noopener noreferrer"}
                     aria-label={
-                      isDetail ? link.label : `${link.label} (opens in new tab)`
+                      isInternal ? link.label : `${link.label} (opens in new tab)`
                     }
                   >
                     {link.label}
@@ -69,10 +69,10 @@ const summaryLinks = (links || []).filter((l) => l.context !== "detail");
     )
   }
   {
-    domains.length > 0 && (
-      <div class="work-row__domains">
-        {domains.map((t) => (
-          <span class="chip">{t}</span>
+    tags.length > 0 && (
+      <div class="work-row__tags">
+        {tags.map((tag) => (
+          <span class="chip">{tag}</span>
         ))}
       </div>
     )

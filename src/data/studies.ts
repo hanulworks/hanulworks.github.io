@@ -1,31 +1,21 @@
 import type { Project } from "../types/project";
 import type { Sketch } from "../types/sketch";
 
-export const studiesSlugs = [
-  "bird-dress",
-  "cyb-org",
-  "solaris",
-  "vr-therapy-101",
-  "new-hail",
-  "yr-no-hater",
-  "dream-homeland",
-] as const;
-
 const studiesBeforeNewHail: Project[] = [
   {
     slug: "bird-dress",
     title: "BirDress",
-    synopsis:
+    description:
       "Exploration of contemporary fashion design through generative adversarial modeling on curated datasets of birds and dresses",
     year: "2021",
-    links: [{ href: "/studies/bird-dress", label: "VIEW DETAILS", context: "summary" }],
-    domains: [
+    links: [{ href: "/studies/bird-dress", label: "VIEW DETAILS", surface: "listing" }],
+    tags: [
       "Generative AI Design",
       "Fashion Technology",
       "Computational Creativity",
       "Machine Learning",
     ],
-    tools: "Google Collab, Adobe Illustrator, InDesign, Premiere Pro",
+    tools: "Google Colab, Adobe Illustrator, InDesign, Premiere Pro",
     language: "Python",
     image: "/studies/bird-dress/thumbnail.JPEG",
     imageAlt: "BirDress",
@@ -33,19 +23,19 @@ const studiesBeforeNewHail: Project[] = [
   {
     slug: "cyb-org",
     title: "cyb-org",
-    synopsis:
+    description:
       "Interactive diagram mapping ‘Experience, Network, Information’ through media theory, based on Motoko Kusanagi from ‘Ghost in the Shell’",
     year: "2020",
     links: [
-      { href: "/studies/cyb-org", label: "VIEW DETAILS", context: "summary" },
+      { href: "/studies/cyb-org", label: "VIEW DETAILS", surface: "listing" },
       {
         href: "/studies/cyb-org/diagram.html",
         label: "EXPLORE PROJECT",
         external: true,
-        context: "detail",
+        surface: "detailOnly",
       },
     ],
-    domains: [
+    tags: [
       "Media Theory",
       "Network Visualization",
       "Systems Mapping",
@@ -59,11 +49,11 @@ const studiesBeforeNewHail: Project[] = [
   {
     slug: "solaris",
     title: "SOLARIS",
-    synopsis:
+    description:
       "Real-time VJing tool developed in Max for Live, integrating sound-driven visual synthesis for live performance",
     year: "2020",
-    links: [{ href: "/studies/solaris", label: "VIEW DETAILS", context: "summary" }],
-    domains: [
+    links: [{ href: "/studies/solaris", label: "VIEW DETAILS", surface: "listing" }],
+    tags: [
       "Real-Time Visual Synthesis",
       "Audiovisual Performance",
       "Live Performance Tooling",
@@ -77,13 +67,13 @@ const studiesBeforeNewHail: Project[] = [
   {
     slug: "vr-therapy-101",
     title: "VR Therapy 101",
-    synopsis:
+    description:
       "Prototype and proposal for a VR group therapy course aimed at enhancing mental health education in higher education contexts",
     year: "2020",
     links: [
-      { href: "/studies/vr-therapy-101", label: "VIEW DETAILS", context: "summary" },
+      { href: "/studies/vr-therapy-101", label: "VIEW DETAILS", surface: "listing" },
     ],
-    domains: [
+    tags: [
       "VR Design",
       "Learning Experience Design",
       "Mental Health Education",
@@ -99,18 +89,18 @@ const studiesBeforeNewHail: Project[] = [
 export const newHailSketch: Sketch = {
   slug: "new-hail",
   title: "NEW HAIL",
-  synopsis:
+  description:
     "Randomized three-dimensional geometry in the browser under simple physics constraints, running as a continuous generative loop",
   year: "2019",
   links: [
     {
-      href: "/sketches/new-hail/",
+      href: "/studies/new-hail/",
       label: "EXPLORE PROJECT",
       external: true,
-      context: "summary",
+      surface: "listing",
     },
   ],
-  domains: [
+  tags: [
     "Generative Systems",
     "Interactive 3D",
     "Physics Simulation",
@@ -118,7 +108,7 @@ export const newHailSketch: Sketch = {
   ],
   tools: "Three.js",
   language: "JavaScript, HTML, CSS",
-  image: "/sketches/new-hail/1.gif",
+  image: "/studies/new-hail/1.gif",
   imageAlt: "NEW HAIL",
 };
 
@@ -126,7 +116,7 @@ const studiesAfterNewHail: Project[] = [
   {
     slug: "yr-no-hater",
     title: "yr no hater",
-    synopsis:
+    description:
       "An experimental web poem emphasizing low‑energy, high‑performance interaction to reframe digital text‑based art",
     year: "2019",
     links: [
@@ -134,10 +124,10 @@ const studiesAfterNewHail: Project[] = [
         href: "/studies/yr-no-hater/index.html",
         label: "EXPLORE PROJECT",
         external: true,
-        context: "summary",
+        surface: "listing",
       },
     ],
-    domains: [
+    tags: [
       "Digital Literature",
       "Interactive Web Art",
       "Poetic Interface",
@@ -150,13 +140,13 @@ const studiesAfterNewHail: Project[] = [
   {
     slug: "dream-homeland",
     title: "dream-homeland",
-    synopsis:
+    description:
       "3D interactive environment blending memories, dreams, and experimental moving images to explore immersive narrative",
     year: "2019",
     links: [
-      { href: "/studies/dream-homeland", label: "VIEW DETAILS", context: "summary" },
+      { href: "/studies/dream-homeland", label: "VIEW DETAILS", surface: "listing" },
     ],
-    domains: [
+    tags: [
       "Immersive Narrative",
       "Virtual Environment Design",
       "Experimental Media",
@@ -167,6 +157,13 @@ const studiesAfterNewHail: Project[] = [
     image: "/studies/dream-homeland/demo1.png",
     imageAlt: "dream-homeland",
   },
+];
+
+/** Single ordered list for `/studies` (replaces slug→lookup indirection). */
+export const studiesListingEntries: Array<Project | Sketch> = [
+  ...studiesBeforeNewHail,
+  newHailSketch,
+  ...studiesAfterNewHail,
 ];
 
 export const studiesProjects: Project[] = [

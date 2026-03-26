@@ -1,12 +1,12 @@
-import type { WorkLink } from "./workItem";
+import type { WorkLink } from "./work-row";
 
 export type Sketch = {
   slug: string;
   title: string;
-  synopsis?: string;
+  description?: string;
   year?: string;
   links?: WorkLink[];
-  domains?: string[];
+  tags?: string[];
   tools?: string;
   language?: string;
   image?: string;

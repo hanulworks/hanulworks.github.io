@@ -1,0 +1,47 @@
+---
+import DetailLayout from "../../layouts/DetailLayout.astro";
+import PhotoSeriesGallery from "../../components/PhotoSeriesGallery.astro";
+import photoSeries, { getPhotoSeriesBySlug } from "../../data/photos";
+import {
+  getSortedPhotoGalleryUrls,
+  isPhotoSeriesSlug,
+} from "../../data/photo-gallery-globs";
+
+export function getStaticPaths() {
+  return photoSeries.map((s) => ({ params: { slug: s.slug } }));
+}
+
+const slug = Astro.params.slug;
+if (!slug) {
+  return Astro.redirect("/photos");
+}
+
+const series = getPhotoSeriesBySlug(slug);
+if (!series || !isPhotoSeriesSlug(slug)) {
+  return Astro.redirect("/photos");
+}
+
+const { title, description, year, tags = [], links = [], tools, language } = series;
+
+const imageUrls = getSortedPhotoGalleryUrls(slug);
+const leadImage = imageUrls[0];
+const imagesAfterLead = imageUrls.slice(1);
+---
+
+<DetailLayout
+  {title}
+  {description}
+  {year}
+  {tags}
+  {links}
+  {tools}
+  {language}
+  showDescriptionInHeader={false}
+>
+  <PhotoSeriesGallery
+    {slug}
+    seriesTitle={title}
+    leadImage={leadImage}
+    imagesAfterLead={imagesAfterLead}
+  />
+</DetailLayout>

@@ -7,7 +7,7 @@ public/**/*.pdf
 # Vendor / minified bundles (avoid churn)
 public/bluetree.js
 public/turtle.js
-public/sketches/new-hail/js/three.js
-public/sketches/new-hail/js/three.min.js
-public/sketches/new-hail/js/three.module.js
+public/studies/new-hail/js/three.js
+public/studies/new-hail/js/three.min.js
+public/studies/new-hail/js/three.module.js
 public/studies/yr-no-hater/js/jquery.js

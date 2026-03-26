@@ -1,13 +1,13 @@
 ---
 import DetailLayout from "../../layouts/DetailLayout.astro";
-import { getProjectBySlug } from "../../data/site";
+import { getProjectBySlug } from "../../data/site-data";
 
 const project = getProjectBySlug("hanul-computer-interaction");
 if (!project) {
   throw new Error("Project data not found for 'hanul-computer-interaction'");
 }
 
-const { title, synopsis, year, domains = [], links = [], tools, language } = project;
+const { title, description, year, tags = [], links = [], tools, language } = project;
 
 const webDemos = [
   // "/studies/hanul-computer-interaction/demo_web_1.gif",
@@ -42,7 +42,7 @@ const prototypeStyle2 = [
 ];
 ---
 
-<DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
+<DetailLayout {title} {description} {year} {tags} {links} {tools} {language}>
   <section class="text">
     <p class="subject">WEB BROWSER</p>
     <div class="gallery gallery--docs">

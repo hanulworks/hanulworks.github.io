@@ -1,16 +1,16 @@
 ---
 import DetailLayout from "../../layouts/DetailLayout.astro";
-import { getProjectBySlug } from "../../data/site";
+import { getProjectBySlug } from "../../data/site-data";
 
 const project = getProjectBySlug("rove-concepts");
 if (!project) {
   throw new Error("Project data not found for 'rove-concepts'");
 }
 
-const { title, synopsis, year, domains = [], links = [], tools, language } = project;
+const { title, description, year, tags = [], links = [], tools, language } = project;
 ---
 
-<DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
+<DetailLayout {title} {description} {year} {tags} {links} {tools} {language}>
   <section class="text">
     <h6 class="section">I. STRATEGIC SCOPE</h6>
     <p class="subject">ENVISIONING THE DIGITAL FLAGSHIP</p>

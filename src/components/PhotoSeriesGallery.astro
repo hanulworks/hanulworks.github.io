@@ -7,12 +7,13 @@ interface Props {
   slug: string;
   seriesTitle: string;
   leadImage?: string;
-  galleryImages: string[];
+  /** URLs for grid images after the optional lead (same directory order as glob). */
+  imagesAfterLead: string[];
 }
 
-const { slug, seriesTitle, leadImage, galleryImages } = Astro.props;
+const { slug, seriesTitle, leadImage, imagesAfterLead } = Astro.props;
 const rootId = `photo-gallery-${slug}`;
-const allImages = leadImage ? [leadImage, ...galleryImages] : galleryImages;
+const allImages = leadImage ? [leadImage, ...imagesAfterLead] : imagesAfterLead;
 ---
 
 {
@@ -65,9 +66,11 @@ const allImages = leadImage ? [leadImage, ...galleryImages] : galleryImages;
   )
 }
 
-<script is:inline define:vars={{ rootId }}>
+<script is:inline data-gallery-root-id={rootId}>
   (() => {
-    const root = document.getElementById(rootId);
+    const id = document.currentScript?.getAttribute("data-gallery-root-id");
+    if (!id) return;
+    const root = document.getElementById(id);
     if (!root) return;
 
     const lightbox = root.querySelector("[data-lightbox]");

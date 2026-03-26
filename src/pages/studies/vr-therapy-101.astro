@@ -1,16 +1,16 @@
 ---
 import DetailLayout from "../../layouts/DetailLayout.astro";
-import { getProjectBySlug } from "../../data/site";
+import { getProjectBySlug } from "../../data/site-data";
 
 const project = getProjectBySlug("vr-therapy-101");
 if (!project) {
   throw new Error("Project data not found for 'vr-therapy-101'");
 }
 
-const { title, synopsis, year, domains = [], links = [], tools, language } = project;
+const { title, description, year, tags = [], links = [], tools, language } = project;
 ---
 
-<DetailLayout {title} {synopsis} {year} {domains} {links} {tools} {language}>
+<DetailLayout {title} {description} {year} {tags} {links} {tools} {language}>
   <section class="text">
     <h6 class="section">I. PROPOSAL</h6>
     <p class="subject">BACKGROUND</p>

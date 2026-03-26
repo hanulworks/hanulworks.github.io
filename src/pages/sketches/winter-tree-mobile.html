@@ -32,7 +32,7 @@
       function draw() {
         background(0);
         myTurtle.penUp();
-        myTurtle.moveTo(windowWidth / 2, windowHeight);
+        myTurtle.moveTo(windowWidth / 2, windowHeight - 500);
         myTurtle.turnTo(-80);
         myTurtle.penDown();
         drawBranch(100);
@@ -45,11 +45,11 @@
 
         // draw this branch
         strokeWeight(length / 20);
-        myTurtle.moveForward(length * 0.2);
+        myTurtle.moveForward(length * 0.9);
         myTurtle.turnLeft(4);
-        myTurtle.moveForward(length * 0.2);
+        myTurtle.moveForward(length * 0.9);
         myTurtle.turnLeft(4);
-        myTurtle.moveForward(length * 0.8);
+        myTurtle.moveForward(length * 0.9);
 
         // left child
         myTurtle.pushState();

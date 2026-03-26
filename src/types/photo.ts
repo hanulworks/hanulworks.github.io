@@ -1,14 +1,4 @@
-import type { WorkLink } from "./workItem";
+import type { ListingEntry } from "./listing-entry";
 
-export type PhotoSeries = {
-  slug: string;
-  title: string;
-  synopsis: string;
-  year: string;
-  links: WorkLink[];
-  domains: string[];
-  tools?: string;
-  language?: string;
-  image?: string;
-  imageAlt?: string;
-};
+/** Photography series uses the same listing shape as {@link Project}. */
+export type PhotoSeries = ListingEntry;
