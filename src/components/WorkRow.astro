@@ -10,8 +10,13 @@ const {
   image,
   imageAlt = "",
   imageFetchPriority,
+  imageThumbnailScale,
 } = Astro.props as WorkRowProps;
 const listingLinks = (links || []).filter((l) => l.surface !== "detailOnly");
+const thumbZoom =
+  typeof imageThumbnailScale === "number" &&
+  imageThumbnailScale > 1 &&
+  Number.isFinite(imageThumbnailScale);
 ---
 
 <article class="work-row card">
@@ -57,7 +62,12 @@ const listingLinks = (links || []).filter((l) => l.surface !== "detailOnly");
   </div>
   {
     image && (
-      <figure class="work-row__image">
+      <figure
+        class:list={["work-row__image", thumbZoom && "work-row__image--thumb-zoom"]}
+        style={thumbZoom
+          ? { "--work-row-thumb-scale": String(imageThumbnailScale) }
+          : undefined}
+      >
         <img
           src={image}
           alt={imageAlt}
@@ -78,3 +88,11 @@ const listingLinks = (links || []).filter((l) => l.surface !== "detailOnly");
     )
   }
 </article>
+
+<style>
+  /* Slight center zoom (letterbox / focus); clipping + radius come from global .work-row__image */
+  .work-row__image--thumb-zoom img {
+    transform: scale(var(--work-row-thumb-scale, 1.15));
+    transform-origin: center center;
+  }
+</style>

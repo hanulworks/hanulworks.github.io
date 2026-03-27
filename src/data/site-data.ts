@@ -54,5 +54,8 @@ export function toWorkRowProps(item: ListingEntry | Sketch): WorkRowProps {
     tags: item.tags ?? [],
     image: item.image,
     imageAlt: item.imageAlt ?? "",
+    ...("imageThumbnailScale" in item && item.imageThumbnailScale != null
+      ? { imageThumbnailScale: item.imageThumbnailScale }
+      : {}),
   };
 }

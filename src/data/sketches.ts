@@ -15,6 +15,7 @@ export const sketchCatalog: Sketch[] = [
     language: "HTML, CSS",
     image: "/sketches/bio-glyph/1.gif",
     imageAlt: "Bio-Glyph",
+    imageThumbnailScale: 1.12,
   },
   {
     slug: "swamp",
@@ -28,6 +29,7 @@ export const sketchCatalog: Sketch[] = [
     language: "HTML, CSS",
     image: "/sketches/swamp/1.gif",
     imageAlt: "Swamp",
+    imageThumbnailScale: 1.22,
   },
   {
     slug: "particle-waves",
@@ -41,6 +43,7 @@ export const sketchCatalog: Sketch[] = [
     language: "HTML, CSS",
     image: "/sketches/particle-waves/1.gif",
     imageAlt: "Particle Waves",
+    imageThumbnailScale: 1.12,
   },
   {
     slug: "pixel-tunnels",

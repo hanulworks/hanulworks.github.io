@@ -19,4 +19,6 @@ export type WorkRowProps = {
   imageAlt?: string;
   /** Hint for long index pages with heavy media (e.g. GIFs). */
   imageFetchPriority?: "high" | "low" | "auto";
+  /** >1 scales the thumbnail from the center (overflow clipped) so motion reads better in the card. */
+  imageThumbnailScale?: number;
 };

@@ -1185,13 +1185,15 @@ body.nav-open {
   cursor: default;
 }
 
-/* Media */
+/* Media — radius + clip on figure so thumbnails stay rounded (incl. scaled GIFs) */
 .work-row__image {
   grid-area: image;
   align-self: start;
   margin: 0;
   width: 100%;
-  overflow: visible;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  isolation: isolate;
 }
 
 .work-row__image img {
@@ -1199,7 +1201,7 @@ body.nav-open {
   width: 100%;
   height: auto;
   max-width: 100%;
-  border-radius: var(--radius-card);
+  border-radius: 0;
   object-fit: contain;
 }
 

@@ -11,4 +11,6 @@ export type Sketch = {
   language?: string;
   image?: string;
   imageAlt?: string;
+  /** Passed to WorkRow: slight center zoom on listing thumbnails (e.g. busy GIFs). */
+  imageThumbnailScale?: number;
 };
