@@ -11,11 +11,13 @@ const photoGalleryModules = {
     query: "?url",
     import: "default",
   }),
+  /* Paired with commented Human Species entry in photos.ts — uncomment both when restoring the series.
   "human-species": import.meta.glob("/public/photos/human-species/*.JPG", {
     eager: true,
     query: "?url",
     import: "default",
   }),
+  */
   "not-at-all-digital-not-even-mechanical": import.meta.glob(
     "/public/photos/not-at-all-digital/*.JPEG",
     { eager: true, query: "?url", import: "default" },
