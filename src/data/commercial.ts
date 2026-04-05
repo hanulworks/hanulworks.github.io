@@ -5,7 +5,7 @@ export const commercialProjects: Project[] = [
     slug: "rove-concepts",
     title: "Rove Concepts",
     description:
-      "Strategic e-commerce consulting for a North American luxury furniture brand, elevating the digital flagship through experience architecture",
+      "Strategic e-commerce consulting for a Canadian luxury furniture brand, elevating the digital flagship through experience architecture",
     year: "2025",
     links: [
       { href: "/commercial/rove-concepts", label: "VIEW DETAILS", surface: "listing" },

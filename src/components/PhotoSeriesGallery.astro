@@ -1,13 +1,9 @@
 ---
-/**
- * Image-only gallery: whole images (contain), subtle hover, click = lightbox.
- * Refined presentation: no card frames; click affordance preserved.
- */
 interface Props {
   slug: string;
   seriesTitle: string;
   leadImage?: string;
-  /** URLs for grid images after the optional lead (same directory order as glob). */
+  /** After lead; order matches glob sort. */
   imagesAfterLead: string[];
 }
 
@@ -111,10 +107,6 @@ const allImages = leadImage ? [leadImage, ...imagesAfterLead] : imagesAfterLead;
 </script>
 
 <style>
-  /*
-   * Breakpoints align with /style.css header comment (768 / 1400 / 1600).
-   * Grid gap uses global --photo-grid-gap.
-   */
   .photo-gallery-root {
     margin-top: var(--section-gap);
   }
@@ -130,7 +122,6 @@ const allImages = leadImage ? [leadImage, ...imagesAfterLead] : imagesAfterLead;
     border: 0;
   }
 
-  /* On very wide viewports, cap the lead image like grid cells (same max height as gallery) */
   @media (min-width: 1400px) {
     .photo-lead-frame {
       max-width: min(100%, 720px);
@@ -149,14 +140,12 @@ const allImages = leadImage ? [leadImage, ...imagesAfterLead] : imagesAfterLead;
     align-items: start;
   }
 
-  /* Cap photo rows at 3 columns for consistent rhythm on wide screens */
   @media (min-width: 768px) {
     .photo-grid--whole {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 
-  /* Keep 2-column layout until very wide screens */
   @media (min-width: 1600px) {
     .photo-grid--whole {
       grid-template-columns: repeat(3, minmax(0, 1fr));

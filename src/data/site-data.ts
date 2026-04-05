@@ -39,12 +39,12 @@ export function getPublishedProjects(): Project[] {
   return publishedProjects;
 }
 
-/** Ordered entries for the studies index (single source of truth in `studies.ts`). */
+/** Studies index order (defined in `studies.ts`). */
 export function getStudiesListing(): Array<Project | Sketch> {
   return studiesListingEntries;
 }
 
-/** Maps listing metadata (project, photo series, etc.) to the work card props. */
+/** Listing data → `WorkRow` props. */
 export function toWorkRowProps(item: ListingEntry | Sketch): WorkRowProps {
   return {
     title: item.title,

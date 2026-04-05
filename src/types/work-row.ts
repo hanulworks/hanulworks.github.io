@@ -1,11 +1,10 @@
-/** Where a link is shown: on listing cards, on the detail page only, or both. */
+/** Listing card, detail header only, or both. */
 export type WorkLinkSurface = "listing" | "detailOnly";
 
 export type WorkLink = {
   href: string;
   label: string;
   external?: boolean;
-  /** `listing`: index cards (and usually the detail header). `detailOnly`: detail page header only. */
   surface?: WorkLinkSurface;
 };
 
@@ -17,8 +16,7 @@ export type WorkRowProps = {
   tags?: string[];
   image?: string;
   imageAlt?: string;
-  /** Hint for long index pages with heavy media (e.g. GIFs). */
   imageFetchPriority?: "high" | "low" | "auto";
-  /** >1 scales the thumbnail from the center (overflow clipped) so motion reads better in the card. */
+  /** Center zoom for listing thumbs (clipped); >1 for busy motion. */
   imageThumbnailScale?: number;
 };

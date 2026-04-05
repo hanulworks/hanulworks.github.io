@@ -349,7 +349,6 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     background: color-mix(in srgb, white 92%, transparent);
   }
 
-  /* Match site detail grid: wrappers must sit in the wide (0.8fr) column — see public/style.css section.text @992px */
   @media (min-width: 992px) {
     section.text > .msc-mark-pair,
     section.text > .msc-grid {
@@ -367,7 +366,6 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
 
   @media (min-width: 768px) {
     .msc-mark-pair {
-      /* Slightly favor the horizontal wordmark column */
       grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
     }
   }
@@ -433,7 +431,6 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     background: color-mix(in srgb, white 88%, transparent);
   }
 
-  /* After .msc-image so lockup marks keep flexible height for horizontal wordmark */
   .msc-image.msc-image--mark {
     height: auto;
     min-height: 120px;

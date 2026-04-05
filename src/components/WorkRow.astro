@@ -64,9 +64,11 @@ const thumbZoom =
     image && (
       <figure
         class:list={["work-row__image", thumbZoom && "work-row__image--thumb-zoom"]}
-        style={thumbZoom
-          ? { "--work-row-thumb-scale": String(imageThumbnailScale) }
-          : undefined}
+        style={
+          thumbZoom
+            ? { "--work-row-thumb-scale": String(imageThumbnailScale) }
+            : undefined
+        }
       >
         <img
           src={image}
@@ -90,7 +92,6 @@ const thumbZoom =
 </article>
 
 <style>
-  /* Slight center zoom (letterbox / focus); clipping + radius come from global .work-row__image */
   .work-row__image--thumb-zoom img {
     transform: scale(var(--work-row-thumb-scale, 1.15));
     transform-origin: center center;

@@ -1,9 +1,6 @@
 import type { WorkLink } from "./work-row";
 
-/**
- * Shared metadata for portfolio items shown as WorkRow cards and detail headers
- * (commercial, published, studies projects, photo series).
- */
+/** Listing + detail metadata (commercial, published, studies, photos). */
 export type ListingEntry = {
   slug: string;
   title: string;

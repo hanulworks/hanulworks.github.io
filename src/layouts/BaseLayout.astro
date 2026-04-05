@@ -3,7 +3,6 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import InteractiveNoiseBackground from "../components/InteractiveNoiseBackground.astro";
 
-// Layout props with safe defaults
 const { title, description, bodyClass = "" } = Astro.props;
 const pageTitle = title ?? "Hanul";
 const pageDescription = description ?? "Portfolio of Hanul Park";
@@ -12,7 +11,6 @@ const pageDescription = description ?? "Portfolio of Hanul Park";
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Meta -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -20,12 +18,9 @@ const pageDescription = description ?? "Portfolio of Hanul Park";
     />
     <link rel="preconnect" href="https://rsms.me" crossorigin />
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-    <!-- Page metadata -->
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
-    <!-- Favicon (served from /public) -->
     <link rel="icon" href="/favicons/h.png" type="image/png" sizes="16x16" />
-    <!-- Global CSS: libraries first, then site styles -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
@@ -35,18 +30,14 @@ const pageDescription = description ?? "Portfolio of Hanul Park";
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="/style.css" />
-    <!-- Per‑page head injections -->
     <slot name="head" />
   </head>
   <body class={bodyClass}>
     <InteractiveNoiseBackground />
     <slot name="background" />
-    <!-- Site chrome: primary nav order is defined in `data/site-data.ts` -->
     <Header />
-    <!-- Each page should include its own <main id="content"> -->
     <slot />
     <Footer />
-    <!-- Global site script (keep minimal) -->
     <script is:inline src="/scripts.js" defer></script>
   </body>
 </html>

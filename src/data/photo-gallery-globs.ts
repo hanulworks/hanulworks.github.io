@@ -1,17 +1,14 @@
 import { sortUrlsByNumericStem } from "../utils/sort-urls-by-numeric-stem";
 import photoSeries from "./photos";
 
-/**
- * Per-series glob imports. Vite requires literal patterns here (no dynamic glob strings).
- * Keys must match `slug` in `photoSeries` in `photos.ts`.
- */
+/** Literal `import.meta.glob` per series (must match `photoSeries` slugs). */
 const photoGalleryModules = {
   "santa-fe": import.meta.glob("/public/photos/santa-fe/*.JPG", {
     eager: true,
     query: "?url",
     import: "default",
   }),
-  /* Paired with commented Human Species entry in photos.ts — uncomment both when restoring the series.
+  /* human-species: see photos.ts
   "human-species": import.meta.glob("/public/photos/human-species/*.JPG", {
     eager: true,
     query: "?url",
@@ -56,7 +53,7 @@ export function isPhotoSeriesSlug(slug: string): slug is PhotoSeriesSlug {
   return Object.hasOwn(photoGalleryModules, slug);
 }
 
-/** Sorted image URLs for the series detail gallery (numeric stem order). */
+/** Gallery image URLs sorted by numeric filename stem. */
 export function getSortedPhotoGalleryUrls(slug: PhotoSeriesSlug): string[] {
   const mod = photoGalleryModules[slug];
   const entries = Object.entries(mod) as [string, string][];

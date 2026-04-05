@@ -11,7 +11,6 @@ function navAriaCurrent(href: string): "page" | undefined {
 ---
 
 <header id="header" class="site-header" role="banner">
-  <!-- Mobile topbar (hidden >=768px) -->
   <div class="topbar" aria-hidden="true">
     <button
       class="menu-toggle"
@@ -30,7 +29,6 @@ function navAriaCurrent(href: string): "page" | undefined {
         role="img"
       >
         <defs>
-          <!-- Top: light gray gradient -->
           <linearGradient
             id="menu-cube-top"
             x1="0"
@@ -42,7 +40,6 @@ function navAriaCurrent(href: string): "page" | undefined {
             <stop offset="0%" stop-color="#f5f5f5"></stop>
             <stop offset="100%" stop-color="#e0e0e0"></stop>
           </linearGradient>
-          <!-- Left: medium gray gradient -->
           <linearGradient
             id="menu-cube-left"
             x1="7"
@@ -54,7 +51,6 @@ function navAriaCurrent(href: string): "page" | undefined {
             <stop offset="0%" stop-color="#bdbdbd"></stop>
             <stop offset="100%" stop-color="#9e9e9e"></stop>
           </linearGradient>
-          <!-- Right: dark gray gradient -->
           <linearGradient
             id="menu-cube-right"
             x1="41"
@@ -74,7 +70,6 @@ function navAriaCurrent(href: string): "page" | undefined {
       </svg>
     </button>
   </div>
-  <!-- Navigation: mobile overlay / desktop right rail -->
   <nav id="site-nav" class="site-nav" aria-label="Primary">
     <div class="site-nav__inner">
       <ul class="nav-list" role="list">

@@ -5,7 +5,7 @@ import type { WorkLink } from "../types/work-row";
 export interface DetailLayoutProps {
   title: string;
   description?: string;
-  /** When false, description is still passed to page meta but omitted from the visible header */
+  /** false: meta description only, no visible blurb */
   showDescriptionInHeader?: boolean;
   year?: string;
   links?: WorkLink[];
@@ -32,7 +32,6 @@ const detailOnlyLinks = (links || []).filter((l) => l.surface === "detailOnly");
   <main id="content" class="detail-page">
     <div class="card card--square">
       <header aria-labelledby="detail-title" class="work-row detail-header">
-        <!-- Left column: reuse WorkRow meta stack -->
         <div class="work-meta">
           <h3 id="detail-title" class="work-row__title">{title}</h3>
           {
@@ -61,7 +60,6 @@ const detailOnlyLinks = (links || []).filter((l) => l.surface === "detailOnly");
           }
         </div>
 
-        <!-- Right column: tags + tools/language in one wrapper for divider -->
         <div class="detail-right">
           {
             tags.length > 0 && (

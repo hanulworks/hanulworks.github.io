@@ -12,7 +12,7 @@ export const photoSeries: PhotoSeries[] = [
     image: "/photos/santa-fe/2.JPG",
     imageAlt: "Santa Fe photography series thumbnail",
   },
-  /* Temporarily hidden from /photos (too sensual for corporate portfolio). Uncomment the block below to restore the card + /photos/human-species/ route.
+  /* Human Species: hidden from listing; restore here and matching glob in photo-gallery-globs.ts
   {
     slug: "human-species",
     title: "Human Species",

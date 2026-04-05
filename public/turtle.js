@@ -1,16 +1,5 @@
-// Turtle
-// Basic turtle graphics implementation:
-// https://en.wikipedia.org/wiki/Turtle_graphics
-// For more info on Javascript OOP:
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Introduction_to_Object-Oriented_JavaScript
-//
-// The turtle's coordinate system uses pixels for distance and degrees for rotations
-// 0 degrees is straight right (east); positive degrees are clockwise
-
-// Turtle constructor
-// takes optional x, y starting coordinates (default is center of sketch)
+/** Turtle graphics for p5 (degrees clockwise from east). See Wikipedia “Turtle graphics”. */
 function Turtle(x, y) {
-  // assign default values to x and y if they were not passed
   if (typeof x === "undefined") {
     x = width * 0.5;
   }
@@ -24,7 +13,6 @@ function Turtle(x, y) {
   this._stateStack = [];
 }
 
-// moveTo instantly transports the turtle to the provided x, y location, drawing a line if pen is down
 Turtle.prototype.moveTo = function (newX, newY) {
   if (this.isPenDown) {
     line(this.x, this.y, newX, newY);
@@ -33,44 +21,36 @@ Turtle.prototype.moveTo = function (newX, newY) {
   this.y = newY;
 };
 
-// moveForward moves the turtle along its current bearing, drawing a line if pen is down
 Turtle.prototype.moveForward = function (distance) {
   var newX = this.x + cos(this.bearingRadians) * distance;
   var newY = this.y + sin(this.bearingRadians) * distance;
   this.moveTo(newX, newY);
 };
 
-// moveBackward moves the turtle backward from its current bearing, drawing a line if pen is down
 Turtle.prototype.moveBackward = function (distance) {
   this.moveForward(-distance);
 };
 
-// turnTo changes the turtle's bearing to the provided angle in degrees
 Turtle.prototype.turnTo = function (angleDegrees) {
   this.bearingRadians = radians(angleDegrees);
 };
 
-// turnRight rotates the turtle's bearing clockwise by the provided angle in degrees
 Turtle.prototype.turnRight = function (amountDegrees) {
   this.bearingRadians += radians(amountDegrees);
 };
 
-// turnLeft rotates the turtle's bearing counter-clockwise by the provided angle in degrees
 Turtle.prototype.turnLeft = function (amountDegrees) {
   this.bearingRadians -= radians(amountDegrees);
 };
 
-// penUp tells the turtle to move without drawing
 Turtle.prototype.penUp = function () {
   this.isPenDown = false;
 };
 
-// penDown tells the turtle to draw a line when it moves
 Turtle.prototype.penDown = function () {
   this.isPenDown = true;
 };
 
-// pushState records the turtle's current state (position, bearing, etc.) to a stack so that changes can be undone easily
 Turtle.prototype.pushState = function () {
   this._stateStack.push({
     x: this.x,
@@ -80,7 +60,6 @@ Turtle.prototype.pushState = function () {
   });
 };
 
-// popState restores the turtle's state to the top recorded state on the stack
 Turtle.prototype.popState = function () {
   if (this._stateStack.length === 0) {
     console.error(
@@ -95,11 +74,7 @@ Turtle.prototype.popState = function () {
   this.isPenDown = state.isPenDown;
 };
 
-// image draws an image centered on the turtle's current location and aligned with the turtle's rotation (forward = up)
 Turtle.prototype.image = function (i, w, h) {
-  // w, h are optional parameters to this function and to p5's image
-  // p5's image function will draw the image at its "normal" size if w and h are undefined
-
   push();
   translate(this.x, this.y);
   rotate(this.bearingRadians + PI * 0.5);

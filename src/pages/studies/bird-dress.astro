@@ -9,7 +9,6 @@ if (!project) {
 
 const { title, description, year, tags = [], links = [], tools, language } = project;
 
-// Auto-collect & sort outputs from /public/studies/bird-dress
 const sixHourEntries = Object.entries(
   import.meta.glob("/public/studies/bird-dress/6hrs*.*", {
     eager: true,
@@ -25,7 +24,6 @@ const nineHourEntries = Object.entries(
   }),
 );
 
-// Sort numerically by filename and map to plain URLs
 const sixHourImgs = sixHourEntries
   .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
   .map(([, url]) => url as string);

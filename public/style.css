@@ -1,9 +1,5 @@
-/* =========================================================
-   0) IMPORTS & GLOBAL VARIABLES
-   ========================================================= */
 @import url("https://rsms.me/inter/inter.css");
 
-/* ----- Interactive WebGL noise behind all pages (see InteractiveNoiseBackground) ----- */
 body {
   background-image: none;
   background-color: transparent;
@@ -26,16 +22,7 @@ main#content {
   z-index: 1;
 }
 
-/*
- * Responsive breakpoints (mobile-first; use these values consistently):
- *   768px  — tablet (denser grids, 2-up photo gallery)
- *   992px  — desktop nav rail, work rows 2-col, media cards 2-col, detail split layout
- *   1200px — wide disclosure 2-col, gallery--full 6 columns
- *   1400px — photo lead frame max width (PhotoSeriesGallery)
- *   1600px — photo grid third column (PhotoSeriesGallery)
- *
- * Mobile-only tweaks pair with tablet via max-width: 767.98px (no gap at 768px).
- */
+/* Breakpoints: 768 / 992 / 1200 / 1400 / 1600 (mobile-first). */
 
 :root {
   /* Palette */
@@ -109,9 +96,7 @@ main#content {
   }
 }
 
-/* =========================================================
-   1) BASE / RESET / UTILITIES
-   ========================================================= */
+/* 1) Base / reset / utilities */
 html {
   font-family: "Inter", sans-serif;
   scroll-behavior: smooth;
@@ -332,9 +317,7 @@ body * {
   padding-inline: 0;
 }
 
-/* =========================================================
-   2) LINKS (global)
-   ========================================================= */
+/* 2) Links */
 a,
 a:visited,
 a:hover,
@@ -368,17 +351,13 @@ u a {
   text-underline-offset: 2px;
 }
 
-/* =========================================================
-   3) HEADER / NAV — mobile off‑canvas; desktop right‑rail
-   ========================================================= */
+/* 3) Header / nav */
 
 /* Base */
 .site-header {
   position: relative;
   z-index: 1000;
 }
-
-/* ===== Mobile (default) ===== */
 
 /* Top bar (anchor for toggle) */
 .topbar {
@@ -670,7 +649,6 @@ body.nav-open {
   overflow: hidden;
 }
 
-/* ===== Desktop (>=992px) ===== */
 @media (min-width: 992px) {
   :root {
     /* Don’t let the rail shrink below readable word width */
@@ -762,9 +740,7 @@ body.nav-open {
   }
 }
 
-/* =========================================================
-   4) INTRO / HERO (index)
-   ========================================================= */
+/* 4) Intro / hero */
 .introduction {
   margin: 0 0 var(--section-gap);
 }
@@ -794,9 +770,7 @@ body.nav-open {
   --animate-duration: 3s;
 }
 
-/* =========================================================
-   5) MEDIA CARDS — About & Documentary
-   ========================================================= */
+/* 5) Media cards */
 
 /* Section wrappers: outer margin only; inner padding lives on .card */
 :is(.media-section, .disclosure-section) {
@@ -924,9 +898,7 @@ body.nav-open {
   }
 }
 
-/* =========================================================
-   6) DISCLOSURES — Philosophy & Biography
-   ========================================================= */
+/* 6) Disclosures */
 
 /* Disclosures — streamlined */
 .disclosure-section {
@@ -990,9 +962,7 @@ body.nav-open {
   }
 }
 
-/* =========================================================
-   7) FOOTER (simple, non-fixed)
-   ========================================================= */
+/* 7) Footer */
 .site-footer {
   background: transparent;
   margin-top: var(--section-gap);
@@ -1035,9 +1005,7 @@ body.nav-open {
   font-weight: 300;
 }
 
-/* =========================================================
-   8) WORK LISTS
-   ========================================================= */
+/* 8) Work lists */
 /* Containers */
 .work-section {
   margin: 0 auto;
@@ -1224,9 +1192,7 @@ body.page-sketches .work-row {
   }
 }
 
-/* =========================================================
-   9) CAROUSEL — minimal, reusable
-   ========================================================= */
+/* 9) Carousel */
 /* ordered-list viewport reset */
 .carousel__viewport {
   list-style: none;
@@ -1318,9 +1284,7 @@ body.page-sketches .work-row {
   }
 }
 
-/* =========================================================
-   10) DETAIL PAGE
-   ========================================================= */
+/* 10) Detail page */
 .detail-header {
   position: relative;
   display: grid;

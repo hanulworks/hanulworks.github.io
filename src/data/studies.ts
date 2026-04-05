@@ -159,7 +159,7 @@ const studiesAfterNewHail: Project[] = [
   },
 ];
 
-/** Single ordered list for `/studies` (replaces slug→lookup indirection). */
+/** `/studies` index order. */
 export const studiesListingEntries: Array<Project | Sketch> = [
   ...studiesBeforeNewHail,
   newHailSketch,

@@ -1,4 +1,4 @@
 import type { ListingEntry } from "./listing-entry";
 
-/** Photography series uses the same listing shape as {@link Project}. */
+/** Same shape as other listings; used for photo series. */
 export type PhotoSeries = ListingEntry;
