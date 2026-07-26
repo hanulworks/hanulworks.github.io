@@ -129,7 +129,7 @@
       gray = clamp(gray, 0.0, 1.0);
 
       /* Light-first: soft greys to white (texture should read clearly) */
-      float light = mix(0.76, 1.0, gray);
+      float light = mix(0.82, 1.0, gray);
       vec3 base = vec3(light);
 
       /* Mouse: modest radius, clearly visible color wash */
@@ -149,7 +149,7 @@
       vec3 clickColor = vec3(0.55, 0.78, 1.0);
       lit += clickColor * clickCircle * 0.34 * clickLife;
       /* Keep overall bright; allow deeper light-greys for grain contrast */
-      lit = clamp(lit, 0.72, 1.0);
+      lit = clamp(lit, 0.78, 1.0);
 
       vec2 q = v_uv - 0.5;
       float vig = 1.0 - dot(q, q) * 0.22;
