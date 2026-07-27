@@ -146,10 +146,10 @@
       /* Click impact: quick solid burst circle (no hollow center) */
       float clickLife = clamp(1.0 - (u_time - u_click_t) * 2.4, 0.0, 1.0);
       float clickCircle = smoothstep(0.16, 0.0, cd);
-      vec3 clickColor = vec3(0.55, 0.78, 1.0);
+      vec3 clickColor = vec3(0.55, 0.8, 1.0);
       lit += clickColor * clickCircle * 0.34 * clickLife;
       /* Keep overall bright; allow deeper light-greys for grain contrast */
-      lit = clamp(lit, 0.78, 1.0);
+      lit = clamp(lit, 0.8, 1.0);
 
       vec2 q = v_uv - 0.5;
       float vig = 1.0 - dot(q, q) * 0.22;
