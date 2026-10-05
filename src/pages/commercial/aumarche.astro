@@ -1,0 +1,361 @@
+---
+import DetailLayout from "../../layouts/DetailLayout.astro";
+import { getProjectBySlug } from "../../data/site-data";
+
+const project = getProjectBySlug("aumarche");
+if (!project) {
+  throw new Error("Project data not found for 'aumarche'");
+}
+
+const { title, description, year, tags = [], links = [], tools, language } = project;
+
+const mediaEntries = Object.entries(
+  import.meta.glob(
+    "/public/commercial/aumarche/*.{png,jpg,jpeg,JPG,JPEG,webp,gif}",
+    { eager: true, query: "?url", import: "default" },
+  ),
+) as [string, string][];
+
+type MediaItem = {
+  url: string;
+  fileName: string;
+  stem: string;
+};
+
+const mediaItems: MediaItem[] = mediaEntries
+  .map(([path, url]) => {
+    const fileName = path.split("/").pop() ?? "";
+    const stem = fileName.replace(/\.[^.]+$/, "");
+    return { url, fileName, stem };
+  })
+  .sort((a, b) => a.fileName.localeCompare(b.fileName, undefined, { numeric: true }));
+
+const byStem = (stem: string) => mediaItems.find((m) => m.stem === stem);
+
+const logo = byStem("logo");
+
+type ScreenSpec = {
+  stem: string;
+  caption: string;
+  alt: string;
+};
+
+function screensFrom(specs: ScreenSpec[]) {
+  return specs
+    .map((spec) => {
+      const item = byStem(spec.stem);
+      return item ? { ...item, caption: spec.caption, alt: spec.alt } : null;
+    })
+    .filter((item): item is MediaItem & { caption: string; alt: string } => Boolean(item));
+}
+
+const mainScreens = screensFrom([
+  {
+    stem: "app1",
+    caption: "Explore — fashion & lifestyle feed",
+    alt: `${title} main feed with full-screen lifestyle post`,
+  },
+  {
+    stem: "app5",
+    caption: "Discover — from post to product",
+    alt: `${title} post detail with comments and linked products`,
+  },
+]);
+
+const exploreScreens = screensFrom([
+  {
+    stem: "app3",
+    caption: "Shop — product story",
+    alt: `${title} product detail with price and media pager`,
+  },
+  {
+    stem: "app6",
+    caption: "Tell your story — brand profile",
+    alt: `${title} creator profile with feeds and products`,
+  },
+]);
+
+const commerceScreens = screensFrom([
+  {
+    stem: "app2",
+    caption: "Be your own boss — product inventory",
+    alt: `${title} seller product list with sizes and stock`,
+  },
+  {
+    stem: "app4",
+    caption: "Buy — bag, wishlist, and saved",
+    alt: `${title} shopping bag with shipping and totals`,
+  },
+  {
+    stem: "app7",
+    caption: "Manage — shop operations",
+    alt: `${title} shop management sheet for posts, orders, and wallet`,
+  },
+]);
+
+const profileScreens = screensFrom([
+  {
+    stem: "app_profile_1",
+    caption: "Empty profile — create-post prompt",
+    alt: `${title} profile empty state with create-post assistant`,
+  },
+  {
+    stem: "app_profile_2",
+    caption: "Header study — feeds control placement",
+    alt: `${title} profile header with feeds and reposts in the top bar`,
+  },
+]);
+
+const usedUrls = new Set(
+  [logo, ...mainScreens, ...exploreScreens, ...commerceScreens, ...profileScreens]
+    .filter(Boolean)
+    .map((item) => item!.url),
+);
+
+const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
+---
+
+<DetailLayout {title} {description} {year} {tags} {links} {tools} {language}>
+  <section class="text">
+    <h6 class="section">I. PRODUCT</h6>
+    <p class="subject">SCOPE</p>
+    <p class="text">
+      Designed the mobile UI for Au Marché, a social-commerce app where fashion and
+      lifestyle posts sit next to shoppable inventory. Creators publish, brands sell,
+      and buyers move from a story to a product without leaving the feed.
+    </p>
+
+    <p class="subject">WORDMARK</p>
+    {
+      logo ? (
+        <figure class="detailImage aum-logo">
+          <img
+            class="aum-logo__image"
+            src={logo.url}
+            alt={`${title} wordmark`}
+            loading="eager"
+          />
+        </figure>
+      ) : (
+        <figure class="detailImage detailImage--placeholder">
+          <div class="asset-placeholder">Add logo.webp.</div>
+        </figure>
+      )
+    }
+    <p class="text aum-after">
+      The stacked AU + MARCHÉ mark is the persistent identity across feed, shop, and
+      seller tools.
+    </p>
+  </section>
+
+  <section class="text">
+    <h6 class="section">II. MAIN</h6>
+    <p class="subject">FEED</p>
+    <p class="text">
+      The home surface is a vertical, scroll-up post stream. Video posts auto-play as
+      soon as they enter the main section so the feed feels immediate rather than
+      thumbnail-first.
+    </p>
+    {
+      mainScreens.length > 0 ? (
+        <div class="gallery gallery--docs gallery--mobile" role="list" aria-label="Main feed screens">
+          {mainScreens.map((item) => (
+            <figure class="aum-screen" role="listitem">
+              <img src={item.url} alt={item.alt} loading="lazy" />
+              <figcaption class="aum-caption">{item.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <figure class="detailImage detailImage--placeholder">
+          <div class="asset-placeholder">Add app1.webp and app5.webp.</div>
+        </figure>
+      )
+    }
+
+    <p class="subject">REVIEW</p>
+    <p class="text">
+      Posts with several photographs should stay on the same page: swipe left or right
+      through the set, with a short flash animation that shows there is more to view.
+      The product pager already hints at this pattern; the main feed still needs the
+      same gesture and a one-time demo cue.
+    </p>
+  </section>
+
+  <section class="text">
+    <h6 class="section">III. EXPLORE</h6>
+    <p class="subject">DISCOVERY</p>
+    <p class="text">
+      Explore opens fashion and lifestyle stories at full bleed, then routes into
+      product pages and creator profiles. Information and merchandise stay on one path
+      so a post can become a purchase without a context switch.
+    </p>
+    {
+      exploreScreens.length > 0 ? (
+        <div
+          class="gallery gallery--docs gallery--mobile"
+          role="list"
+          aria-label="Explore and shop screens"
+        >
+          {exploreScreens.map((item) => (
+            <figure class="aum-screen" role="listitem">
+              <img src={item.url} alt={item.alt} loading="lazy" />
+              <figcaption class="aum-caption">{item.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <figure class="detailImage detailImage--placeholder">
+          <div class="asset-placeholder">Add app3.webp and app6.webp.</div>
+        </figure>
+      )
+    }
+  </section>
+
+  <section class="text">
+    <h6 class="section">IV. SHOPPING</h6>
+    <p class="subject">COMMERCE</p>
+    <p class="text">
+      Shopping, notifications, and profile were designed as one system: the same red
+      accent, tab language, and sheet patterns appear whether someone is stocking a
+      shop, checking a bag, or running orders. Sellers can list products, manage
+      partnerships, and keep shipping and wallet tools in one place.
+    </p>
+    {
+      commerceScreens.length > 0 ? (
+        <div
+          class="gallery gallery--docs gallery--mobile"
+          role="list"
+          aria-label="Shopping and seller screens"
+        >
+          {commerceScreens.map((item) => (
+            <figure class="aum-screen" role="listitem">
+              <img src={item.url} alt={item.alt} loading="lazy" />
+              <figcaption class="aum-caption">{item.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <figure class="detailImage detailImage--placeholder">
+          <div class="asset-placeholder">Add app2.webp, app4.webp, and app7.webp.</div>
+        </figure>
+      )
+    }
+  </section>
+
+  <section class="text">
+    <h6 class="section">V. PROFILE</h6>
+    <p class="subject">CREATE POST</p>
+    <p class="text">
+      The personal profile is the start of publishing: an assistant prompt points to
+      create post, with Feeds and Reposts as the primary content split. Two header
+      studies test whether that split belongs under the avatar or in the top bar.
+    </p>
+    {
+      profileScreens.length > 0 ? (
+        <div
+          class="gallery gallery--docs gallery--mobile aum-profile-grid"
+          role="list"
+          aria-label="Profile header studies"
+        >
+          {profileScreens.map((item) => (
+            <figure class="aum-screen" role="listitem">
+              <img src={item.url} alt={item.alt} loading="lazy" />
+              <figcaption class="aum-caption">{item.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      ) : (
+        <figure class="detailImage detailImage--placeholder">
+          <div class="asset-placeholder">Add app_profile_1.png and app_profile_2.png.</div>
+        </figure>
+      )
+    }
+
+    <p class="subject">REVIEW</p>
+    <p class="text">
+      The create-post header still needs a single, stable layout so Feeds / Reposts do
+      not compete with edit and settings. Saved drafts are also missing from this
+      surface; they should be reachable from create post and from the profile menu so
+      unfinished stories are not lost.
+    </p>
+  </section>
+
+  {
+    uncategorizedItems.length > 0 && (
+      <section class="text">
+        <h6 class="section">VI. ADDITIONAL ASSETS</h6>
+        <p class="subject">SUPPORTING MATERIALS</p>
+        <p class="text">Files not assigned to the sections above.</p>
+        <div class="gallery gallery--docs gallery--mobile" role="list" aria-label="Additional Au Marché assets">
+          {uncategorizedItems.map((item) => (
+            <figure class="aum-screen" role="listitem">
+              <img src={item.url} alt={`${title} ${item.stem}`} loading="lazy" />
+              <figcaption class="aum-caption">{item.stem}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    )
+  }
+</DetailLayout>
+
+<style>
+  .aum-logo {
+    max-width: min(100%, 280px);
+    margin-bottom: var(--space-sm);
+  }
+
+  .aum-logo__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .aum-after {
+    margin-top: 0;
+  }
+
+  .aum-screen {
+    margin: 0;
+    min-width: 0;
+  }
+
+  .aum-screen img {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: color-mix(in srgb, var(--color-accent-muted) 6%, transparent);
+  }
+
+  .aum-caption {
+    margin-top: 0.4rem;
+    font-size: 0.7rem;
+    line-height: 1.3;
+    color: var(--color-text);
+    opacity: 0.72;
+  }
+
+  .detailImage--placeholder {
+    border: 1px dashed var(--color-text);
+    background: color-mix(in srgb, var(--color-accent-muted) 8%, transparent);
+    min-height: clamp(180px, 30vw, 320px);
+    display: grid;
+    place-items: center;
+    margin: 0;
+  }
+
+  .asset-placeholder {
+    padding: 1rem 1.25rem;
+    text-align: center;
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    opacity: 0.8;
+  }
+
+  @media (min-width: 992px) {
+    .aum-profile-grid.gallery--docs.gallery--mobile {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

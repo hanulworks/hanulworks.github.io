@@ -144,4 +144,22 @@ export const commercialProjects: Project[] = [
     image: "/commercial/media-smart-citizens/brand-white.png",
     imageAlt: "Media Smart Citizens brand gradient",
   },
+  {
+    slug: "aumarche",
+    title: "Au Marché",
+    description:
+      "App UI for a social-commerce platform that turns fashion and lifestyle posts into shoppable stories for creators, brands, and buyers",
+    year: "2020",
+    links: [
+      {
+        href: "/commercial/aumarche",
+        label: "VIEW DETAILS",
+        surface: "listing",
+      },
+    ],
+    tags: ["App UI", "Social Commerce", "Product Design", "User Experience"],
+    tools: "Figma",
+    image: "/commercial/aumarche/app1.webp",
+    imageAlt: "Au Marché explore feed",
+  },
 ];
