@@ -149,7 +149,7 @@ export const commercialProjects: Project[] = [
     title: "Au Marché",
     description:
       "App UI for a social-commerce platform that turns fashion and lifestyle posts into shoppable stories for creators, brands, and buyers",
-    year: "2020",
+    year: "2021",
     links: [
       {
         href: "/commercial/aumarche",
@@ -159,7 +159,7 @@ export const commercialProjects: Project[] = [
     ],
     tags: ["App UI", "Social Commerce", "Product Design", "User Experience"],
     tools: "Figma",
-    image: "/commercial/aumarche/app1.webp",
+    image: "/commercial/aumarche/logo.webp",
     imageAlt: "Au Marché explore feed",
   },
 ];

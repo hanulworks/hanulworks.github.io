@@ -1,7 +1,19 @@
 {
   "name": "portfolio",
-  "type": "module",
   "version": "0.0.1",
+  "description": "HANUL.WORKS WEBSITE",
+  "homepage": "https://github.com/hanulworks/hanulworks.github.io#readme",
+  "bugs": {
+    "url": "https://github.com/hanulworks/hanulworks.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanulworks/hanulworks.github.io.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",

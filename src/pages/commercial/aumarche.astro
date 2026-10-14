@@ -158,9 +158,9 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     </p>
     {
       mainScreens.length > 0 ? (
-        <div class="gallery gallery--docs gallery--mobile" role="list" aria-label="Main feed screens">
+        <div class="gallery gallery--docs aum-screens" role="list" aria-label="Main feed screens">
           {mainScreens.map((item) => (
-            <figure class="aum-screen" role="listitem">
+            <figure class="detailImage" role="listitem">
               <img src={item.url} alt={item.alt} loading="lazy" />
               <figcaption class="aum-caption">{item.caption}</figcaption>
             </figure>
@@ -193,12 +193,12 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     {
       exploreScreens.length > 0 ? (
         <div
-          class="gallery gallery--docs gallery--mobile"
+          class="gallery gallery--docs aum-screens"
           role="list"
           aria-label="Explore and shop screens"
         >
           {exploreScreens.map((item) => (
-            <figure class="aum-screen" role="listitem">
+            <figure class="detailImage" role="listitem">
               <img src={item.url} alt={item.alt} loading="lazy" />
               <figcaption class="aum-caption">{item.caption}</figcaption>
             </figure>
@@ -224,12 +224,12 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     {
       commerceScreens.length > 0 ? (
         <div
-          class="gallery gallery--docs gallery--mobile"
+          class="gallery gallery--docs aum-screens"
           role="list"
           aria-label="Shopping and seller screens"
         >
           {commerceScreens.map((item) => (
-            <figure class="aum-screen" role="listitem">
+            <figure class="detailImage" role="listitem">
               <img src={item.url} alt={item.alt} loading="lazy" />
               <figcaption class="aum-caption">{item.caption}</figcaption>
             </figure>
@@ -254,12 +254,12 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     {
       profileScreens.length > 0 ? (
         <div
-          class="gallery gallery--docs gallery--mobile aum-profile-grid"
+          class="gallery gallery--docs aum-screens"
           role="list"
           aria-label="Profile header studies"
         >
           {profileScreens.map((item) => (
-            <figure class="aum-screen" role="listitem">
+            <figure class="detailImage" role="listitem">
               <img src={item.url} alt={item.alt} loading="lazy" />
               <figcaption class="aum-caption">{item.caption}</figcaption>
             </figure>
@@ -287,9 +287,13 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
         <h6 class="section">VI. ADDITIONAL ASSETS</h6>
         <p class="subject">SUPPORTING MATERIALS</p>
         <p class="text">Files not assigned to the sections above.</p>
-        <div class="gallery gallery--docs gallery--mobile" role="list" aria-label="Additional Au Marché assets">
+        <div
+          class="gallery gallery--docs aum-screens"
+          role="list"
+          aria-label="Additional Au Marché assets"
+        >
           {uncategorizedItems.map((item) => (
-            <figure class="aum-screen" role="listitem">
+            <figure class="detailImage" role="listitem">
               <img src={item.url} alt={`${title} ${item.stem}`} loading="lazy" />
               <figcaption class="aum-caption">{item.stem}</figcaption>
             </figure>
@@ -316,16 +320,16 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     margin-top: 0;
   }
 
-  .aum-screen {
-    margin: 0;
-    min-width: 0;
+  .gallery.aum-screens {
+    width: 100%;
+    margin-inline: 0 auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .aum-screen img {
-    width: 100%;
-    height: auto;
-    display: block;
-    background: color-mix(in srgb, var(--color-accent-muted) 6%, transparent);
+  @media (min-width: 992px) {
+    section.text > .gallery.gallery--docs.aum-screens {
+      grid-column: 2;
+    }
   }
 
   .aum-caption {
@@ -353,9 +357,4 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     opacity: 0.8;
   }
 
-  @media (min-width: 992px) {
-    .aum-profile-grid.gallery--docs.gallery--mobile {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
 </style>
