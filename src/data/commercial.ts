@@ -148,7 +148,7 @@ export const commercialProjects: Project[] = [
     slug: "aumarche",
     title: "Au Marché",
     description:
-      "App UI for a social-commerce platform that turns fashion and lifestyle posts into shoppable stories for creators, brands, and buyers",
+      "Figma UI design for a social-commerce app connecting fashion and lifestyle content with shoppable products",
     year: "2021",
     links: [
       {
@@ -159,7 +159,7 @@ export const commercialProjects: Project[] = [
     ],
     tags: ["App UI", "Social Commerce", "Product Design", "User Experience"],
     tools: "Figma",
-    image: "/commercial/aumarche/logo.webp",
-    imageAlt: "Au Marché explore feed",
+    image: "/commercial/aumarche/app1.webp",
+    imageAlt: "Au Marché mobile app explore feed design",
   },
 ];

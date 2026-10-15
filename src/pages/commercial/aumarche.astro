@@ -30,13 +30,12 @@ const mediaItems: MediaItem[] = mediaEntries
   .map(([path, url]) => {
     const fileName = path.split("/").pop() ?? "";
     const stem = fileName.replace(/\.[^.]+$/, "");
-    return { url, fileName, stem };
+    const publicUrl = url.startsWith("/public/") ? url.slice("/public".length) : url;
+    return { url: publicUrl, fileName, stem };
   })
   .sort((a, b) => a.fileName.localeCompare(b.fileName, undefined, { numeric: true }));
 
 const byStem = (stem: string) => mediaItems.find((m) => m.stem === stem);
-
-const logo = byStem("logo");
 
 type ScreenSpec = {
   stem: string;
@@ -51,41 +50,35 @@ function screensFrom(specs: ScreenSpec[]) {
   });
 }
 
-const mainScreens = screensFrom([
+const appScreens = screensFrom([
   {
     stem: "app1",
-    caption: "Explore — fashion & lifestyle feed",
+    caption: "Explore — fashion and lifestyle feed",
     alt: `${title} main feed with full-screen lifestyle post`,
   },
   {
     stem: "app5",
-    caption: "Discover — from post to product",
+    caption: "Discover — post and linked products",
     alt: `${title} post detail with comments and linked products`,
   },
-]);
-
-const checkoutScreens = screensFrom([
   {
     stem: "app3",
-    caption: "Shop — product story",
+    caption: "Shop — product detail",
     alt: `${title} product detail with price and media pager`,
   },
   {
     stem: "app4",
-    caption: "Buy — bag, wishlist, and saved",
+    caption: "Buy — shopping bag and saved items",
     alt: `${title} shopping bag with shipping and totals`,
   },
-]);
-
-const designSystemScreens = screensFrom([
   {
     stem: "app2",
-    caption: "Creator — product inventory",
+    caption: "Be your own boss — seller inventory",
     alt: `${title} seller product list with sizes and stock`,
   },
   {
     stem: "app6",
-    caption: "Creator — profile and product feed",
+    caption: "Tell your story — creator profile",
     alt: `${title} creator profile with feeds and products`,
   },
   {
@@ -98,287 +91,292 @@ const designSystemScreens = screensFrom([
 const profileScreens = screensFrom([
   {
     stem: "app_profile_1",
-    caption: "Empty profile — create-post prompt",
-    alt: `${title} profile empty state with create-post assistant`,
+    caption: "Profile header — Feeds and Reposts spacing",
+    alt: `${title} profile header with refined spacing around Feeds and Reposts`,
   },
   {
     stem: "app_profile_2",
-    caption: "Header study — feeds control placement",
-    alt: `${title} profile header with feeds and reposts in the top bar`,
+    caption: "Profile header — grid alignment",
+    alt: `${title} profile header study showing grid-aligned profile controls`,
   },
 ]);
 
-const usedUrls = new Set<string>(
-  [logo, ...mainScreens, ...checkoutScreens, ...designSystemScreens, ...profileScreens]
-    .filter((item): item is MediaItem => item !== undefined)
-    .map((item) => item.url),
-);
+const walkthroughScreens = [appScreens[0], appScreens[2], appScreens[4]];
+const supportingScreens = [appScreens[1], appScreens[3], appScreens[5], appScreens[6]];
 
-const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
+const campaignProcess = [
+  "Content writing",
+  "Wireframe",
+  "Interaction",
+  "Mockup",
+  "Reiteration",
+  "Prototype",
+  "Finalization",
+  "Publication",
+];
+
+const articleCards = screensFrom([
+  {
+    stem: "instagram-article-01",
+    caption: "Article campaign — cover",
+    alt: "Cover card for Digital Fashion: Dawn of a Post Product World",
+  },
+  {
+    stem: "instagram-article-02",
+    caption: "Article campaign — editorial context",
+    alt: "Editorial quote card about virtual fashion",
+  },
+  {
+    stem: "instagram-article-03",
+    caption: "Article campaign — The Fabricant and digi-couture",
+    alt: "Graphic card featuring The Fabricant and a digital-only dress",
+  },
+  {
+    stem: "instagram-article-04",
+    caption: "Article campaign — digital art",
+    alt: "Quote card about traceable and tradeable digital art",
+  },
+  {
+    stem: "instagram-article-05",
+    caption: "Article campaign — Gucci Virtual 25",
+    alt: "Graphic card about Gucci Virtual 25 digital sneakers",
+  },
+  {
+    stem: "instagram-article-06",
+    caption: "Article campaign — fashion commentary",
+    alt: "Editorial quote card about virtual fashion",
+  },
+  {
+    stem: "instagram-article-07",
+    caption: "Article campaign — read more",
+    alt: "Au Marché call-to-action card for the article",
+  },
+]);
+
+const readerReviewCards = screensFrom([
+  {
+    stem: "instagram-reader-review-01",
+    caption: "Reader-review campaign — cover",
+    alt: "Cover card for reader reviews of Digital Fashion",
+  },
+  {
+    stem: "instagram-reader-review-02",
+    caption: "Reader-review campaign — article feature",
+    alt: "Feature card about innovation and extravagance in digital fashion",
+  },
+  {
+    stem: "instagram-reader-review-03",
+    caption: "Reader-review campaign — response one",
+    alt: "Reader response card about technology and fashion",
+  },
+  {
+    stem: "instagram-reader-review-04",
+    caption: "Reader-review campaign — response two",
+    alt: "Reader response card about digital couture and conceptual art",
+  },
+  {
+    stem: "instagram-reader-review-05",
+    caption: "Reader-review campaign — response three",
+    alt: "Reader response card about digital fashion and technology",
+  },
+  {
+    stem: "instagram-reader-review-06",
+    caption: "Reader-review campaign — response four",
+    alt: "Reader response card about virtual shopping and digital design",
+  },
+  {
+    stem: "instagram-reader-review-07",
+    caption: "Reader-review campaign — read more",
+    alt: "Au Marché call-to-action card for the reader reviews",
+  },
+]);
 ---
 
 <DetailLayout {title} {description} {year} {tags} {links} {tools} {language}>
-  <dl class="aum-glance" aria-label="Project at a glance">
-    <div class="aum-glance__item">
-      <dt>ROLE</dt>
-      <dd>Mobile UI / UX Designer</dd>
-    </div>
-    <div class="aum-glance__item">
-      <dt>PLATFORM</dt>
-      <dd>Native mobile app — iOS / Android concept in Figma</dd>
-    </div>
-    <div class="aum-glance__item">
-      <dt>KEY DELIVERABLES</dt>
-      <dd>
-        End-to-end user journeys, one-tap bottom-sheet checkout, creator studio, and
-        mobile design system
-      </dd>
-    </div>
-    <div class="aum-glance__item aum-glance__item--challenge">
-      <dt>CORE CHALLENGE</dt>
-      <dd>
-        Reduce drop-off between lifestyle-feed browsing and checkout without breaking
-        user immersion.
-      </dd>
-    </div>
-  </dl>
-
   <nav class="aum-toc" aria-label="Case study sections">
     <ol>
-      <li><a href="#brief">Product brief</a></li>
-      <li><a href="#feed">Main feed</a></li>
-      <li><a href="#checkout">Checkout</a></li>
-      <li><a href="#design-system">Design system</a></li>
-      <li><a href="#creator-studio">Creator studio</a></li>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#walkthrough">App walkthrough</a></li>
+      <li><a href="#design-studies">Design studies</a></li>
+      <li><a href="#reflections">Next questions</a></li>
+      <li><a href="#campaigns">Instagram campaigns</a></li>
     </ol>
   </nav>
 
-  <section class="text aum-section" id="brief">
-    <h2 class="section">I. PRODUCT BRIEF &amp; PROBLEM</h2>
-    <h3 class="subject">BRIEF</h3>
+  <section class="text aum-section" id="overview">
+    <h2 class="section">I. PROJECT OVERVIEW</h2>
+    <h3 class="subject">THE MARKETPLACE</h3>
     <p class="text">
-      Au Marché is a social-commerce concept that bridges creator lifestyle content with
-      an immediate path to retail conversion.
+      Au Marché is a social-commerce concept connecting businesses, creators, and
+      customers. Fashion and lifestyle content sits alongside shoppable products,
+      creating a continuous path from discovery to purchase.
     </p>
-    <h3 class="subject">THE PROBLEM</h3>
+    <h3 class="subject">MY CONTRIBUTION</h3>
     <p class="text">
-      Traditional social-commerce journeys can send people into clunky webviews or
-      external links. Losing the feed, scroll position, or story context adds friction
-      at the moment of purchase.
+      I worked as a UI designer during a short internship, developing mobile app screens
+      in Figma with a small design and development team. The work was interface-focused;
+      this case study does not claim measured product outcomes.
     </p>
-    <h3 class="subject">THE GOAL</h3>
-    <p class="text">
-      Keep content, discovery, and checkout within one coherent mobile interface, so
-      people can move from inspiration to purchase without a jarring context switch.
-    </p>
-    <h3 class="subject">IDENTITY</h3>
-    {
-      logo ? (
-        <figure class="detailImage aum-logo">
-          <img
-            src={logo.url}
-            alt={`${title} wordmark`}
-            loading="eager"
-            decoding="async"
-          />
-        </figure>
-      ) : (
-        <figure class="detailImage detailImage--placeholder">
-          <div class="asset-placeholder">Add logo.webp.</div>
-        </figure>
-      )
-    }
   </section>
 
-  <section class="text aum-section" id="feed">
-    <h2 class="section">II. MAIN FEED &amp; INTERACTION MODEL</h2>
-    <h3 class="subject">IMMEDIATE INSPIRATION</h3>
+  <dl class="aum-glance" aria-label="Project at a glance">
+    <div class="aum-glance__item">
+      <dt>ROLE</dt>
+      <dd>UI designer · internship</dd>
+    </div>
+    <div class="aum-glance__item">
+      <dt>PRODUCT</dt>
+      <dd>Mobile social-commerce app</dd>
+    </div>
+    <div class="aum-glance__item">
+      <dt>TOOL</dt>
+      <dd>Figma</dd>
+    </div>
+    <div class="aum-glance__item">
+      <dt>DURATION</dt>
+      <dd>Approximately 3 months</dd>
+    </div>
+  </dl>
+
+  <section class="text aum-section" id="walkthrough">
+    <h2 class="section">II. APP WALKTHROUGH</h2>
+    <h3 class="subject">FROM DISCOVERY TO SELLER TOOLS</h3>
     <p class="text">
-      A continuous vertical feed prioritizes lifestyle content, with video playback
-      triggered as posts enter the viewport. This makes inspiration immediate instead of
-      relying on static thumbnails.
+      Three views show the product’s two sides: a buyer discovers content in the feed,
+      explores a product, and a seller manages inventory. The consistent visual language
+      connects these parts of the concept.
     </p>
-    {
-      mainScreens.length > 0 ? (
-        <div
-          class="gallery gallery--docs aum-screens"
-          role="list"
-          aria-label="Main feed and post detail screens"
-        >
-          {mainScreens.map((item) => (
-            <figure class="detailImage aum-screen" role="listitem">
-              <div class="aum-device">
-                <img src={item.url} alt={item.alt} loading="lazy" decoding="async" />
-              </div>
-              <figcaption class="aum-caption">{item.caption}</figcaption>
-            </figure>
-          ))}
-        </div>
-      ) : (
-        <figure class="detailImage detailImage--placeholder">
-          <div class="asset-placeholder">Add app1.webp and app5.webp.</div>
-        </figure>
-      )
-    }
-    <h3 class="subject">GESTURE CONFLICT RESOLUTION</h3>
+    <div
+      class="gallery gallery--docs aum-screens aum-walkthrough"
+      role="list"
+      aria-label="Au Marché app walkthrough: feed, product, and seller inventory"
+    >
+      {
+        walkthroughScreens.map((item) => (
+          <figure class="detailImage aum-screen" role="listitem">
+            <div class="aum-device">
+              <img src={item.url} alt={item.alt} loading="lazy" decoding="async" />
+            </div>
+            <figcaption class="aum-caption">{item.caption}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="text aum-section" id="design-studies">
+    <h2 class="section">III. SUPPORTING DESIGN STUDIES</h2>
+    <h3 class="subject">ADDITIONAL APP SCREENS</h3>
     <p class="text">
-      Multi-image posts introduce a horizontal gesture inside a vertically scrolling
-      feed. The paginated card pattern, micro-indicator dots, and first-load horizontal
-      bounce cue make the swipe affordance visible without competing with vertical
-      navigation.
+      Further explorations cover the post detail, shopping bag, creator profile, and
+      shop-management views.
     </p>
-    <aside class="ux-challenge" aria-labelledby="feed-iteration-title">
-      <h3 id="feed-iteration-title">UX Challenge &amp; Design Iteration</h3>
-      <p>
-        Use a brief horizontal bounce cue on first load, then rely on persistent
-        pagination dots. This teaches the secondary gesture once while keeping the
-        vertical feed as the dominant interaction.
+    <div
+      class="gallery gallery--docs aum-screens"
+      role="list"
+      aria-label="Additional Au Marché mobile app interface studies"
+    >
+      {
+        supportingScreens.map((item) => (
+          <figure class="detailImage aum-screen" role="listitem">
+            <div class="aum-device">
+              <img src={item.url} alt={item.alt} loading="lazy" decoding="async" />
+            </div>
+            <figcaption class="aum-caption">{item.caption}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+    <h3 class="subject">PROFILE HEADER: GRID &amp; SPACING</h3>
+    <p class="text">
+      I refined the existing profile interface by applying a consistent grid and spacing
+      rhythm to the Feeds and Reposts controls and surrounding profile actions. The
+      improved alignment makes the controls easier to scan and brings the screen into
+      closer visual and systemic consistency with the rest of the app.
+    </p>
+    <div
+      class="gallery gallery--docs aum-screens"
+      role="list"
+      aria-label="Two Au Marché profile header design options"
+    >
+      {
+        profileScreens.map((item) => (
+          <figure class="detailImage aum-screen" role="listitem">
+            <div class="aum-device">
+              <img src={item.url} alt={item.alt} loading="lazy" decoding="async" />
+            </div>
+            <figcaption class="aum-caption">{item.caption}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="text aum-section" id="reflections">
+    <h2 class="section">IV. DESIGN REFLECTIONS</h2>
+    <h3 class="subject">QUESTIONS FOR A NEXT ITERATION</h3>
+    <div class="aum-reflection-copy">
+      <p class="text">
+        The interface studies also surfaced areas to explore in a next iteration:
       </p>
-    </aside>
-  </section>
-
-  <section class="text aum-section" id="checkout">
-    <h2 class="section">III. FRICTIONLESS CHECKOUT</h2>
-    <h3 class="subject">CONTEXT-PRESERVING BOTTOM SHEET</h3>
-    <p class="text">
-      Tapping a tagged item opens a product sheet over the feed rather than navigating
-      to a separate page. Product details, size and stock selection, and Apple Pay or
-      Google Pay actions stay close to the post that prompted the purchase.
-    </p>
-    {
-      checkoutScreens.length > 0 ? (
-        <div
-          class="gallery gallery--docs aum-screens"
-          role="list"
-          aria-label="Product discovery and shopping screens"
-        >
-          {checkoutScreens.map((item) => (
-            <figure class="detailImage aum-screen" role="listitem">
-              <div class="aum-device">
-                <img src={item.url} alt={item.alt} loading="lazy" decoding="async" />
-              </div>
-              <figcaption class="aum-caption">{item.caption}</figcaption>
-            </figure>
-          ))}
-        </div>
-      ) : (
-        <figure class="detailImage detailImage--placeholder">
-          <div class="asset-placeholder">Add app3.webp and app4.webp.</div>
-        </figure>
-      )
-    }
-    <aside class="ux-challenge" aria-labelledby="checkout-iteration-title">
-      <h3 id="checkout-iteration-title">Usability Insights &amp; Edge Cases</h3>
-      <p>
-        Keep the underlying post and its scroll position in place while the product
-        sheet is open. Dismissal returns people to the exact point in the feed instead
-        of restarting discovery.
+      <ul class="aum-reflections">
+        <li>
+          Define a clear horizontal swipe affordance for multi-photo posts without
+          interfering with vertical feed scrolling.
+        </li>
+        <li>
+          Explore saved drafts in the creation flow so unfinished work can be resumed.
+        </li>
+      </ul>
+      <p class="text">
+        These are follow-up design questions, not features represented as shipped or
+        validated.
       </p>
-    </aside>
+    </div>
   </section>
 
-  <section class="text aum-section" id="design-system">
-    <h2 class="section">IV. DESIGN SYSTEM ACROSS TWO PERSONAS</h2>
-    <h3 class="subject">ONE SHARED FOUNDATION</h3>
+  <section class="text aum-section" id="campaigns">
+    <h2 class="section">V. INSTAGRAM GRAPHIC CAMPAIGNS</h2>
+    <h3 class="subject">ARTICLE &amp; READER-REVIEW CARDS</h3>
     <p class="text">
-      Consumers browse and buy; creators and sellers manage listings and shop activity.
-      Both sides use the same 8-point spatial grid, typography system, and signature
-      crimson action color to make the product feel coherent across roles.
+      A one-month visual design project adapted an article on digital fashion and its
+      reader reviews into two Instagram card sequences.
     </p>
-    {
-      designSystemScreens.length > 0 ? (
-        <div
-          class="gallery gallery--docs aum-screens"
-          role="list"
-          aria-label="Consumer and creator design system screens"
-        >
-          {designSystemScreens.map((item) => (
-            <figure class="detailImage aum-screen" role="listitem">
-              <div class="aum-device">
-                <img src={item.url} alt={item.alt} loading="lazy" decoding="async" />
-              </div>
-              <figcaption class="aum-caption">{item.caption}</figcaption>
-            </figure>
-          ))}
-        </div>
-      ) : (
-        <figure class="detailImage detailImage--placeholder">
-          <div class="asset-placeholder">Add app2.webp, app6.webp, and app7.webp.</div>
-        </figure>
-      )
-    }
+    <h3 class="subject">DESIGN PROCESS</h3>
+    <ol class="aum-process" aria-label="Instagram card design process">
+      {campaignProcess.map((step) => <li>{step}</li>)}
+    </ol>
+    <h3 class="subject">DIGITAL FASHION ARTICLE</h3>
+    <div
+      class="gallery gallery--docs aum-screens aum-campaigns"
+      role="list"
+      aria-label="Instagram cards promoting the digital fashion article"
+    >
+      {
+        articleCards.map((item) => (
+          <figure class="detailImage aum-screen aum-campaign-card" role="listitem">
+            <img src={item.url} alt={item.alt} loading="lazy" decoding="async" />
+            <figcaption class="aum-caption">{item.caption}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+    <h3 class="subject">READER REVIEWS</h3>
+    <div
+      class="gallery gallery--docs aum-screens aum-campaigns"
+      role="list"
+      aria-label="Instagram cards featuring reader reviews"
+    >
+      {
+        readerReviewCards.map((item) => (
+          <figure class="detailImage aum-screen aum-campaign-card" role="listitem">
+            <img src={item.url} alt={item.alt} loading="lazy" decoding="async" />
+            <figcaption class="aum-caption">{item.caption}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
   </section>
-
-  <section class="text aum-section" id="creator-studio">
-    <h2 class="section">V. CREATOR STUDIO &amp; PUBLISHING FLOW</h2>
-    <h3 class="subject">A CONTINUOUS CREATION FLOW</h3>
-    <p class="text">
-      Creating a shoppable post can involve several steps and tagged assets. Persistent
-      draft auto-saving within the creation modal protects work in progress, while a
-      top-bar segmented control separates published posts from shop collections.
-    </p>
-    {
-      profileScreens.length > 0 ? (
-        <div
-          class="gallery gallery--docs aum-screens"
-          role="list"
-          aria-label="Profile and publishing screens"
-        >
-          {profileScreens.map((item) => (
-            <figure class="detailImage aum-screen" role="listitem">
-              <div class="aum-device">
-                <img src={item.url} alt={item.alt} loading="lazy" decoding="async" />
-              </div>
-              <figcaption class="aum-caption">{item.caption}</figcaption>
-            </figure>
-          ))}
-        </div>
-      ) : (
-        <figure class="detailImage detailImage--placeholder">
-          <div class="asset-placeholder">
-            Add app_profile_1.png and app_profile_2.png.
-          </div>
-        </figure>
-      )
-    }
-    <aside class="ux-challenge" aria-labelledby="creator-insights-title">
-      <h3 id="creator-insights-title">Usability Insights &amp; Edge Cases</h3>
-      <p>
-        Preserve a draft when a creator leaves the modal mid-flow, and make the
-        published-posts versus shop-collections distinction visible before they start
-        editing.
-      </p>
-    </aside>
-  </section>
-
-  {
-    uncategorizedItems.length > 0 && (
-      <section class="text aum-section" id="additional-assets">
-        <h2 class="section">VI. SUPPORTING SCREENS</h2>
-        <h3 class="subject">ADDITIONAL ASSETS</h3>
-        <p class="text">Additional materials from the project.</p>
-        <div
-          class="gallery gallery--docs aum-screens"
-          role="list"
-          aria-label="Additional Au Marché assets"
-        >
-          {uncategorizedItems.map((item) => (
-            <figure class="detailImage aum-screen" role="listitem">
-              <div class="aum-device">
-                <img
-                  src={item.url}
-                  alt={`${title} ${item.stem}`}
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <figcaption class="aum-caption">{item.stem}</figcaption>
-            </figure>
-          ))}
-        </div>
-      </section>
-    )
-  }
 </DetailLayout>
 
 <style>
@@ -412,15 +410,6 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     margin: 0;
     font-size: var(--text-sm);
     line-height: 1.5;
-  }
-
-  .aum-glance__item--challenge {
-    border-left-color: var(--color-text);
-  }
-
-  .aum-logo {
-    max-width: min(100%, 280px);
-    margin-bottom: var(--space-sm);
   }
 
   .aum-toc {
@@ -477,26 +466,33 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     margin: 0;
   }
 
-  .ux-challenge {
-    grid-column: 1 / -1;
-    margin: 0;
-    padding: 1.25rem;
-    border: 1px solid color-mix(in srgb, #cf2344 24%, transparent);
-    border-left: 4px solid #cf2344;
-    border-radius: 10px;
-    background: color-mix(in srgb, #cf2344 5%, var(--color-surface));
+  .aum-process {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin: var(--space-md) 0;
+    padding: 0;
+    list-style: none;
   }
 
-  .ux-challenge h3 {
-    margin: 0 0 var(--space-sm);
-    font-size: var(--text-md);
-    font-weight: 800;
+  .aum-process li {
+    padding: 0.35rem 0.65rem;
+    border: 1px solid color-mix(in srgb, var(--color-text) 16%, transparent);
+    border-radius: 999px;
+    font-size: var(--text-xs);
   }
 
-  .ux-challenge p {
-    margin: 0;
-    font-size: var(--text-sm);
+  .aum-reflections {
+    display: grid;
+    gap: var(--space-sm);
+    margin: var(--space-md) 0;
+    padding-left: 1.25rem;
     line-height: 1.6;
+  }
+
+  .aum-reflection-copy {
+    display: grid;
+    gap: var(--space-lg);
   }
 
   .aum-screen {
@@ -529,8 +525,27 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .gallery.aum-walkthrough {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gallery.aum-campaigns {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .aum-campaign-card img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
   @media (min-width: 992px) {
     section.text > .gallery.gallery--docs.aum-screens {
+      grid-column: 2;
+    }
+
+    section.text > .aum-reflection-copy {
       grid-column: 2;
     }
   }
@@ -543,23 +558,6 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
     opacity: 0.72;
   }
 
-  .detailImage--placeholder {
-    border: 1px dashed var(--color-text);
-    background: color-mix(in srgb, var(--color-accent-muted) 8%, transparent);
-    min-height: clamp(180px, 30vw, 320px);
-    display: grid;
-    place-items: center;
-    margin: 0;
-  }
-
-  .asset-placeholder {
-    padding: 1rem 1.25rem;
-    text-align: center;
-    color: var(--color-text);
-    font-size: var(--text-sm);
-    opacity: 0.8;
-  }
-
   @media (max-width: 767px) {
     .aum-glance {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -567,6 +565,14 @@ const uncategorizedItems = mediaItems.filter((m) => !usedUrls.has(m.url));
 
     .aum-glance__item:nth-child(n + 3) {
       grid-column: 1 / -1;
+    }
+
+    .gallery.aum-campaigns {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gallery.aum-walkthrough {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>
